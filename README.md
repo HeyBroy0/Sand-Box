@@ -144,6 +144,19 @@ A one-time test was run on 16 November 2026 using the manual repository task imp
 
 GitHub reported approximately 8 seconds for the complete job. Its step timestamps are reported at whole-second precision, so 0-second step readings may represent sub-second work.
 
+## Verified dataset-analysis workflow test
+
+A separate sample-analysis workflow was run on 16 November 2026. It successfully installed the analysis dependencies, ran `scripts/analyze_dataset.py`, validated its expected outputs, and uploaded the `sample-dataset-analysis` artifact.
+
+- Run: [Sample dataset analysis test #1](https://github.com/HeyBroy0/Sand-Box/actions/runs/43846828689).
+- Input: `data/example.csv`, a synthetic 15-row, four-column dataset.
+- Checks: 15 rows, 4 columns, no missing cells, no duplicate rows.
+- Outputs: descriptive statistics, missingness, Pearson correlations, histograms, correlation matrix, OLS coefficients, OLS summary, metadata, and Markdown report.
+- Exploratory OLS for `exam_score`: (R^2 = 0.9994), (n=15).
+- Artifact: `sample-dataset-analysis`, 126,500 bytes, scheduled to expire after three days (19 November 2026).
+
+**Interpretation warning:** this is deliberately synthetic demonstration data, not research evidence. Its predictors are highly correlated (Pearson correlations approximately 0.975–1.000), so multicollinearity is substantial and coefficient-level inference is unstable. The high (R^2) is not evidence of a causal or generalizable relationship.
+
 ## Fact-checking and research
 
 Use this repository to preserve research notes, datasets, source lists, and reproducible calculations. Do not treat a file in this repository as proof that a factual claim is correct.
