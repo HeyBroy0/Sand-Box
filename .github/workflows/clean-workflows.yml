@@ -43,7 +43,7 @@ jobs:
           fi
 
           run_ids_text="$(gh api --paginate \
-            "repos/${GITHUB_REPOSITORY}/actions/runs?per_page=100" \
+            "repos/${GITHUB_REPOSITORY}/actions/runs?per_page=100&sort=created&direction=desc" \
             --jq '.workflow_runs[] | select(.status == "completed") | .id')"
 
           completed_run_ids=()
