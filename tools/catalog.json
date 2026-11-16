@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "tools": [
+    {
+      "id": "clean-workflows",
+      "name": "Clean workflows",
+      "kind": "workflow",
+      "path": ".github/workflows/clean-workflows.yml",
+      "summary": "Prune completed GitHub Actions runs and optionally remove unused, unprotected branches.",
+      "tags": ["cleanup", "maintenance", "branches", "artifacts", "github-actions"],
+      "aliases": ["branch cleanup", "run cleanup"],
+      "usage": "Actions → Clean workflows → Run workflow; enable the separate confirmations for each cleanup."
+    },
+    {
+      "id": "dataset-analysis",
+      "name": "Dataset analysis workflow",
+      "kind": "workflow",
+      "path": ".github/workflows/data-analysis.yml",
+      "summary": "Run exploratory analysis on CSV, TSV, JSON, XLSX, or XLS datasets and download a report artifact.",
+      "tags": ["data", "analysis", "csv", "tsv", "json", "excel", "statistics"],
+      "aliases": ["eda", "spreadsheet analysis"],
+      "usage": "Actions → Dataset analysis → Run workflow; choose a file under data/."
+    },
+    {
+      "id": "dataset-analyzer",
+      "name": "Dataset analyzer script",
+      "kind": "script",
+      "path": "scripts/analyze_dataset.py",
+      "summary": "Generate missingness, descriptive statistics, correlations, plots, and optional exploratory OLS results.",
+      "tags": ["data", "analysis", "csv", "tsv", "json", "excel", "statistics", "python"],
+      "aliases": ["eda", "ols", "spreadsheet analysis"],
+      "usage": "python scripts/analyze_dataset.py --input data/example.csv --output-dir analysis-output"
+    },
+    {
+      "id": "file-pipeline",
+      "name": "Archive and image pipeline",
+      "kind": "script",
+      "path": "scripts/sandbox_file_pipeline.py",
+      "summary": "Seed, extend, extract, convert, and verify a ZIP archive and image-to-PDF workflow.",
+      "tags": ["zip", "archive", "image", "pdf", "verify", "python"],
+      "aliases": ["zip pipeline", "file conversion"],
+      "usage": "python scripts/sandbox_file_pipeline.py --help (requires Pillow for the PDF command)."
+    },
+    {
+      "id": "tool-lookup",
+      "name": "Tool lookup workflow",
+      "kind": "workflow",
+      "path": ".github/workflows/tool-lookup.yml",
+      "summary": "Search the compact tool catalog from GitHub Actions and validate its paths.",
+      "tags": ["lookup", "search", "catalog", "discovery", "github-actions"],
+      "aliases": ["find tool", "tool search"],
+      "usage": "Actions → Tool lookup → Run workflow; enter a query or leave it blank to list the first five."
+    },
+    {
+      "id": "tool-search",
+      "name": "Tool search script",
+      "kind": "script",
+      "path": "scripts/find_tool.py",
+      "summary": "Search tools by name, purpose, tags, aliases, or path; emits concise text or compact JSON.",
+      "tags": ["lookup", "search", "catalog", "discovery", "python"],
+      "aliases": ["find tool", "tool index"],
+      "usage": "python scripts/find_tool.py \"csv excel\" [--format json] [--kind script|workflow]"
+    }
+  ]
+}

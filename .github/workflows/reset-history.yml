@@ -1,0 +1,78 @@
+name: One-time history reset
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm_reset:
+        description: Confirm replacing main history with one initial commit
+        required: true
+        default: false
+        type: boolean
+      confirmation_text:
+        description: Type RESET MAIN HISTORY exactly
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  reset:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out complete main history
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Replace main with a single root commit
+        env:
+          CONFIRM_RESET: ${{ inputs.confirm_reset }}
+          CONFIRMATION_TEXT: ${{ inputs.confirmation_text }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ "$GITHUB_REF" != "refs/heads/main" ]]; then
+            echo "Refusing to reset anything except main." >&2
+            exit 1
+          fi
+          if [[ "$CONFIRM_RESET" != "true" || "$CONFIRMATION_TEXT" != "RESET MAIN HISTORY" ]]; then
+            echo "Explicit confirmation was not supplied; no history was changed." >&2
+            exit 1
+          fi
+
+          git fetch origin main
+          expected_head="$(git rev-parse FETCH_HEAD)"
+          checked_out_head="$(git rev-parse HEAD)"
+          if [[ "$checked_out_head" != "$expected_head" ]]; then
+            echo "main moved after this workflow started; refusing to reset a stale snapshot." >&2
+            exit 1
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          snapshot_dir="$(mktemp -d)"
+          git archive HEAD | tar -x -C "$snapshot_dir"
+          git switch --orphan single-root
+          cp -a "$snapshot_dir"/. .
+          rm -rf "$snapshot_dir"
+
+          python - <<'PY'
+          from pathlib import Path
+
+          readme = Path("README.md")
+          content = readme.read_text(encoding="utf-8")
+          start = content.find("\n## One-time history reset\n")
+          end = content.find("\n## Adding or changing a tool\n", start)
+          if start < 0 or end < 0:
+              raise SystemExit("Could not locate the one-time reset instructions in README.md")
+          readme.write_text(content[:start] + content[end:], encoding="utf-8")
+          PY
+          rm .github/workflows/reset-history.yml
+          git add -A
+          git commit -m "Initialize repository with consolidated history"
+          git push --force-with-lease="refs/heads/main:${expected_head}" origin HEAD:refs/heads/main

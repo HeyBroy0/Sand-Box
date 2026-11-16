@@ -1,0 +1,52 @@
+name: Tool lookup
+
+on:
+  workflow_dispatch:
+    inputs:
+      query:
+        description: Search names, purposes, tags, aliases, or paths (blank lists all)
+        required: false
+        default: ""
+        type: string
+      kind:
+        description: Restrict results to scripts or workflows
+        required: true
+        default: all
+        type: choice
+        options:
+          - all
+          - script
+          - workflow
+      limit:
+        description: Maximum number of results (1–20)
+        required: true
+        default: 5
+        type: number
+
+permissions:
+  contents: read
+
+jobs:
+  lookup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate catalog and resolve matching tools
+        env:
+          QUERY: ${{ inputs.query }}
+          KIND: ${{ inputs.kind }}
+          LIMIT: ${{ inputs.limit }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/find_tool.py --validate
+          args=(--kind "$KIND" --limit "$LIMIT")
+          if [[ -n "$QUERY" ]]; then
+            args+=("$QUERY")
+          fi
+          printf '## Tool lookup\n\n' >> "$GITHUB_STEP_SUMMARY"
+          python scripts/find_tool.py "${args[@]}" | tee /tmp/tool-results.txt
+          cat /tmp/tool-results.txt >> "$GITHUB_STEP_SUMMARY"

@@ -1,18 +1,34 @@
 # Sand-Box
-Evolving public workspace for tools, scripts, and GitHub Actions capabilities. 
-Do not touch archives. Only update `main` with stable and working tools and relevant instructions only with heavy emphasis on reducing context-window overhead, otherwise keep it in a new experimental branch.
 
-**Public repository:** never commit secrets, private information, or confidential files.
-## Use
-- Inspect the current files in `data/` if necessary; reuse existing tools when practical. maintain the tool use instructions below as necessary. for AIs: never attempt to create tools that are already natively accessible unless a constraint is recognized. 
-- **Dataset analysis:** open **Actions → Dataset analysis → Run workflow**, choose an input under `data/`, and download the results artifact.
-- **Clean workflows:** open **Actions → Clean workflows → Run workflow**. Check the confirmation box. Set `keep_recent_runs` to the number of newest completed runs to retain (default `0`). Older completed runs and their artifacts are deleted. The cleanup run itself remains visible until a later cleanup.
+Public workspace for stable tools, scripts, and focused GitHub Actions. Keep `main` small, dependable, and easy to navigate.
 
-## Update
-- Add reusable scripts under `scripts/`; keep inputs in `data/` and generated reports in `reports/` or workflow artifacts.
-- Add one focused workflow per capability under `.github/workflows/`. Keep workflows manual-only with `workflow_dispatch` unless automatic triggers are specifically needed.
-- Grant only the permissions each workflow requires. Never hard-code credentials.
-- Before substantial or risky changes, create a new branch such as `archive/main-YYYY-MM-DD` from the current `main`. Do not overwrite older archives.
-- When a feature is added or changed, update this README with only its purpose and how to run or update it.
+## Start here
 
-Workflows is purposefully a volatile storage location, save any final artifacts deemed important to `reports/` before clean up.
+- **Find a tool:** `python scripts/find_tool.py "csv excel"`; add `--format json` for compact agent output. Leave the query blank to list the first five; use `--limit 20` for the full catalog.
+- **Dataset analysis:** Actions → **Dataset analysis** → **Run workflow**. Select a file under `data/`; download the results artifact.
+- **Repository cleanup:** Actions → **Clean workflows** → **Run workflow**. Run-history cleanup and branch cleanup have separate confirmations. Set `keep_recent_runs` to the number of newest completed runs to retain.
+- **Tool lookup in Actions:** Actions → **Tool lookup** → **Run workflow**. Search by name, purpose, tag, alias, or path.
+
+## Tool maintenance
+
+`tools/catalog.json` is the compact source of truth for discovery. Add one short entry whenever a reusable script or workflow is added, renamed, or removed. Keep summaries under 180 characters; use tags and aliases for common search terms. Do not copy full documentation or source into the catalog. Validate with `python scripts/find_tool.py --validate` and test with `python -m unittest discover -s tests -v`.
+
+Put reusable scripts in `scripts/`, inputs in `data/`, and durable reports in `reports/` (or workflow artifacts for temporary outputs). Add one focused workflow per capability under `.github/workflows/`; prefer manual `workflow_dispatch` and grant only required permissions. Reuse existing tools and native AI/client capabilities rather than duplicating them unless a concrete constraint requires it.
+
+## Branch and repository rules
+
+- Update `main` only with stable, working tools and concise instructions. Keep experiments off `main`.
+- Never overwrite or modify `archive/` branches. Before risky work, create a new snapshot such as `archive/main-YYYY-MM-DD-topic`; use `protect/` for branches that cleanup must retain.
+- Cleanup always preserves the default branch, `archive/*`, `protect/*`, GitHub-protected branches, and branches referenced by open pull requests. Other branches are deletion candidates only after the separate branch-cleanup confirmation.
+- This is a public repository: never commit credentials, secrets, private information, or confidential files.
+
+## One-time history reset
+
+To make `main` a single initial commit, open Actions → **One-time history reset** → **Run workflow** on `main`, set `confirm_reset` to `true`, and enter `RESET MAIN HISTORY` exactly. The `archive/main-2026-11-16-pre-maintenance` snapshot preserves the previous history. The workflow uses a force-with-lease update and removes itself from the new root commit; do not recreate or rerun it.
+
+## Adding or changing a tool
+
+1. Check the catalog before building something new.
+2. Implement the reusable tool under `scripts/` or as a focused workflow.
+3. Add or update its short catalog entry and README instructions only when needed.
+4. Run catalog validation and tests before updating `main`.
