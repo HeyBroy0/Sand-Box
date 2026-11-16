@@ -1,6 +1,7 @@
 # Sand-Box
+Evolving public workspace for tools, scripts, and GitHub Actions capabilities. 
+Do not touch archives. Only update `main` with new, stable and working tools only, otherwise keep it in a new experimental branch.
 
-An evolving public workspace for adding useful tools, scripts, and GitHub Actions capabilities. Keep the workspace recoverable with dated archive branches.
 **Public repository:** never commit secrets, private information, or confidential files.
 ## Use
 - Inspect the current files and workflows before starting; reuse existing tools when practical.
@@ -13,3 +14,5 @@ An evolving public workspace for adding useful tools, scripts, and GitHub Action
 - Grant only the permissions each workflow requires. Never hard-code credentials.
 - Before substantial or risky changes, create a new branch such as `archive/main-YYYY-MM-DD` from the current `main`. Do not overwrite older archives.
 - When a feature is added or changed, update this README with only its purpose and how to run or update it.
+
+Workflows is purposefully a volatile storage location, save any final artifacts deemed important to `reports/` before clean up.
