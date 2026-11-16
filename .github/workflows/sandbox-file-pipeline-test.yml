@@ -1,0 +1,64 @@
+name: Sandbox file-pipeline test
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - sandbox-test/trigger.txt
+
+permissions:
+  contents: read
+
+jobs:
+  file-pipeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install image conversion dependency
+        run: python -m pip install --disable-pip-version-check Pillow
+
+      - name: Download CC0 earthworm photograph
+        run: |
+          curl --fail --location --retry 3 \
+            "https://upload.wikimedia.org/wikipedia/commons/6/6e/Earthworm_on_ground.jpg" \
+            --output earthworm-source.jpg
+          file earthworm-source.jpg
+
+      - name: Create the initial picture2.zip
+        run: python scripts/sandbox_file_pipeline.py seed --zip picture2.zip
+
+      - name: Add the worm photograph to picture2.zip
+        run: python scripts/sandbox_file_pipeline.py add --zip picture2.zip --image earthworm-source.jpg
+
+      - name: Extract picture2.zip
+        run: python scripts/sandbox_file_pipeline.py extract --zip picture2.zip --to extracted
+
+      - name: Convert the extracted photograph to PDF
+        run: python scripts/sandbox_file_pipeline.py pdf --image extracted/earthworm.jpg --pdf earthworm.pdf
+
+      - name: Verify ZIP, extracted image, and PDF
+        run: python scripts/sandbox_file_pipeline.py verify --zip picture2.zip --image extracted/earthworm.jpg --pdf earthworm.pdf
+
+      - name: Record test summary
+        run: |
+          {
+            echo "## Sand-Box file-pipeline test"
+            echo ""
+            echo "- Created a temporary `picture2.zip` in the runner workspace."
+            echo "- Added a CC0 earthworm photograph from Wikimedia Commons."
+            echo "- Extracted the photograph and converted it to PDF."
+            echo "- ZIP integrity, extracted image, and PDF signature checks passed."
+            echo "- Temporary ZIP, photograph, extraction folder, and PDF were not committed or uploaded as artifacts."
+            echo ""
+            echo "Image source: https://commons.wikimedia.org/wiki/File:Earthworm_on_ground.jpg"
+            echo "License: CC0 1.0."
+          } >> "$GITHUB_STEP_SUMMARY"
