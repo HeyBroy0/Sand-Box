@@ -1,0 +1,77 @@
+name: Clean workflows
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm_cleanup:
+        description: Confirm deletion of selected completed runs and their artifacts
+        required: true
+        default: false
+        type: boolean
+      keep_recent_runs:
+        description: Number of newest completed runs to keep across the repository
+        required: true
+        default: 0
+        type: number
+
+permissions:
+  actions: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Delete completed workflow runs and their artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CONFIRM_CLEANUP: ${{ inputs.confirm_cleanup }}
+          KEEP_RECENT_RUNS: ${{ inputs.keep_recent_runs }}
+          CURRENT_RUN_ID: ${{ github.run_id }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ "$CONFIRM_CLEANUP" != "true" ]]; then
+            echo "Cleanup not confirmed; nothing was deleted."
+            exit 1
+          fi
+
+          if ! [[ "$KEEP_RECENT_RUNS" =~ ^[0-9]+$ ]]; then
+            echo "keep_recent_runs must be a non-negative whole number."
+            exit 1
+          fi
+
+          run_ids_text="$(gh api --paginate \
+            "repos/${GITHUB_REPOSITORY}/actions/runs?per_page=100" \
+            --jq '.workflow_runs[] | select(.status == "completed") | .id')"
+
+          completed_run_ids=()
+          if [[ -n "$run_ids_text" ]]; then
+            mapfile -t completed_run_ids <<< "$run_ids_text"
+          fi
+
+          total=${#completed_run_ids[@]}
+          keep=$((KEEP_RECENT_RUNS))
+          echo "Found $total completed runs; keeping the newest $keep."
+
+          if (( total <= keep )); then
+            echo "Nothing to delete."
+            exit 0
+          fi
+
+          deleted=0
+          for ((i=keep; i<total; i++)); do
+            run_id="${completed_run_ids[$i]}"
+            if [[ "$run_id" == "$CURRENT_RUN_ID" ]]; then
+              echo "Skipping this cleanup run: $run_id"
+              continue
+            fi
+
+            echo "Deleting completed run $run_id and its associated artifacts."
+            gh api --method DELETE "repos/${GITHUB_REPOSITORY}/actions/runs/$run_id"
+            ((deleted+=1))
+          done
+
+          echo "Deleted $deleted completed workflow run(s)."
+          echo "GitHub removes each deleted run's associated artifacts as well."
