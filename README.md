@@ -28,6 +28,8 @@ Do not assume the repository is empty or unchanged just because an earlier sessi
 
 ## What this repository is for
 
+The current reusable workflow is **Dataset analysis** (`.github/workflows/data-analysis.yml`). It is configured for manual dispatch only. Its Python script accepts CSV, TSV, JSON, XLSX, and XLS inputs and writes descriptive statistics, missingness summaries, correlation results, optional exploratory OLS output, and charts to a downloadable workflow artifact.
+
 Use GitHub as an independent place to store and process files when a task can be handled reliably through repository operations or a scripted GitHub Actions workflow.
 
 Typical uses:
@@ -123,11 +125,24 @@ To remove automatic execution from an existing workflow:
 4. Keep only `workflow_dispatch:` (and any manual inputs it needs).
 5. Commit the change and inspect the workflow file again to verify that no automatic trigger remains.
 
-To run a manual workflow, open the repository's **Actions** tab, select the workflow (currently **Dataset analysis**), select **Run workflow**, choose the branch and inputs, then confirm **Run workflow**.
+To run a manual workflow, open the repository's **Actions** tab, select **Dataset analysis**, select **Run workflow**, choose the branch, enter the repository-relative input path (for example, `data/example.csv`), optionally set a numeric `target_column`, then confirm **Run workflow**. The results are uploaded as an artifact with a seven-day retention period.
 
 **Do not disable Actions entirely under Settings → Actions → General** when you still want manual runs. Disabling Actions at repository level also prevents the manual workflow from running. The correct setting for “only when I call it” is to leave Actions enabled and restrict each useful workflow to the `workflow_dispatch` trigger.
 
 A run that has already started will finish even after its trigger is removed. Removing a workflow file also does not erase its historical run entry from the Actions page.
+
+## Verified file-pipeline test
+
+A one-time test was run on 16 November 2026 using the manual repository task implemented temporarily as a push-filtered workflow. GitHub Actions reported success:
+
+- Created a temporary `picture2.zip` in the runner workspace.
+- Added the CC0 1.0 Wikimedia Commons photograph [Earthworm on ground.jpg](https://commons.wikimedia.org/wiki/File:Earthworm_on_ground.jpg), by Johnnybam.
+- Extracted the ZIP, converted the image to PDF, and verified ZIP integrity, the extracted image checksum, and the PDF signature.
+- The runner's temporary files were discarded at the end of the job; no ZIP, image, PDF, or workflow artifact was retained.
+- Run: [Sandbox file-pipeline test #1](https://github.com/HeyBroy0/Sand-Box/actions/runs/43844868216).
+- Runtime chart: [reports/workflow-step-durations.svg](reports/workflow-step-durations.svg).
+
+GitHub reported approximately 8 seconds for the complete job. Its step timestamps are reported at whole-second precision, so 0-second step readings may represent sub-second work.
 
 ## Fact-checking and research
 
