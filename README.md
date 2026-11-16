@@ -4,7 +4,7 @@ Do not touch archives. Only update `main` with stable and working tools and rele
 
 **Public repository:** never commit secrets, private information, or confidential files.
 ## Use
-- Inspect the current files in `data/` if necessary; reuse existing tools when practical. maintain the tool use instructions below as necessary.
+- Inspect the current files in `data/` if necessary; reuse existing tools when practical. maintain the tool use instructions below as necessary. for AIs: never attempt to create tools that are already natively accessible unless a constraint is recognized. 
 - **Dataset analysis:** open **Actions → Dataset analysis → Run workflow**, choose an input under `data/`, and download the results artifact.
 - **Clean workflows:** open **Actions → Clean workflows → Run workflow**. Check the confirmation box. Set `keep_recent_runs` to the number of newest completed runs to retain (default `0`). Older completed runs and their artifacts are deleted. The cleanup run itself remains visible until a later cleanup.
 
