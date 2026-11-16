@@ -1,10 +1,10 @@
 # Sand-Box
 Evolving public workspace for tools, scripts, and GitHub Actions capabilities. 
-Do not touch archives. Only update `main` with new, stable and working tools only, otherwise keep it in a new experimental branch.
+Do not touch archives. Only update `main` with stable and working tools and relevant instructions only with heavy emphasis on reducing context-window overhead, otherwise keep it in a new experimental branch.
 
 **Public repository:** never commit secrets, private information, or confidential files.
 ## Use
-- Inspect the current files and workflows before starting; reuse existing tools when practical.
+- Inspect the current files in `data/` if necessary; reuse existing tools when practical. maintain the tool use instructions below as necessary.
 - **Dataset analysis:** open **Actions → Dataset analysis → Run workflow**, choose an input under `data/`, and download the results artifact.
 - **Clean workflows:** open **Actions → Clean workflows → Run workflow**. Check the confirmation box. Set `keep_recent_runs` to the number of newest completed runs to retain (default `0`). Older completed runs and their artifacts are deleted. The cleanup run itself remains visible until a later cleanup.
 
