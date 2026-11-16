@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="720" viewBox="0 0 1160 720" role="img" aria-labelledby="title desc">
+  <title id="title">GitHub Actions workflow runtime breakdown</title>
+  <desc id="desc">One successful Sand-Box file-pipeline run. The overall job lasted approximately eight seconds. Individual step durations are reported with whole-second timestamp precision.</desc>
+  <rect width="1160" height="720" fill="#ffffff"/>
+  <text x="54" y="58" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#172033">GitHub Actions runtime breakdown</text>
+  <text x="54" y="91" font-family="Arial, sans-serif" font-size="15" fill="#596579">Sand-Box · file-pipeline test · run #1 · success · 16 Nov 2026</text>
+  <rect x="54" y="116" width="1052" height="78" rx="12" fill="#f2f5f9"/>
+  <text x="78" y="149" font-family="Arial, sans-serif" font-size="14" fill="#596579">Total job elapsed time</text>
+  <text x="78" y="177" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#172033">~8 seconds</text>
+  <rect x="370" y="145" width="560" height="18" rx="9" fill="#e0e6ee"/>
+  <rect x="370" y="145" width="560" height="18" rx="9" fill="#2867b2"/>
+  <text x="949" y="160" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#172033">8 s</text>
+  <text x="54" y="239" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#172033">Individual workflow steps</text>
+  <text x="54" y="264" font-family="Arial, sans-serif" font-size="12" fill="#687588">Step durations computed from GitHub job timestamps, rounded to whole seconds</text>
+  <g font-family="Arial, sans-serif" font-size="14" fill="#263244">
+    <text x="54" y="307">Set up job</text>
+    <text x="54" y="338">Check out repository</text>
+    <text x="54" y="369">Set up Python</text>
+    <text x="54" y="400">Install Pillow</text>
+    <text x="54" y="431">Download CC0 worm photo</text>
+    <text x="54" y="462">Create picture2.zip</text>
+    <text x="54" y="493">Add photo to ZIP</text>
+    <text x="54" y="524">Extract ZIP</text>
+    <text x="54" y="555">Convert image to PDF</text>
+    <text x="54" y="586">Verify ZIP, image and PDF</text>
+    <text x="54" y="617">Write run summary</text>
+    <text x="54" y="648">Post-job cleanup steps</text>
+    <text x="54" y="679">Complete job step</text>
+  </g>
+  <g>
+    <rect x="370" y="291" width="560" height="12" rx="6" fill="#eef1f5"/>
+    <rect x="370" y="291" width="70" height="12" rx="6" fill="#2867b2"/>
+    <rect x="370" y="322" width="560" height="12" rx="6" fill="#eef1f5"/>
+    <circle cx="374" cy="328" r="4" fill="#8a96a8"/>
+    <rect x="370" y="353" width="560" height="12" rx="6" fill="#eef1f5"/>
+    <rect x="370" y="353" width="70" height="12" rx="6" fill="#2867b2"/>
+    <rect x="370" y="384" width="560" height="12" rx="6" fill="#eef1f5"/>
+    <rect x="370" y="384" width="70" height="12" rx="6" fill="#2867b2"/>
+    <rect x="370" y="415" width="560" height="12" rx="6" fill="#eef1f5"/>
+    <circle cx="374" cy="421" r="4" fill="#8a96a8"/>
+    <rect x="370" y="446" width="560" height="12" rx="6" fill="#eef1f5"/>
+    <circle cx="374" cy="452" r="4" fill="#8a96a8"/>
+    <rect x="370" y="477" width="560" height="12" rx="6" fill="#eef1f5"/>
+    <circle cx="374" cy="483" r="4" fill="#8a96a8"/>
+    <rect x="370" y="508" width="560" height="12" rx="6" fill="#eef1f5"/>
+    <circle cx="374" cy="514" r="4" fill="#8a96a8"/>
+    <rect x="370" y="539" width="560" height="12" rx="6" fill="#eef1f5"/>
+    <rect x="370" y="539" width="70" height="12" rx="6" fill="#2867b2"/>
+    <rect x="370" y="570" width="560" height="12" rx="6" fill="#eef1f5"/>
+    <circle cx="374" cy="576" r="4" fill="#8a96a8"/>
+    <rect x="370" y="601" width="560" height="12" rx="6" fill="#eef1f5"/>
+    <circle cx="374" cy="607" r="4" fill="#8a96a8"/>
+    <rect x="370" y="632" width="560" height="12" rx="6" fill="#eef1f5"/>
+    <circle cx="374" cy="638" r="4" fill="#8a96a8"/>
+    <rect x="370" y="663" width="560" height="12" rx="6" fill="#eef1f5"/>
+    <circle cx="374" cy="669" r="4" fill="#8a96a8"/>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="13" fill="#263244">
+    <text x="949" y="302">1 s</text>
+    <text x="949" y="333">0 s*</text>
+    <text x="949" y="364">1 s</text>
+    <text x="949" y="395">1 s</text>
+    <text x="949" y="426">0 s*</text>
+    <text x="949" y="457">0 s*</text>
+    <text x="949" y="488">0 s*</text>
+    <text x="949" y="519">0 s*</text>
+    <text x="949" y="550">1 s</text>
+    <text x="949" y="581">0 s*</text>
+    <text x="949" y="612">0 s*</text>
+    <text x="949" y="643">0 s*</text>
+    <text x="949" y="674">0 s*</text>
+  </g>
+  <line x1="54" y1="694" x2="1106" y2="694" stroke="#d9e0e8"/>
+  <text x="54" y="713" font-family="Arial, sans-serif" font-size="11" fill="#687588">* 0-second readings are below or rounded down at the API's one-second timestamp precision; they are not proof of zero execution time.</text>
+</svg>
