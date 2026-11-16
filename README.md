@@ -34,7 +34,7 @@ Typical uses:
 
 - Store and version small text files, source files, configuration, and documentation.
 - Convert, inspect, checksum, package, or validate files using a reproducible script.
-- Run a workflow that creates an output file and uploads it as a GitHub Actions artifact.
+- Run a manually triggered workflow that creates an output file and uploads it as a GitHub Actions artifact.
 - Retrieve a workflow artifact later using the GitHub integration's artifact-download capability.
 - Keep a durable handoff record when a ChatGPT session ends.
 
@@ -83,9 +83,9 @@ Do not silently truncate, normalize, re-encode, or modify binary data. For a pas
 
 Workflow files belong in `.github/workflows/` and must use YAML.
 
-- Use `workflow_dispatch` when a job should be started on demand.
-- Use narrow `push` path filters when a job should run only after relevant files change.
-- Avoid running expensive jobs on every push unless there is a clear reason.
+- **Default for this repository: manual-only workflows.** Use `workflow_dispatch` as the only trigger unless the user explicitly requests automation.
+- Do not add `push`, `pull_request`, `schedule`, `workflow_run`, or other automatic event triggers without explicit authorization.
+- Keep workflow files focused and reusable; separate unrelated jobs into separate workflow files.
 - Give each workflow a clear name and document its inputs and outputs.
 - Set the minimum necessary `permissions:` for the job. Do not grant write access when read access is sufficient.
 - Do not put credentials directly in workflow files or committed configuration. Use GitHub Secrets only when a workflow genuinely needs a secret, and never print secret values in logs.
@@ -95,6 +95,39 @@ Workflow files belong in `.github/workflows/` and must use YAML.
 Actions being enabled is not the same as a workflow being scheduled. The `on:` section in each workflow determines which events start it. Check that section before predicting whether a commit, pull request, or manual action will trigger a run.
 
 GitHub Actions usage, artifact storage, and retention are governed by GitHub's current plan and service limits. Do not describe usage as unconditionally unlimited; check current GitHub billing and limits when that matters.
+
+
+
+### Ensure workflows run only when explicitly requested
+
+GitHub Actions being enabled does not mean every workflow runs automatically. Each workflow's YAML trigger controls when it starts.
+
+For this repository, keep useful workflows **manual-only by default**. A manual-only workflow should have this trigger and no other event triggers:
+
+```yaml
+on:
+  workflow_dispatch:
+    inputs:
+      input_path:
+        description: Repository-relative input file
+        required: true
+        default: data/example.csv
+        type: string
+```
+
+To remove automatic execution from an existing workflow:
+
+1. Open the relevant `.github/workflows/*.yml` file.
+2. Find its top-level `on:` section.
+3. Remove automatic event triggers such as `push:`, `pull_request:`, `schedule:`, and `workflow_run:`.
+4. Keep only `workflow_dispatch:` (and any manual inputs it needs).
+5. Commit the change and inspect the workflow file again to verify that no automatic trigger remains.
+
+To run a manual workflow, open the repository's **Actions** tab, select the workflow (currently **Dataset analysis**), select **Run workflow**, choose the branch and inputs, then confirm **Run workflow**.
+
+**Do not disable Actions entirely under Settings → Actions → General** when you still want manual runs. Disabling Actions at repository level also prevents the manual workflow from running. The correct setting for “only when I call it” is to leave Actions enabled and restrict each useful workflow to the `workflow_dispatch` trigger.
+
+A run that has already started will finish even after its trigger is removed. Removing a workflow file also does not erase its historical run entry from the Actions page.
 
 ## Fact-checking and research
 
@@ -120,7 +153,7 @@ A future assistant session should:
 4. Use ChatGPT's web research for current external fact-checking, with citations.
 5. Use built-in file upload or analysis tools when they are available and materially better suited to the task.
 6. If a ChatGPT tool is unavailable or rate-limited, consider whether the task can safely be completed with GitHub and a deterministic script. Be explicit about what was and was not performed.
-7. Report the branch, files changed, commit, workflow run, and artifact name when relevant.
+7. Check that useful workflows remain manual-only unless the user requested automatic triggers. Report the branch, files changed, commit, workflow run, and artifact name when relevant.
 
 Do not claim that GitHub Actions bypasses ChatGPT limits. It runs independently on GitHub, with its own permissions, quotas, billing, and storage rules. A successful GitHub operation does not establish that a ChatGPT upload or analysis quota is available.
 
