@@ -1,0 +1,28 @@
+name: Temporary cleanup of test workflow runs
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/cleanup-temporary-test-runs.yml
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Remove the test artifact and completed test runs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh api --method DELETE "repos/${GITHUB_REPOSITORY}/actions/artifacts/14214249771"
+          for run_id in 43846828689 43845619249 43844868216; do
+            gh api --method DELETE "repos/${GITHUB_REPOSITORY}/actions/runs/${run_id}"
+            echo "Deleted workflow run ${run_id}"
+          done
