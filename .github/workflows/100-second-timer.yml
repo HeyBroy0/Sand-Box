@@ -1,0 +1,34 @@
+name: Temporary 100-second timer
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - sandbox-test/clock-trigger.txt
+
+permissions:
+  contents: read
+
+jobs:
+  timer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Timed 100-second wait
+        shell: bash
+        run: |
+          python - <<'PY'
+          import time
+          started = time.monotonic()
+          deadline = started + 100.0
+          while True:
+              remaining = deadline - time.monotonic()
+              if remaining <= 0:
+                  break
+              time.sleep(remaining)
+          elapsed = time.monotonic() - started
+          print(f"Timed wait elapsed: {elapsed:.6f} seconds")
+          if elapsed < 100.0:
+              raise SystemExit("Timed wait ended early.")
+          PY
