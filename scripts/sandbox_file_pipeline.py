@@ -53,8 +53,8 @@ def main() -> None:
         if not image.is_file():
             parser.error(f"Image not found: {image}")
         with zipfile.ZipFile(archive, "a", compression=zipfile.ZIP_DEFLATED) as zf:
-            zf.write(image, arcname=image.name)
-        print(f"Added {image.name}; SHA-256={sha256(image)}")
+            zf.write(image, arcname="earthworm.jpg")
+        print(f"Added earthworm.jpg; SHA-256={sha256(image)}")
     elif args.command == "extract":
         destination = Path(args.to)
         destination.mkdir(parents=True, exist_ok=True)
@@ -78,7 +78,7 @@ def main() -> None:
         pdf_path = Path(args.pdf)
         with zipfile.ZipFile(archive) as zf:
             names = zf.namelist()
-            assert image_path.name in names, f"{image_path.name} missing from ZIP: {names}"
+            assert "earthworm.jpg" in names, f"earthworm.jpg missing from ZIP: {names}"
             assert zf.testzip() is None, "ZIP integrity test failed"
         assert image_path.is_file(), "Extracted image is missing"
         assert pdf_path.is_file(), "PDF is missing"
