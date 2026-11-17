@@ -9,14 +9,10 @@ on:
         default: ""
         type: string
       kind:
-        description: Restrict results to a matching entrypoint kind
+        description: Entry point kind from the catalog, or all
         required: true
         default: all
-        type: choice
-        options:
-          - all
-          - script
-          - workflow
+        type: string
       tags:
         description: Optional comma-separated tags; every tag must match
         required: false
@@ -49,11 +45,11 @@ jobs:
 
       - name: Validate catalog and resolve matching tools
         env:
-          QUERY: ${{ inputs.query }}
-          KIND: ${{ inputs.kind }}
-          TAGS: ${{ inputs.tags }}
-          LIMIT: ${{ inputs.limit }}
-          OUTPUT_FORMAT: ${{ inputs.output_format }}
+          QUERY: \${{ inputs.query }}
+          KIND: \${{ inputs.kind }}
+          TAGS: \${{ inputs.tags }}
+          LIMIT: \${{ inputs.limit }}
+          OUTPUT_FORMAT: \${{ inputs.output_format }}
         shell: bash
         run: |
           set -euo pipefail
@@ -64,13 +60,13 @@ jobs:
           fi
           if [[ -n "$TAGS" ]]; then
             IFS=',' read -ra tag_values <<< "$TAGS"
-            for raw_tag in "${tag_values[@]}"; do
-              tag="${raw_tag//[[:space:]]/}"
+            for raw_tag in "\${tag_values[@]}"; do
+              tag="\${raw_tag//[[:space:]]/}"
               if [[ -n "$tag" ]]; then
                 args+=(--tag "$tag")
               fi
             done
           fi
-          printf '## Tool lookup\\n\\n' >> "$GITHUB_STEP_SUMMARY"
-          python scripts/find_tool.py "${args[@]}" | tee /tmp/tool-results.txt
+          printf '## Tool lookup\n\n' >> "$GITHUB_STEP_SUMMARY"
+          python scripts/find_tool.py "\${args[@]}" | tee /tmp/tool-results.txt
           cat /tmp/tool-results.txt >> "$GITHUB_STEP_SUMMARY"
