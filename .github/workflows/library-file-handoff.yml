@@ -1,0 +1,58 @@
+name: Library file handoff
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_path:
+        description: Single repository file to stage (must be inside data/)
+        required: true
+        default: data/Summary.docx
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  handoff:
+    name: Prepare short-lived file artifact
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate and stage one file
+        env:
+          SOURCE_PATH: ${{ inputs.source_path }}
+        run: |
+          python - <<'PY'
+          import os
+          import shutil
+          from pathlib import Path
+
+          data_root = Path("data").resolve(strict=True)
+          supplied = Path(os.environ["SOURCE_PATH"])
+
+          if supplied.is_absolute() or ".." in supplied.parts:
+              raise SystemExit("Use a relative path under data/; absolute paths and '..' are not allowed.")
+
+          source = (Path.cwd() / supplied).resolve(strict=True)
+          if data_root not in source.parents:
+              raise SystemExit("The selected file must resolve to a location inside data/.")
+          if not source.is_file():
+              raise SystemExit("The selected path must be a single regular file.")
+
+          output_dir = Path("library-handoff")
+          output_dir.mkdir(parents=True, exist_ok=True)
+          destination = output_dir / source.name
+          shutil.copy2(source, destination)
+
+          print(f"Staged {source.relative_to(Path.cwd())} as {destination}")
+          PY
+
+      - name: Upload one-day handoff artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: library-handoff-${{ github.run_id }}
+          path: library-handoff/
+          if-no-files-found: error
+          retention-days: 1
