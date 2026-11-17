@@ -22,13 +22,16 @@ A change is **not** core merely because it is important, useful, or touches a sh
 - Improving a particular ZIP operation or one workflow's form.
 - Updating a routine report or input document.
 - Adding a one-off example or changing an isolated tool without changing shared contracts.
+W.I.P. note: Write identifiers instead of examples?
 
 When uncertain, inspect dependencies and use the narrower scope unless the change alters a repository-wide contract.
 
-## Design constraints
+W.I.P. note: deciding whether to separate core-readme.md design constraints and core changes into their own documents under core/check-core-readme-first/
 
-1. **Keep the always-read layer small.** The root README and root agent entrypoint are navigation surfaces, not encyclopedias.
-2. **Load instructions progressively.** Read only the task document needed. Do not preload every file under `core/`.
+## Design constraints and principles
+1.**Keep the always-read layer small.** The root README and root agent entrypoint are navigation surfaces, not encyclopedias
+2. **Load instructions progressively.** Only relevant documents should be read for a task; separate Instruction and Guide documents with decision tree navigation
+3. **Keep Instructions concise and specific.** Instructions should not be expansive or broad, if needed construct a decision tree to separate documents.
 3. **Keep everyday tools out of core.** Core stores durable maintenance rules and cross-capability contracts; implementations stay in `scripts/`, workflows in `.github/workflows/`, and capability metadata in `tools/catalog.json`.
 4. **Prefer extension over duplication.** Reuse an existing capability or entrypoint when its interface can be extended cleanly.
 5. **Preserve compatibility deliberately.** Before changing a core contract, find all consumers, callers, workflow inputs, catalog references, tests, and documentation that depend on it.
@@ -36,7 +39,6 @@ When uncertain, inspect dependencies and use the narrower scope unless the chang
 7. **Keep core docs actionable and short.** Put task-specific procedures in their own files and link them from the root router. Do not copy full tool manuals into core instructions.
 
 ## Required process for core changes
-
 1. **Read this gate first.** Then inspect the current target ref, the complete relevant directory tree, open work branches, and the files that implement or consume the affected behavior.
 2. **State the boundary.** Identify what is core, what is an ordinary capability, and what must remain unchanged. Do not widen the change simply because adjacent code is visible.
 3. **Map dependencies.** For catalog or discovery changes, inspect the schema, validator, search CLI, workflows, and tests. For instruction-routing changes, inspect the README, AGENTS.md, and all linked instruction paths. For shared workflow/CI changes, inspect every affected workflow and test.
