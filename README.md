@@ -6,7 +6,7 @@ Public workspace for stable tools, scripts, and focused GitHub Actions. Keep `ma
 
 - **Find a tool:** `python scripts/find_tool.py "csv excel"`; add `--format json` for compact agent output. Leave the query blank to list the first five; use `--limit 20` for the full catalog.
 - **Dataset analysis:** Actions → **Dataset analysis** → **Run workflow**. Select a file under `data/`; download the results artifact.
-- **Library file handoff:** Actions → **Library file handoff** → **Run workflow**. Enter one file path under `data/` (default: `data/Summary.docx`); download the one-day artifact. In ChatGPT, the GitHub artifact must still be staged and uploaded to Library—the workflow does not write directly to ChatGPT Library.
+- **Library file handoff:** Actions → **Library file handoff** → **Run workflow**. Select one file under `data/` (default: `data/Summary.docx`); download the one-day artifact. DOCX files receive Open XML package validation and byte-for-byte SHA-256 verification; other files are copied unchanged with a SHA-256 manifest. Uploading the artifact into ChatGPT Library remains a separate step—the workflow does not write directly to ChatGPT Library.
 - **Repository cleanup:** Actions → **Clean workflows** → **Run workflow**. Run-history cleanup and branch cleanup have separate confirmations. Set `keep_recent_runs` to the number of newest completed runs to retain.
 - **Tool lookup in Actions:** Actions → **Tool lookup** → **Run workflow**. Search by name, purpose, tag, alias, or path.
 
