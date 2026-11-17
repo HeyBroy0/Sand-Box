@@ -29,64 +29,11 @@ jobs:
       - name: Run repository tests
         run: python -m unittest discover -s tests -v
 
-      - name: Validate and stage one file
+      - name: Validate, copy, and hash the selected file
         env:
           SOURCE_PATH: ${{ github.event.inputs.source_path || 'data/Summary.docx' }}
         run: |
-          python - <<'PY'
-          import hashlib
-          import json
-          import os
-          import shutil
-          import subprocess
-          import sys
-          from pathlib import Path
-
-          data_root = Path("data").resolve(strict=True)
-          supplied = Path(os.environ["SOURCE_PATH"])
-
-          if supplied.is_absolute() or ".." in supplied.parts:
-              raise SystemExit("Use a relative path under data/; absolute paths and '..' are not allowed.")
-
-          source = (Path.cwd() / supplied).resolve(strict=True)
-          if data_root not in source.parents:
-              raise SystemExit("The selected file must resolve to a location inside data/.")
-          if not source.is_file():
-              raise SystemExit("The selected path must be a single regular file.")
-
-          output_dir = Path("library-handoff")
-          output_dir.mkdir(parents=True, exist_ok=True)
-
-          if source.suffix.casefold() == ".docx":
-              # The specialized exporter validates the Office Open XML package
-              # and verifies its byte-for-byte copy by SHA-256.
-              subprocess.run(
-                  [
-                      sys.executable,
-                      "scripts/export_docx.py",
-                      "--input",
-                      supplied.as_posix(),
-                      "--output-dir",
-                      output_dir.as_posix(),
-                  ],
-                  check=True,
-              )
-          else:
-              destination = output_dir / source.name
-              shutil.copy2(source, destination)
-              digest = hashlib.sha256(destination.read_bytes()).hexdigest()
-              manifest = {
-                  "source_path": source.relative_to(Path.cwd()).as_posix(),
-                  "file_name": destination.name,
-                  "size_bytes": destination.stat().st_size,
-                  "sha256": digest,
-              }
-              (output_dir / "manifest.json").write_text(
-                  json.dumps(manifest, indent=2) + "\n",
-                  encoding="utf-8",
-              )
-              print(json.dumps(manifest, indent=2))
-          PY
+          python scripts/export_file.py --input "$SOURCE_PATH" --output-dir library-handoff
 
       - name: Upload one-day handoff artifact
         uses: actions/upload-artifact@v4

@@ -1,35 +1,55 @@
 # Sand-Box
 
-Public workspace for stable tools, scripts, and focused GitHub Actions. Keep `main` small, dependable, and easy to navigate.
+Reusable scripts and GitHub Actions for repository tasks.
+
+> **Guiding principle: small core, expandable capabilities.** Keep durable cross-repository rules in `core/`; keep everyday tools in `scripts/`, workflows in `.github/workflows/`, and their index in `tools/catalog.json`.
 
 ## Start here
 
-- **Find a tool:** `python scripts/find_tool.py "csv excel"`; add `--format json` for compact agent output. Leave the query blank to list the first five; use `--limit 20` for the full catalog.
-- **Dataset analysis:** Actions → **Dataset analysis** → **Run workflow**. Select a file under `data/`; download the results artifact.
-- **Library file handoff:** Actions → **Library file handoff** → **Run workflow**. Select one file under `data/` (default: `data/Summary.docx`); download the one-day artifact. DOCX files receive Open XML package validation and byte-for-byte SHA-256 verification; other files are copied unchanged with a SHA-256 manifest. Uploading the artifact into ChatGPT Library remains a separate step—the workflow does not write directly to ChatGPT Library.
-- **Repository cleanup:** Actions → **Clean workflows** → **Run workflow**. Run-history cleanup and branch cleanup have separate confirmations. Set `keep_recent_runs` to the number of newest completed runs to retain.
-- **Tool lookup in Actions:** Actions → **Tool lookup** → **Run workflow**. Search by name, purpose, tag, alias, or path.
+1. Inspect the current target ref, working state, open work branches, and relevant file tree.
+2. For new work, branch from the latest `main` as `temp/<short-task>`. Continue on the existing task branch when extending that work. Commit completed changes directly to the task branch; do not create a PR unless requested. Never commit or push directly to `main`.
+3. Load only the task instructions below. **Do not preload all of `core/`.**
 
-## Tool maintenance
+| Task | Read before proceeding |
+| --- | --- |
+| Change repository architecture, core behavior, instruction routing, catalog/discovery contracts, or shared infrastructure | **Required:** [Core change gate](core/check-core-readme-first/core-readme.md) |
+| Find or select an existing tool; decide whether a new tool is needed | [Finding tools](core/finding-tools/README.md) |
+| Build or substantially change a reusable tool | [Finding tools](core/finding-tools/README.md), then [Tool-building instructions](core/tool-building-instructions.md) |
+| Remove files, workflows, artifacts, or branches | [Cleanup instructions](core/clean-up.md) |
+| Use or modify one known capability | Find it in [the catalog](tools/catalog.json), then inspect only its listed entrypoint(s) and relevant tests |
+| Make an ordinary content change | Read the target file and its immediate dependencies |
 
-`tools/catalog.json` is the compact source of truth for discovery. Add one short entry whenever a reusable script or workflow is added, renamed, or removed. Keep summaries under 180 characters; use tags and aliases for common searches. Do not copy full documentation or source into the catalog. Validate with `python scripts/find_tool.py --validate` and test with `python -m unittest discover -s tests -v`.
+The `core/check-core-readme-first/` directory is deliberately an on-demand instruction gate for core changes. Its `core-readme.md` must be added to context before planning, editing, or reviewing such work; ordinary tool tasks should normally ignore it.
 
-Put reusable scripts in `scripts/`, inputs in `data/`, and durable reports in `reports/` (or workflow artifacts for temporary outputs). Add one focused workflow per capability under `.github/workflows/`; prefer manual `workflow_dispatch` and grant only required permissions. Reuse existing tools and native AI/client capabilities rather than duplicating them unless a concrete constraint requires it.
+## Repository discovery
 
-## Branch and repository rules
+Search is a locator, not a complete file inventory. In this GitHub connection, code search covers the default branch and may not expose every file or the current working branch. For structural work, inspect the recursive tree of the **target ref** first (or run `git ls-tree -r --name-only HEAD` in a local clone), then fetch only the relevant files. Do not infer that a file or capability is absent from an empty search result.
 
-- Update `main` only with stable, working tools and concise instructions. Keep experiments off `main`.
-- Never overwrite or modify `archive/` branches. Before risky work, create a new snapshot such as `archive/main-YYYY-MM-DD-topic`; use `protect/` for branches that cleanup must retain.
-- Cleanup always preserves the default branch, `archive/*`, `protect/*`, GitHub-protected branches, and branches referenced by open pull requests. Other branches are deletion candidates only after the separate branch-cleanup confirmation.
-- This is a public repository: never commit credentials, secrets, private information, or confidential files.
+## Tool catalog
 
-## One-time history reset
+[`tools/catalog.json`](tools/catalog.json) is the single index of reusable capabilities and their script/workflow entrypoints. Search it with:
 
-To make `main` a single initial commit, open Actions → **One-time history reset** → **Run workflow** on `main`, set `confirm_reset` to `true`, and enter `RESET MAIN HISTORY` exactly. The `archive/main-2026-11-16-pre-maintenance` snapshot preserves the previous history. The workflow uses a force-with-lease update and removes itself from the new root commit; do not recreate or rerun it.
+```bash
+python scripts/find_tool.py "search terms"
+python scripts/find_tool.py --format json
+python scripts/find_tool.py --validate
+```
 
-## Adding or changing a tool
+For local verification, run:
 
-1. Check the catalog before building something new.
-2. Implement the reusable tool under `scripts/` or as a focused workflow.
-3. Add or update its short catalog entry and README instructions only when needed.
-4. Run catalog validation and tests before updating `main`.
+```bash
+python scripts/find_tool.py --validate
+python -m unittest discover -s tests -v
+```
+
+## Directory map
+
+- `AGENTS.md` — short entrypoint for compatible coding agents
+- `core/` — durable rules and task-specific instructions; load only when routed here
+- `scripts/` — reusable implementations
+- `tools/catalog.json` — capability index
+- `.github/workflows/` — GitHub Actions interfaces
+- `tests/` — automated tests
+- `data/`, `reports/` — retained input material and reports
+
+This repository is public. Never commit credentials, secrets, private information, or confidential files.
