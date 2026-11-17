@@ -42,12 +42,22 @@
       "usage": "python scripts/sandbox_file_pipeline.py --help (requires Pillow for the PDF command)."
     },
     {
+      "id": "library-file-handoff",
+      "name": "Library file handoff",
+      "kind": "workflow",
+      "path": ".github/workflows/library-file-handoff.yml",
+      "summary": "Stage one file from data/ as a one-day GitHub Actions artifact for transfer into ChatGPT Library.",
+      "tags": ["files", "library", "transfer", "artifact", "docx", "pdf"],
+      "aliases": ["upload to library", "transfer file", "chatgpt library"],
+      "usage": "Actions → Library file handoff → Run workflow; enter a single file path under data/."
+    },
+    {
       "id": "tool-lookup",
       "name": "Tool lookup workflow",
       "kind": "workflow",
       "path": ".github/workflows/tool-lookup.yml",
       "summary": "Search the compact tool catalog from GitHub Actions and validate its paths.",
-      "tags": ["lookup", "search", "catalog", "discovery", "github-actions"],
+      "tags": ["lookup", "search", "catalog", "discovery"],
       "aliases": ["find tool", "tool search"],
       "usage": "Actions → Tool lookup → Run workflow; enter a query or leave it blank to list the first five."
     },
