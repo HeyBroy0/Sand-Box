@@ -60,32 +60,6 @@
       ]
     },
     {
-      "id": "file-pipeline",
-      "name": "Archive and image pipeline",
-      "summary": "Create, extend, safely extract, and verify ZIP archives; convert images to PDF.",
-      "tags": [
-        "zip",
-        "archive",
-        "image",
-        "pdf",
-        "verify",
-        "python",
-        "files"
-      ],
-      "aliases": [
-        "zip pipeline",
-        "file conversion",
-        "archive image"
-      ],
-      "entrypoints": [
-        {
-          "kind": "script",
-          "path": "scripts/sandbox_file_pipeline.py",
-          "usage": "python scripts/sandbox_file_pipeline.py --help; Pillow is needed only for the pdf command."
-        }
-      ]
-    },
-    {
       "id": "file-handoff",
       "name": "File export and handoff",
       "summary": "Copy files from data/ unchanged, verify SHA-256, and validate DOCX packages before handoff.",
@@ -147,6 +121,41 @@
           "kind": "workflow",
           "path": ".github/workflows/tool-lookup.yml",
           "usage": "Actions → Tool lookup → Run workflow; filter by query, kind, tags, and output format."
+        }
+      ]
+    },
+    {
+      "id": "zip-archive-access",
+      "name": "ZIP archive discovery and extraction",
+      "summary": "Inventory archive members, find candidate files by name or extension, and selectively extract one verified file.",
+      "tags": [
+        "zip",
+        "archive",
+        "files",
+        "search",
+        "inventory",
+        "extract",
+        "unzip",
+        "artifact",
+        "sha256"
+      ],
+      "aliases": [
+        "inspect zip",
+        "zip search",
+        "find file in zip",
+        "extract zip member",
+        "archive browsing"
+      ],
+      "entrypoints": [
+        {
+          "kind": "script",
+          "path": "scripts/zip_archive.py",
+          "usage": "python scripts/zip_archive.py list|find|extract --archive data/archive.zip [member selectors]"
+        },
+        {
+          "kind": "workflow",
+          "path": ".github/workflows/zip-archive-access.yml",
+          "usage": "Actions → ZIP archive access → Run workflow; choose list, find, or extract and download the one-day artifact."
         }
       ]
     }
