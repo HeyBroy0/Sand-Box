@@ -1,35 +1,76 @@
 # Sand-Box
 
-Public workspace for stable tools, scripts, and focused GitHub Actions. Keep `main` small, dependable, and easy to navigate.
+A small public workspace for reusable Python utilities and focused GitHub Actions. The catalog is the single source of truth for tool discovery.
 
 ## Start here
 
-- **Find a tool:** `python scripts/find_tool.py "csv excel"`; add `--format json` for compact agent output. Leave the query blank to list the first five; use `--limit 20` for the full catalog.
-- **Dataset analysis:** Actions → **Dataset analysis** → **Run workflow**. Select a file under `data/`; download the results artifact.
-- **Library file handoff:** Actions → **Library file handoff** → **Run workflow**. Select one file under `data/` (default: `data/Summary.docx`); download the one-day artifact. DOCX files receive Open XML package validation and byte-for-byte SHA-256 verification; other files are copied unchanged with a SHA-256 manifest. Uploading the artifact into ChatGPT Library remains a separate step—the workflow does not write directly to ChatGPT Library.
-- **Repository cleanup:** Actions → **Clean workflows** → **Run workflow**. Run-history cleanup and branch cleanup have separate confirmations. Set `keep_recent_runs` to the number of newest completed runs to retain.
-- **Tool lookup in Actions:** Actions → **Tool lookup** → **Run workflow**. Search by name, purpose, tag, alias, or path.
+```bash
+# List capabilities
+python scripts/find_tool.py
 
-## Tool maintenance
+# Search names, summaries, tags, aliases, and entrypoint paths
+python scripts/find_tool.py "csv excel"
+python scripts/find_tool.py "library docx" --kind script
+python scripts/find_tool.py --tag data --tag statistics --format json
 
-`tools/catalog.json` is the compact source of truth for discovery. Add one short entry whenever a reusable script or workflow is added, renamed, or removed. Keep summaries under 180 characters; use tags and aliases for common searches. Do not copy full documentation or source into the catalog. Validate with `python scripts/find_tool.py --validate` and test with `python -m unittest discover -s tests -v`.
+# Inspect catalog tags and validate every registered path
+python scripts/find_tool.py --list-tags
+python scripts/find_tool.py --validate
 
-Put reusable scripts in `scripts/`, inputs in `data/`, and durable reports in `reports/` (or workflow artifacts for temporary outputs). Add one focused workflow per capability under `.github/workflows/`; prefer manual `workflow_dispatch` and grant only required permissions. Reuse existing tools and native AI/client capabilities rather than duplicating them unless a concrete constraint requires it.
+# Run the test suite
+python -m unittest discover -s tests -v
+```
 
-## Branch and repository rules
+Search uses relevance ranking and partial-word matching. Multiword queries can match any term; records matching more terms rank higher. Repeated `--tag` filters require every supplied tag. Use `--sort name` for alphabetical output, `--limit 20` to show more results, and `--format json` for compact machine-readable records. The default limit is five; the maximum is 50.
 
-- Update `main` only with stable, working tools and concise instructions. Keep experiments off `main`.
-- Never overwrite or modify `archive/` branches. Before risky work, create a new snapshot such as `archive/main-YYYY-MM-DD-topic`; use `protect/` for branches that cleanup must retain.
-- Cleanup always preserves the default branch, `archive/*`, `protect/*`, GitHub-protected branches, and branches referenced by open pull requests. Other branches are deletion candidates only after the separate branch-cleanup confirmation.
-- This is a public repository: never commit credentials, secrets, private information, or confidential files.
+## Available workflows
 
-## One-time history reset
+| Workflow | Purpose |
+| --- | --- |
+| **Dataset analysis** | Analyze CSV, TSV, JSON, JSONL/NDJSON, XLSX, or XLS files. Add the input file under `data/`, then provide its repository-relative path when running the workflow. |
+| **Library file handoff** | Stage one file from `data/` as a one-day artifact. Every copy is SHA-256 verified; DOCX files also receive Open XML package validation. The workflow does not upload directly to ChatGPT Library. |
+| **Clean workflows** | Optionally delete completed workflow runs and their artifacts, or separately clean unused branches. Both operations require explicit confirmation. |
 
-To make `main` a single initial commit, open Actions → **One-time history reset** → **Run workflow** on `main`, set `confirm_reset` to `true`, and enter `RESET MAIN HISTORY` exactly. The `archive/main-2026-11-16-pre-maintenance` snapshot preserves the previous history. The workflow uses a force-with-lease update and removes itself from the new root commit; do not recreate or rerun it.
+Install analysis dependencies before running the dataset script locally:
 
-## Adding or changing a tool
+```bash
+python -m pip install -r requirements-analysis.txt
+python scripts/analyze_dataset.py --input data/file.csv --output-dir analysis-output
+```
 
-1. Check the catalog before building something new.
-2. Implement the reusable tool under `scripts/` or as a focused workflow.
-3. Add or update its short catalog entry and README instructions only when needed.
-4. Run catalog validation and tests before updating `main`.
+## Tool catalog
+
+`tools/catalog.json` stores one record per capability. A capability can expose multiple entrypoints, such as a local `script` and a GitHub Actions `workflow`, without appearing as duplicate search results.
+
+Each record contains:
+- `id`, `name`, and a concise `summary`
+- `tags` and optional `aliases` for discovery
+- `entrypoints`: one or more `kind`, `path`, and `usage` objects
+
+Keep summaries under 220 characters. Do not copy full source or documentation into the catalog. Add a catalog entry whenever a reusable tool or workflow is added, renamed, or removed.
+
+## Repository layout
+
+- `scripts/` — reusable command-line tools
+- `tools/catalog.json` — discovery metadata
+- `.github/workflows/` — focused, manually triggered Actions
+- `tests/` — standard-library unit tests
+- `data/` — files used as workflow inputs
+- `reports/` — retained reports and review outputs
+
+Prefer one workflow per capability, `workflow_dispatch`, minimal permissions, and shared scripts for reusable logic. Keep optional dependencies local to the command that needs them.
+
+## Maintenance rules
+
+1. Search the catalog before adding another tool.
+2. Group related script and workflow entrypoints under one capability.
+3. Keep experiments off `main`; use a working branch and reviewable pull request.
+4. Preserve the default branch, `archive/*`, `protect/*`, GitHub-protected branches, and branches referenced by open pull requests during cleanup.
+5. This is a public repository. Never commit credentials, secrets, private information, or confidential files.
+
+Validate catalog changes and run tests before merging:
+
+```bash
+python scripts/find_tool.py --validate
+python -m unittest discover -s tests -v
+```

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Reproducible exploratory analysis for CSV, TSV, JSON, and Excel datasets."""
+"""Reproducible exploratory analysis for CSV, TSV, JSON, JSONL, and Excel datasets."""
 
 from __future__ import annotations
 
@@ -26,7 +26,12 @@ def read_dataset(path: Path) -> pd.DataFrame:
         return pd.read_excel(path)
     if suffix == ".json":
         return pd.read_json(path)
-    raise ValueError(f"Unsupported input extension: {suffix}. Use CSV, TSV, JSON, XLSX, or XLS.")
+    if suffix in {".jsonl", ".ndjson"}:
+        return pd.read_json(path, lines=True)
+    raise ValueError(
+        f"Unsupported input extension: {suffix}. "
+        "Use CSV, TSV, JSON, JSONL/NDJSON, XLSX, or XLS."
+    )
 
 
 def safe_filename(value: str) -> str:
@@ -36,7 +41,7 @@ def safe_filename(value: str) -> str:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--input", required=True, help="Path to CSV, TSV, JSON, or Excel input.")
+    parser.add_argument("--input", required=True, help="Path to CSV, TSV, JSON, JSONL, or Excel input.")
     parser.add_argument("--output-dir", default="analysis-output", help="Output directory.")
     parser.add_argument("--target-column", default="", help="Optional numeric outcome for exploratory OLS.")
     args = parser.parse_args()
@@ -62,7 +67,6 @@ def main() -> int:
         numeric.describe().T.to_csv(out / "descriptive_statistics.csv")
         numeric.corr(method="pearson").to_csv(out / "pearson_correlations.csv")
 
-        # Individual distributions, capped to keep reports compact.
         plot_cols = list(numeric.columns[:12])
         for col in plot_cols:
             values = numeric[col].dropna()
@@ -127,7 +131,7 @@ def main() -> int:
     report = [
         "# Exploratory data analysis",
         "",
-        f"- Input: `{source.name}`",
+        f"- Input: {source.name}",
         f"- Rows: {len(df):,}",
         f"- Columns: {len(df.columns):,}",
         f"- Numeric columns: {len(numeric.columns):,}",

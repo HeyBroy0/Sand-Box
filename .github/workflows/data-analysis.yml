@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       input_path:
-        description: Repository-relative CSV, TSV, JSON, XLSX, or XLS file
+        description: Existing repository-relative CSV, TSV, JSON, JSONL, NDJSON, XLSX, or XLS file under data/
         required: true
-        default: data/example.csv
+        default: ""
         type: string
       target_column:
         description: Optional numeric outcome column for exploratory OLS
@@ -43,11 +43,13 @@ jobs:
           import os
           from pathlib import Path
           path = Path(os.environ["INPUT_PATH"])
-          if path.is_absolute() or ".." in path.parts:
-              raise SystemExit("Input must be a repository-relative path without '..'.")
-          if not path.is_file():
-              raise SystemExit(f"Input file not found: {path}")
-          print(f"Using input: {path}")
+          if not path.parts or path.is_absolute() or ".." in path.parts:
+              raise SystemExit("Input must be a repository-relative path under data/.")
+          data_root = Path("data").resolve(strict=True)
+          resolved = path.resolve(strict=True)
+          if data_root not in resolved.parents or not resolved.is_file():
+              raise SystemExit("Input must be an existing file inside data/.")
+          print(f"Using input: {resolved.relative_to(Path.cwd())}")
           PY
 
       - name: Run exploratory analysis

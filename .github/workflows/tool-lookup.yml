@@ -4,12 +4,12 @@ on:
   workflow_dispatch:
     inputs:
       query:
-        description: Search names, purposes, tags, aliases, or paths (blank lists all)
+        description: Search names, summaries, tags, aliases, or entrypoint paths (blank lists all)
         required: false
         default: ""
         type: string
       kind:
-        description: Restrict results to scripts or workflows
+        description: Restrict results to a matching entrypoint kind
         required: true
         default: all
         type: choice
@@ -17,11 +17,24 @@ on:
           - all
           - script
           - workflow
+      tags:
+        description: Optional comma-separated tags; every tag must match
+        required: false
+        default: ""
+        type: string
       limit:
-        description: Maximum number of results (1–20)
+        description: Maximum number of results (1–50)
         required: true
         default: 5
         type: number
+      output_format:
+        description: Text for people or JSON for agents
+        required: true
+        default: text
+        type: choice
+        options:
+          - text
+          - json
 
 permissions:
   contents: read
@@ -38,15 +51,26 @@ jobs:
         env:
           QUERY: ${{ inputs.query }}
           KIND: ${{ inputs.kind }}
+          TAGS: ${{ inputs.tags }}
           LIMIT: ${{ inputs.limit }}
+          OUTPUT_FORMAT: ${{ inputs.output_format }}
         shell: bash
         run: |
           set -euo pipefail
           python scripts/find_tool.py --validate
-          args=(--kind "$KIND" --limit "$LIMIT")
+          args=(--kind "$KIND" --limit "$LIMIT" --format "$OUTPUT_FORMAT")
           if [[ -n "$QUERY" ]]; then
             args+=("$QUERY")
           fi
-          printf '## Tool lookup\n\n' >> "$GITHUB_STEP_SUMMARY"
+          if [[ -n "$TAGS" ]]; then
+            IFS=',' read -ra tag_values <<< "$TAGS"
+            for raw_tag in "${tag_values[@]}"; do
+              tag="${raw_tag//[[:space:]]/}"
+              if [[ -n "$tag" ]]; then
+                args+=(--tag "$tag")
+              fi
+            done
+          fi
+          printf '## Tool lookup\\n\\n' >> "$GITHUB_STEP_SUMMARY"
           python scripts/find_tool.py "${args[@]}" | tee /tmp/tool-results.txt
           cat /tmp/tool-results.txt >> "$GITHUB_STEP_SUMMARY"

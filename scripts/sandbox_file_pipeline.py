@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Small deterministic file-pipeline used by the Sand-Box workflow test."""
+"""Build, inspect, verify, and convert small file archives."""
 
 from __future__ import annotations
 
@@ -7,8 +7,6 @@ import argparse
 import hashlib
 import zipfile
 from pathlib import Path
-
-from PIL import Image
 
 
 def sha256(path: Path) -> str:
@@ -20,25 +18,25 @@ def sha256(path: Path) -> str:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
 
-    seed = sub.add_parser("seed", help="Create the initial picture2.zip archive.")
+    seed = sub.add_parser("seed", help="Create an initial ZIP archive.")
     seed.add_argument("--zip", default="picture2.zip")
 
-    add = sub.add_parser("add", help="Add a downloaded image to picture2.zip.")
+    add = sub.add_parser("add", help="Add an image to the archive.")
     add.add_argument("--zip", default="picture2.zip")
     add.add_argument("--image", required=True)
 
-    extract = sub.add_parser("extract", help="Extract the archive.")
+    extract = sub.add_parser("extract", help="Extract the archive after checking member paths.")
     extract.add_argument("--zip", default="picture2.zip")
     extract.add_argument("--to", default="extracted")
 
-    pdf = sub.add_parser("pdf", help="Convert an extracted image to PDF.")
+    pdf = sub.add_parser("pdf", help="Convert an image to PDF (requires Pillow).")
     pdf.add_argument("--image", default="extracted/earthworm.jpg")
     pdf.add_argument("--pdf", default="earthworm.pdf")
 
-    verify = sub.add_parser("verify", help="Validate archive, extracted image, and PDF.")
+    verify = sub.add_parser("verify", help="Validate the ZIP, extracted image, and PDF.")
     verify.add_argument("--zip", default="picture2.zip")
     verify.add_argument("--image", default="extracted/earthworm.jpg")
     verify.add_argument("--pdf", default="earthworm.pdf")
@@ -55,8 +53,8 @@ def main() -> None:
         if not image.is_file():
             parser.error(f"Image not found: {image}")
         with zipfile.ZipFile(archive, "a", compression=zipfile.ZIP_DEFLATED) as zf:
-            zf.write(image, arcname="earthworm.jpg")
-        print(f"Added earthworm.jpg; SHA-256={sha256(image)}")
+            zf.write(image, arcname=image.name)
+        print(f"Added {image.name}; SHA-256={sha256(image)}")
     elif args.command == "extract":
         destination = Path(args.to)
         destination.mkdir(parents=True, exist_ok=True)
@@ -67,6 +65,10 @@ def main() -> None:
             zf.extractall(destination)
         print(f"Extracted {len(members)} members to {destination}")
     elif args.command == "pdf":
+        try:
+            from PIL import Image
+        except ImportError as exc:
+            raise SystemExit("The pdf command requires Pillow. Install it with: python -m pip install Pillow") from exc
         image_path = Path(args.image)
         with Image.open(image_path) as image:
             image.convert("RGB").save(args.pdf, "PDF", resolution=150.0)
@@ -76,7 +78,7 @@ def main() -> None:
         pdf_path = Path(args.pdf)
         with zipfile.ZipFile(archive) as zf:
             names = zf.namelist()
-            assert "earthworm.jpg" in names, f"earthworm.jpg missing from ZIP: {names}"
+            assert image_path.name in names, f"{image_path.name} missing from ZIP: {names}"
             assert zf.testzip() is None, "ZIP integrity test failed"
         assert image_path.is_file(), "Extracted image is missing"
         assert pdf_path.is_file(), "PDF is missing"

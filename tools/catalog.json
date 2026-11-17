@@ -1,11 +1,9 @@
 {
-  "version": 1,
+  "version": 2,
   "tools": [
     {
       "id": "clean-workflows",
-      "name": "Clean workflows",
-      "kind": "workflow",
-      "path": ".github/workflows/clean-workflows.yml",
+      "name": "Workflow cleanup",
       "summary": "Prune completed GitHub Actions runs and optionally remove unused, unprotected branches.",
       "tags": [
         "cleanup",
@@ -18,78 +16,79 @@
         "branch cleanup",
         "run cleanup"
       ],
-      "usage": "Actions → Clean workflows → Run workflow; enable the separate confirmations for each cleanup."
+      "entrypoints": [
+        {
+          "kind": "workflow",
+          "path": ".github/workflows/clean-workflows.yml",
+          "usage": "Actions → Clean workflows → Run workflow; separately confirm run cleanup and branch cleanup."
+        }
+      ]
     },
     {
       "id": "dataset-analysis",
-      "name": "Dataset analysis workflow",
-      "kind": "workflow",
-      "path": ".github/workflows/data-analysis.yml",
-      "summary": "Run exploratory analysis on CSV, TSV, JSON, XLSX, or XLS datasets and download a report artifact.",
+      "name": "Dataset analysis",
+      "summary": "Profile CSV, TSV, JSON, JSONL, NDJSON, XLSX, or XLS data with missingness, statistics, correlations, plots, and optional exploratory OLS.",
       "tags": [
         "data",
         "analysis",
         "csv",
         "tsv",
         "json",
+        "jsonl",
+        "ndjson",
         "excel",
+        "spreadsheet",
         "statistics"
       ],
       "aliases": [
         "eda",
-        "spreadsheet analysis"
+        "exploratory data analysis",
+        "spreadsheet analysis",
+        "tabular profiling"
       ],
-      "usage": "Actions → Dataset analysis → Run workflow; choose a file under data/."
-    },
-    {
-      "id": "dataset-analyzer",
-      "name": "Dataset analyzer script",
-      "kind": "script",
-      "path": "scripts/analyze_dataset.py",
-      "summary": "Generate missingness, descriptive statistics, correlations, plots, and optional exploratory OLS results.",
-      "tags": [
-        "data",
-        "analysis",
-        "csv",
-        "tsv",
-        "json",
-        "excel",
-        "statistics",
-        "python"
-      ],
-      "aliases": [
-        "eda",
-        "ols",
-        "spreadsheet analysis"
-      ],
-      "usage": "python scripts/analyze_dataset.py --input data/example.csv --output-dir analysis-output"
+      "entrypoints": [
+        {
+          "kind": "script",
+          "path": "scripts/analyze_dataset.py",
+          "usage": "python scripts/analyze_dataset.py --input data/file.csv --output-dir analysis-output [--target-column column]"
+        },
+        {
+          "kind": "workflow",
+          "path": ".github/workflows/data-analysis.yml",
+          "usage": "Actions → Dataset analysis → Run workflow; enter an existing repository file path under data/."
+        }
+      ]
     },
     {
       "id": "file-pipeline",
       "name": "Archive and image pipeline",
-      "kind": "script",
-      "path": "scripts/sandbox_file_pipeline.py",
-      "summary": "Seed, extend, extract, convert, and verify a ZIP archive and image-to-PDF workflow.",
+      "summary": "Create, extend, safely extract, and verify ZIP archives; convert images to PDF.",
       "tags": [
         "zip",
         "archive",
         "image",
         "pdf",
         "verify",
-        "python"
+        "python",
+        "files"
       ],
       "aliases": [
         "zip pipeline",
-        "file conversion"
+        "file conversion",
+        "archive image"
       ],
-      "usage": "python scripts/sandbox_file_pipeline.py --help (requires Pillow for the PDF command)."
+      "entrypoints": [
+        {
+          "kind": "script",
+          "path": "scripts/sandbox_file_pipeline.py",
+          "usage": "python scripts/sandbox_file_pipeline.py --help; Pillow is needed only for the pdf command."
+        }
+      ]
     },
     {
-      "id": "library-file-handoff",
-      "name": "Library file handoff",
-      "kind": "workflow",
-      "path": ".github/workflows/library-file-handoff.yml",
-      "summary": "Stage one file from data/ as an artifact; validate DOCX packages and preserve other files with SHA-256 manifests.",
+      "id": "file-handoff",
+      "name": "File export and handoff",
+      "summary": "Copy files from data/ unchanged, verify SHA-256, and validate DOCX packages before handoff.",
       "tags": [
         "files",
         "library",
@@ -98,74 +97,58 @@
         "docx",
         "pdf",
         "office",
-        "sha256"
+        "sha256",
+        "integrity",
+        "export"
       ],
       "aliases": [
-        "upload to library",
-        "transfer file",
-        "chatgpt library"
+        "library file handoff",
+        "document export",
+        "docx export",
+        "file copy"
       ],
-      "usage": "Actions → Library file handoff → Run workflow; select one file under data/ (DOCX files are validated and hashed)."
+      "entrypoints": [
+        {
+          "kind": "script",
+          "path": "scripts/export_file.py",
+          "usage": "python scripts/export_file.py --input data/file.ext --output-dir file-export"
+        },
+        {
+          "kind": "workflow",
+          "path": ".github/workflows/library-file-handoff.yml",
+          "usage": "Actions → Library file handoff → Run workflow; select one file under data/ and download the one-day artifact."
+        }
+      ]
     },
     {
-      "id": "tool-lookup",
-      "name": "Tool lookup workflow",
-      "kind": "workflow",
-      "path": ".github/workflows/tool-lookup.yml",
-      "summary": "Search the compact tool catalog from GitHub Actions and validate its paths.",
-      "tags": [
-        "lookup",
-        "search",
-        "catalog",
-        "discovery"
-      ],
-      "aliases": [
-        "find tool",
-        "tool search"
-      ],
-      "usage": "Actions → Tool lookup → Run workflow; enter a query or leave it blank to list the first five."
-    },
-    {
-      "id": "tool-search",
-      "name": "Tool search script",
-      "kind": "script",
-      "path": "scripts/find_tool.py",
-      "summary": "Search tools by name, purpose, tags, aliases, or path; emits concise text or compact JSON.",
+      "id": "tool-discovery",
+      "name": "Tool discovery",
+      "summary": "Search grouped tool capabilities by name, purpose, tags, aliases, or entrypoint path.",
       "tags": [
         "lookup",
         "search",
         "catalog",
         "discovery",
-        "python"
+        "python",
+        "index"
       ],
       "aliases": [
         "find tool",
+        "tool search",
         "tool index"
       ],
-      "usage": "python scripts/find_tool.py \"csv excel\" [--format json] [--kind script|workflow]"
-    },
-    {
-      "id": "docx-export",
-      "name": "DOCX validator and exporter",
-      "kind": "script",
-      "path": "scripts/export_docx.py",
-      "summary": "Validate a DOCX package, copy it byte-for-byte, and write a SHA-256 integrity manifest.",
-      "tags": [
-        "docx",
-        "word",
-        "documents",
-        "office",
-        "export",
-        "validation",
-        "sha256",
-        "python"
-      ],
-      "aliases": [
-        "word validator",
-        "docx integrity check",
-        "docx export"
-      ],
-      "usage": "python scripts/export_docx.py --input data/Summary.docx --output-dir docx-export"
+      "entrypoints": [
+        {
+          "kind": "script",
+          "path": "scripts/find_tool.py",
+          "usage": "python scripts/find_tool.py \"csv excel\" [--kind script|workflow] [--tag tag] [--format json]"
+        },
+        {
+          "kind": "workflow",
+          "path": ".github/workflows/tool-lookup.yml",
+          "usage": "Actions → Tool lookup → Run workflow; filter by query, kind, tags, and output format."
+        }
+      ]
     }
   ]
 }
