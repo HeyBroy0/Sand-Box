@@ -14,7 +14,7 @@ Reusable scripts and GitHub Actions workspace.
 | Task | Read before proceeding |
 | --- | --- |
 | Change a core surface: repository architecture, instruction routing, catalog/discovery contracts, shared behavior, or repository-wide validation | Start with the [Core documentation router](core/read-core-readme-first/core-readme.md), then follow its task-specific routes. |
-| Change the organization, structure, or routing of instructions and guides | Start with the [Core documentation router](core/read-core-readme-first/core-readme.md), then read its instruction-architecture route. |
+| Change the organization, structure, or routing of instructions and guides | Start with the [Core documentation router](core/read-core-readme-first/core-readme.md), then read [Instruction architecture](core/read-core-readme-first/instruction-architecture.md). |
 | Find or select an existing tool; decide whether a new tool is needed | [Finding tools](core/finding-tools/README.md) |
 | Build or substantially change a reusable tool | [Finding tools](core/finding-tools/README.md), then [Tool-building instructions](core/tool-building-instructions.md) |
 | Remove files, workflows, artifacts, or branches | [Cleanup instructions](core/clean-up.md). When cleanup changes a core surface, start with the Core documentation router as well. |
