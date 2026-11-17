@@ -54,7 +54,7 @@ class ToolCatalogTests(unittest.TestCase):
         self.assertTrue(any("Duplicate entrypoint path" in error for error in errors))
 
     def test_unknown_query_returns_no_matches(self) -> None:
-        matches = find_tool.search_tools(self.catalog["tools"], "not-a-real-tool")
+        matches = find_tool.search_tools(self.catalog["tools"], "quasar zyzzyva")
         self.assertEqual([], matches)
 
 
