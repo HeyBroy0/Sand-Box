@@ -35,4 +35,4 @@ Do not force-push or delete a branch to resolve a conflict unless the repository
 
 For workflow-run or artifact cleanup, inspect run status, age, workflow ownership, and whether an artifact is still needed for review or rollback. Prefer configurable retention and explicit preview over a broad destructive workflow. Keep cleanup operations separate from normal tool workflows.
 
-When cleanup intersects core instruction routing, catalog structure, or shared CI contracts, read [the core change gate](check-core-readme-first/core-readme.md) before editing.
+When cleanup intersects core instruction routing, catalog structure, or shared CI contracts, start with [the Core documentation router](read-core-readme-first/core-readme.md) and follow its core-change route before proceeding with this guide.
