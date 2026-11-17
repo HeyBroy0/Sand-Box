@@ -1,5 +1,5 @@
 # Sand-Box
-###Reusable scripts and GitHub Actions workspace.
+Reusable scripts and GitHub Actions workspace.
 
 ## Start here
 1. For new work, branch from the latest `main` as `temp/<task-name>`.
