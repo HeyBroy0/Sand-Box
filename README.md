@@ -9,7 +9,8 @@ Reusable scripts and GitHub Actions workspace.
 
 | Task | **Required:** Read before proceeding |
 | --- | --- |
-| Changing repository architecture, core behavior (core/ files), or instruction routing| [Core change gate](core/check-core-readme-first/core-readme.md) |
+| Changing repository architecture, core behavior (core/ files) | [Core change gate](core/check-core-readme-first/core-readme.md) |
+| Instruction routing |
 | Find or select an existing tool; decide whether a new tool is needed | [Finding tools](core/finding-tools/README.md) |
 | Build or substantially change a reusable tool | [Finding tools](core/finding-tools/README.md), then [Tool-building instructions](core/tool-building-instructions.md) |
 | Remove files, workflows, artifacts, branches, or clean up | [Cleanup instructions](core/clean-up.md) |
@@ -23,6 +24,7 @@ Search is a locator, not a complete file inventory. In this GitHub connection, c
 
 - `AGENTS.md` — short entrypoint for compatible coding agents
 - `core/` — durable rules and task-specific instructions; load only when routed here
+- `core/Instruction-decision-tree/` — Place to store Instructions
 - `scripts/` — reusable implementations
 - `tools/catalog.json` — capability index
 - `.github/workflows/` — GitHub Actions interfaces
