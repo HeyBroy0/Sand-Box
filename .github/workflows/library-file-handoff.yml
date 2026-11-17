@@ -8,16 +8,6 @@ on:
         required: true
         default: data/Summary.docx
         type: string
-  # Test this workflow on its feature branch; this trigger is removed before merge.
-  push:
-    branches:
-      - feature/library-file-handoff
-    paths:
-      - .github/workflows/library-file-handoff.yml
-      - scripts/export_docx.py
-      - tests/test_export_docx.py
-      - tools/catalog.json
-      - README.md
 
 permissions:
   contents: read
