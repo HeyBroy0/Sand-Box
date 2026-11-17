@@ -53,6 +53,17 @@ class ToolCatalogTests(unittest.TestCase):
         errors = find_tool.validate_catalog(catalog, ROOT)
         self.assertTrue(any("Duplicate entrypoint path" in error for error in errors))
 
+    def test_tool_lookup_workflow_expands_inputs_and_argument_arrays(self) -> None:
+        workflow = (ROOT / ".github" / "workflows" / "tool-lookup.yml").read_text(encoding="utf-8")
+        self.assertIn("QUERY: ${{ inputs.query }}", workflow)
+        self.assertIn('for raw_tag in "${tag_values[@]}"; do', workflow)
+        self.assertIn('tag="${raw_tag//[[:space:]]/}"', workflow)
+        self.assertIn('python scripts/find_tool.py "${args[@]}"', workflow)
+        self.assertIn(
+            "type: choice\n        options:\n          - all\n          - script\n          - workflow",
+            workflow,
+        )
+
     def test_unknown_query_returns_no_matches(self) -> None:
         matches = find_tool.search_tools(self.catalog["tools"], "quasar zyzzyva")
         self.assertEqual([], matches)
