@@ -92,6 +92,9 @@ Prefer one workflow per capability, workflow_dispatch, minimal permissions, and 
 
 ## Maintenance
 
+Pull requests run the catalog path checks, Python compilation checks, and standard-library unit tests automatically through the Tests workflow.
+
+
 1. Search the catalog before adding another tool.
 2. Group related script and workflow entrypoints under one capability.
 3. Keep experiments on working branches and merge through reviewable pull requests.
