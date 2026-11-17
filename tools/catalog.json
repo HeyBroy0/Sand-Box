@@ -89,21 +89,23 @@
       "name": "Library file handoff",
       "kind": "workflow",
       "path": ".github/workflows/library-file-handoff.yml",
-      "summary": "Stage one file from data/ as a one-day GitHub Actions artifact for transfer into ChatGPT Library.",
+      "summary": "Stage one file from data/ as an artifact; validate DOCX packages and preserve other files with SHA-256 manifests.",
       "tags": [
         "files",
         "library",
         "transfer",
         "artifact",
         "docx",
-        "pdf"
+        "pdf",
+        "office",
+        "sha256"
       ],
       "aliases": [
         "upload to library",
         "transfer file",
         "chatgpt library"
       ],
-      "usage": "Actions → Library file handoff → Run workflow; enter a single file path under data/."
+      "usage": "Actions → Library file handoff → Run workflow; select one file under data/ (DOCX files are validated and hashed)."
     },
     {
       "id": "tool-lookup",
