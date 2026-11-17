@@ -63,6 +63,43 @@ class FileExportTests(unittest.TestCase):
         self.assertTrue(manifest["valid_docx_package"])
         self.assertTrue(manifest["copy_verified"])
 
+    def test_does_not_overwrite_existing_destination(self) -> None:
+        source = self.root / "data" / "payload.bin"
+        source.write_bytes(b"new source")
+        output_dir = self.root / "out"
+        output_dir.mkdir()
+        destination = output_dir / "payload.bin"
+        destination.write_bytes(b"keep existing output")
+
+        with self.assertRaises(FileExistsError):
+            export_file("data/payload.bin", output_dir, self.root)
+
+        self.assertEqual(b"keep existing output", destination.read_bytes())
+
+    def test_does_not_overwrite_existing_manifest(self) -> None:
+        source = self.root / "data" / "payload.bin"
+        source.write_bytes(b"new source")
+        output_dir = self.root / "out"
+        output_dir.mkdir()
+        manifest_path = output_dir / "manifest.json"
+        manifest_path.write_text("preserve existing manifest", encoding="utf-8")
+
+        with self.assertRaises(FileExistsError):
+            export_file("data/payload.bin", output_dir, self.root)
+
+        self.assertEqual("preserve existing manifest", manifest_path.read_text(encoding="utf-8"))
+        self.assertFalse((output_dir / "payload.bin").exists())
+
+    def test_rejects_source_named_manifest_json(self) -> None:
+        source = self.root / "data" / "manifest.json"
+        source.write_text("source content", encoding="utf-8")
+        output_dir = self.root / "out"
+
+        with self.assertRaises(ValueError):
+            export_file("data/manifest.json", output_dir, self.root)
+
+        self.assertFalse((output_dir / "manifest.json").exists())
+
     def test_rejects_paths_outside_data(self) -> None:
         outside = self.root / "private.bin"
         outside.write_bytes(b"private")
