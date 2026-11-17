@@ -6,7 +6,6 @@ from __future__ import annotations
 import argparse
 import json
 import shutil
-import sys
 from pathlib import Path
 from typing import Any
 
@@ -46,7 +45,24 @@ def export_file(
     destination_dir = Path(output_dir)
     destination_dir.mkdir(parents=True, exist_ok=True)
     destination = destination_dir / source.name
-    shutil.copyfile(source, destination)
+    manifest_path = destination_dir / "manifest.json"
+
+    if destination.name.casefold() == manifest_path.name.casefold():
+        raise ValueError("A source named 'manifest.json' conflicts with the export manifest filename.")
+    for output in (destination, manifest_path):
+        if output.exists() or output.is_symlink():
+            raise FileExistsError(f"Refusing to overwrite existing output: {output}")
+
+    created_destination = False
+    try:
+        with source.open("rb") as source_stream:
+            with destination.open("xb") as destination_stream:
+                created_destination = True
+                shutil.copyfileobj(source_stream, destination_stream)
+    except Exception:
+        if created_destination:
+            destination.unlink(missing_ok=True)
+        raise
 
     source_hash = sha256_file(source)
     exported_hash = sha256_file(destination)
@@ -63,10 +79,13 @@ def export_file(
         "copy_verified": True,
         **validation,
     }
-    (destination_dir / "manifest.json").write_text(
-        json.dumps(manifest, indent=2) + "\n",
-        encoding="utf-8",
-    )
+    try:
+        with manifest_path.open("x", encoding="utf-8") as stream:
+            json.dump(manifest, stream, indent=2)
+            stream.write("\n")
+    except Exception:
+        destination.unlink(missing_ok=True)
+        raise
     return destination, manifest
 
 
