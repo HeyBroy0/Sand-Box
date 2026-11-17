@@ -6,12 +6,13 @@ Public workspace for stable tools, scripts, and focused GitHub Actions. Keep `ma
 
 - **Find a tool:** `python scripts/find_tool.py "csv excel"`; add `--format json` for compact agent output. Leave the query blank to list the first five; use `--limit 20` for the full catalog.
 - **Dataset analysis:** Actions → **Dataset analysis** → **Run workflow**. Select a file under `data/`; download the results artifact.
+- **Library file handoff:** Actions → **Library file handoff** → **Run workflow**. Select one file under `data/` (default: `data/Summary.docx`); download the one-day artifact. DOCX files receive Open XML package validation and byte-for-byte SHA-256 verification; other files are copied unchanged with a SHA-256 manifest. Uploading the artifact into ChatGPT Library remains a separate step—the workflow does not write directly to ChatGPT Library.
 - **Repository cleanup:** Actions → **Clean workflows** → **Run workflow**. Run-history cleanup and branch cleanup have separate confirmations. Set `keep_recent_runs` to the number of newest completed runs to retain.
 - **Tool lookup in Actions:** Actions → **Tool lookup** → **Run workflow**. Search by name, purpose, tag, alias, or path.
 
 ## Tool maintenance
 
-`tools/catalog.json` is the compact source of truth for discovery. Add one short entry whenever a reusable script or workflow is added, renamed, or removed. Keep summaries under 180 characters; use tags and aliases for common search terms. Do not copy full documentation or source into the catalog. Validate with `python scripts/find_tool.py --validate` and test with `python -m unittest discover -s tests -v`.
+`tools/catalog.json` is the compact source of truth for discovery. Add one short entry whenever a reusable script or workflow is added, renamed, or removed. Keep summaries under 180 characters; use tags and aliases for common searches. Do not copy full documentation or source into the catalog. Validate with `python scripts/find_tool.py --validate` and test with `python -m unittest discover -s tests -v`.
 
 Put reusable scripts in `scripts/`, inputs in `data/`, and durable reports in `reports/` (or workflow artifacts for temporary outputs). Add one focused workflow per capability under `.github/workflows/`; prefer manual `workflow_dispatch` and grant only required permissions. Reuse existing tools and native AI/client capabilities rather than duplicating them unless a concrete constraint requires it.
 
