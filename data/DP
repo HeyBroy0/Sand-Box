@@ -1,0 +1,11 @@
+1. Design principles
+Principle	Meaning
+1. Small always-read layer	Keep README.md and AGENTS.md focused on entrypoints, routing, and essential repository-wide guidance.
+2. Progressive instruction loading	Load only the instructions relevant to the current task. Do not preload all of core/.
+3. Separate requirements from explanation	Instructions establish mandatory rules; guides explain procedures, examples, and reference material.
+4. Small, durable core	Keep repository-wide rules and shared contracts in core. Put everyday implementations in their appropriate capability locations.
+5. Composition over duplication	Prefer extending an existing capability when it can be done cleanly. Avoid duplicate tools, instructions, and contracts.
+6. Deliberate compatibility	Before changing a shared contract, identify its consumers and account for migration or compatibility.
+7. Avoid speculative infrastructure	Do not introduce frameworks, registries, schemas, abstractions, or instruction layers without a concrete recurring need.
+8. Actionable documentation	Every instruction document should explain when it applies, what it requires, and where to go next.
+9. Smallest coherent structure	Split documents or create directories only when the separation provides a real benefit to independent loading or maintenance.
