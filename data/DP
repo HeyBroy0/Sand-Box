@@ -16,7 +16,7 @@ Store it in a useful format, not just text that must be interpreted but data usa
 8. Deliberate compatibility.	Before changing a shared contract, identify its consumers and account for migration or compatibility.
 9. Avoid speculative infrastructure. Do not introduce frameworks, registries, schemas, abstractions, or instruction layers without a concrete recurring need.
 10. Smallest coherent structure	Split. documents or create directories only when the separation provides a real benefit to independent loading or maintenance.
-11. A-sync production, if a task attempt fails route to new tools or make one* Not allowed for changes to the sensitive `core/`
+11. A-sync production. Complete sufficiently specified tasks without unnecessary user interaction. If an attempt fails, diagnose the failure and try an appropriate alternative when safe. Creating or modifying capabilities must remain within the task's authority. Core changes require the core-change procedure and explicit authorization.
 
 ## Core-specific decision rules
 I would make these particularly prominent because they prevent architectural drift.
@@ -59,16 +59,17 @@ Expandable - The actual functionality available to AI systems.
 - .github/workflows/
 - Future integrations and capability interfaces
 
-03 — Execution Environment
-Isolation - How AI systems interact with and execute capabilities.
-- Agent interfaces
-- Container definitions
-- Permission profiles
-- Credential boundaries
-- Execution policies
-- Sandboxed development environments
-This should be independently configurable so that different agents can use the same capability system without having identical permissions.
-W.I.P note: Execution environments are for agents? but I want the repository to act as the environment for non-agentic AI ChatGPT Codex Connected?
+03 — Workspace Access & Operations
+Interaction — How connected AI systems access and operate within Sand-Box.
+This system defines the interface and operating procedures through which AI systems use the repository as a workspace.
+Current scope is the ChatGPT GitHub Connector environment. Do not assume that Sand-Box controls the AI runtime or provides independent process isolation.
+- Repository access and connector capabilities
+- File discovery and instruction navigation
+- Branch, commit, and change workflows
+- Capability invocation and integration procedures
+- Operation permissions and authorization boundaries
+- Verification and reporting requirements
+- Connector limitations and unavailable operations
 
 04 — Observability / Maintenance
 Intelligence - The ability to understand how the workspace is used and improve it over time.
@@ -97,33 +98,39 @@ Sand-Box/
 │
 ├── README.md
 │
-├── .github/workflows/
+├── .github/
+│    ├── workflows/
 │    ├── CODEOWNERS
 │    ...
 │
 ├── core/
 │   ├──core/read-core-readme-first/
-│   │   ├── core-readme                   # Introduction and navigation
+│   │   ├── core-readme.md                # Introduction and navigation
 │   │   ├── change-gate.md                # Core decision rules and change procedure
 │   │   ├── Core-Decision-tree/
 │   │   └── principles.md                 # The authoritative design principles
 │   │
-│   ├──Maintenance/                      # 4.2 Maintenance
-│   │   ├── Minimal-Maintenance/          # Small maintenence to organize for cleanliness, low access 
-│   │   │   ├── Minimal.md
-│   │   │   ...
-│   │   │
-│   │   ├── Improvement/                  # Maintenece for consolodating the repository, high access
-│   │   │   ├── Improvement.md
-│   │   │   ├── 
-│   │   │   ...
-│   │   │
-│   │   └── verification/                 # What is this for?
+│   └── authority/
+│       ├── permission-model.md
+│       ├── maintenance-authority.md
+│       └── recovery-authority.md
+│
+├── Maintenance/                         # 4.2 Maintenance
+│   ├── Minimal-Maintenance/              # Small maintenence to organize for cleanliness, low access 
+│   │   ├── Minimal.md
+│   │   ...
 │   │
-│   └── recovery/                        # 5. Recovery System
-│           ├── policies/                 # Snapshot and rollback requirements
-│           ├── procedures/               # Recovery and restoration processes
-│           └── manifests/                # References to known-good states and archives
+│   └── Improvement/                      # Maintenece for consolodating the repository, high access
+│   ├── Improvement.md
+│   ├── 
+│   │   ...
+│   │
+│   └── verification/                 
+│
+├── recovery/                            # 5. Recovery System
+│   ├── policies/                         # Snapshot and rollback requirements
+│   ├── procedures/                       # Recovery and restoration processes
+│   └── manifests/                        # References to known-good states and archives
 │
 ├── Capabilities/                        # 2. Capability System
 │   ├── Decision-Tree/                    # Task filter and tool use guides
@@ -132,24 +139,24 @@ Sand-Box/
 │   │
 │   ├── scripts/                          # Reusable script implementations
 │   ├── tools/                            # Reusable tools
-│   │   ├──  catalog.json                  # Discoverable capabilities and entrypoints
+│   │   ├──  catalog.json                 # Discoverable capabilities and entrypoints
 │   │   ...
 │   │
 │   ├── Document-creation                 # Useful when making documentation, shares similarities to core-principles
-│   └── Capability-discovery.md           # what does this do inside sand-box?
+│   └── Capability-discovery.md
 │
-├── execution/                           # 3. Execution Environment AI agents W.I.P: probably not needed for ChatGPT Codex Connected environment
+├── execution/                           # 3. Execution Environment AI agents
 │   ├── policies/
 │   ├── environments/
 │   ├── runtimes/
 │   └── interfaces/
 │
-├── observability/                       # 4.1 Observability W.I.P: Move out of core?
+├── observability/                       # 4.1 Observability
 │   ├── schemas/
-│   ├── collecton/
+│   ├── collection/
 │   ├── analytics/                        # Queries, metrics, and architectural analysis, for maintenance/improvements
 │   └── Suggestions/                      # Generated findings and recommendations
 │
-├── tests/                                #What is this for? what is it used for in sand-box currently?
+├── tests/                                
 ├── data/                                 #Input
 └── reports/                              #output
