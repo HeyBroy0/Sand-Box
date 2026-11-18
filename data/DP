@@ -10,7 +10,7 @@
 9. Deliberate compatibility.	Before changing a shared contract, identify its consumers and account for migration or compatibility.
 10. Avoid speculative infrastructure. Do not introduce frameworks, registries, schemas, abstractions, or instruction layers without a concrete recurring need.
 11. Smallest coherent structure	Split. documents or create directories only when the separation provides a real benefit to independent loading or maintenance.
-12. A-sync production. Complete sufficiently specified tasks without unnecessary user interaction. If an attempt fails, diagnose the failure and try an appropriate alternative when safe. Creating or modifying capabilities must remain within the task's authority. Core changes require the core-change procedure and explicit authorization.
+12. A-sync production. Complete sufficiently specified tasks without unnecessary user interaction within priveledge/authority. If an attempt fails, diagnose the failure and try an appropriate alternative when safe. Creating or modifying capabilities must remain within the task's authority. Core changes require the core-change procedure and explicit authorization.
 
 ## Core-specific decision rules
 I would make these particularly prominent because they prevent architectural drift.
@@ -63,6 +63,7 @@ Current scope is the ChatGPT GitHub Connector environment only. Do not assume th
 - Operation permissions and authorization boundaries
 - Verification and reporting requirements
 - Connector limitations and unavailable operations
+AI agents are not the same as ChatGPT GitHub Connected. AI agents are a different project.
 
 04 — Observability / Maintenance
 Intelligence - The ability to understand how the workspace is used and improve it over time.
@@ -111,7 +112,7 @@ Sand-Box/
 │       └── workspace.md
 │
 ├── Maintenance/                         # 4.2 Maintenance
-│   ├── Minimal-Maintenance/              # Small maintenence to organize for cleanliness, low access 
+│   ├── minimal-Maintenance/              # Small maintenence to organize for cleanliness, low access 
 │   │   ├── minimal.md
 │   │   ...
 │   │
@@ -125,9 +126,9 @@ Sand-Box/
 │   ├── procedures/                       # Recovery and restoration processes
 │   └── manifests/                        # References to known-good states and archives
 │
-├── Capabilities/                        # 2. Capability System
-│   ├── Decision-Tree/                    # Task filter and tool use guides
-│   │   ├── Decision Start.md
+├── capabilities/                        # 2. Capability System
+│   ├── decision-Tree/                    # Task filter and tool use guides
+│   │   ├── decision Start.md
 │   │   ...
 │   │
 │   ├── scripts/                          # Reusable script implementations
@@ -135,16 +136,16 @@ Sand-Box/
 │   │   ├──  catalog.json                 # Discoverable capabilities and entrypoints
 │   │   ...
 │   │
-│   ├── Document-creation                 # Useful when making documentation, shares similarities to core-principles
-│   └── Capability-discovery.md
+│   ├── document-creation                 # Useful when making documentation, shares similarities to core-principles
+│   └── capability-discovery.md
 │
 ├── observability/                       # 4.1 Observability
 │   ├── schemas/
 │   ├── collection/
 │   ├── analytics/                        # Queries, metrics, and architectural analysis, for maintenance/improvements
-│   └── Suggestions/                      # Generated findings and recommendations
+│   └── suggestions/                      # Generated findings and recommendations
 │
-└── Workspace/
+└── workspace/
     ├── tests/                                
     ├── temp/
     ├── data/                             #Input
