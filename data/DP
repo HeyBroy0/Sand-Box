@@ -1,7 +1,8 @@
-Authority: A-sync but no agents, I want to give a request and it should be achieved without further input or 
+Authority: A-sync, I want to give a request and it should be achieved without further input or 
 
+Agents: Will most likely not be used:
 I only have ChatGPT using "ChatGPT Codex Connector" app but also not exactly codex itself, meaning I have to specifically request maintenance in order for one to even occur.
--Focus on the specific AI environment instead of making decisions around other possible AIs?
+-Focus on the specific ChatGPT Codex Connector environment instead of making decisions around other possible AIs?
 
 telemitry/audit: Not for security, useful for maintenance/improvements since an AI could use vast amounts of data, analyze them and recommend optimization or architecture changes. 
 Telemetry automation: AIs should not track their footsteps itself - this would cause too much overhead. Instead an automatic system should detect when AI systems use tools, navigate and make changes.
@@ -107,7 +108,8 @@ Sand-Box/
 ├── README.md
 ├── AGENTS.md
 │
-├── .github/workflows
+├── .github/workflows/
+│    └── CODEOWNERS                       # what is this for?
 │
 ├── core/                                # 1. Workspace Core
 │   ├──core/read-core-readme-first/       # Protected Core
@@ -120,26 +122,45 @@ Sand-Box/
 │   │   └── Suggestions/                  # Generated findings and recommendations
 │   │
 │   ├──Maintenance/                      # 4.2 Maintenance
-│   │   ├── Minimal-Maintenance.md        # Small maintenence to organize for cleanliness, low access 
-│   │   ├── Improvement.md                # Maintenece for consolodating the repository, high access
-│   │   └── Anything else?
+│   │   ├── Minimal-Maintenance/          # Small maintenence to organize for cleanliness, low access 
+│   │   │   ├── Minimal.md
+│   │   │   ...
+│   │   │
+│   │   ├── Improvement/                  # Maintenece for consolodating the repository, high access
+│   │   │   ├── Improvement.md
+│   │   │   ├── 
+│   │   │   ...
+│   │   │
+│   │   └── verification/                 # What is this for?
 │   │
 │   └── recovery/                        # 5. Recovery System
 │           ├── policies/                 # Snapshot and rollback requirements
 │           ├── procedures/               # Recovery and restoration processes
 │           └── manifests/                # References to known-good states and archives
 │
-├── Documentation/                      # 2. Capability System
+├── Capabilities/                        # 2. Capability System
 │   ├── Decision-Tree/                    # Task filter and tool use guides
 │   │   ├── Decision Start.md
 │   │   ...
 │   │
+│   ├── scripts/                          # Reusable script implementations
+│   ├── tools/                            # Reusable tools
 │   ├── Document-creation                 # Useful when making documentation, different from core principles W.I.P.: move some of those to here?
 │   ├── catalog.json                      # Discoverable capabilities and entrypoints
 │   └── Capability-discovery.md           # what does this do inside sand-box?
 │
-└── execution/                           # 3. Execution Environment
-    ├── tools/                            # Reusable tools
-    ├── data/                             # Input
-    ├── reports/                          # Output
-    └── scripts/                          # Reusable script implementations
+├── execution/                           # 3. Execution Environment AI agents
+│   ├── policies/
+│   ├── environments/
+│   ├── runtimes/
+│   └── interfaces/
+│
+├── observability/                       # 4.1 Observability W.I.P: Move out of core?
+│   ├── schemas/
+│   ├── collecton/
+│   ├── analytics/                        # Queries, metrics, and architectural analysis
+│   └── Suggestions/                      # Generated findings and recommendations
+│
+├── tests/                                #What is this for? what is it used for in sand-box currently?
+├── data/                                 #Input
+└── reports/                              #output
