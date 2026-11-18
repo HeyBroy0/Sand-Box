@@ -1,16 +1,16 @@
 ## Sand-box Design principles
-0. An evolving tool-box and workspace that grows with use, for AI A-sync use to complete tasks or create its own missing tools.
-1. Small always-read layer.	Keep README.md focused on entrypoints, routing, and essential repository-wide guidance.
-2. Core protection scheme. `core/` is a protected folder for repository-wide rules and shared contracts that need special access before writing to. 
-3. Progressive and relevant documents loading. Write concise and specific documents relevant to the task; Do not create large documentation, use navigation to separate notes. 
-4. Separate requirements from explanation. Instructions establish mandatory rules; guides explain procedures, examples, and reference material.
-5. Actionable documentation.	Every instruction document should explain when it applies, what it requires, and where to go next.
-6. Container-like files. Documents and tools should be  and not require information from other places to understand it.
-7. Composition over duplication.	Prefer extending an existing capability when it can be done cleanly. Avoid duplicate tools, instructions, and contracts.
-8. Deliberate compatibility.	Before changing a shared contract, identify its consumers and account for migration or compatibility.
-9. Avoid speculative infrastructure. Do not introduce frameworks, registries, schemas, abstractions, or instruction layers without a concrete recurring need.
-10. Smallest coherent structure	Split. documents or create directories only when the separation provides a real benefit to independent loading or maintenance.
-11. A-sync production. Complete sufficiently specified tasks without unnecessary user interaction. If an attempt fails, diagnose the failure and try an appropriate alternative when safe. Creating or modifying capabilities must remain within the task's authority. Core changes require the core-change procedure and explicit authorization.
+1. An evolving tool-box and workspace that grows with use, for AI A-sync use to complete tasks or create its own missing tools.
+2. Small always-read layer.	Keep README.md focused on entrypoints, routing, and essential repository-wide guidance.
+3. Core protection scheme. `core/` is a protected folder for repository-wide rules and shared contracts that need special access before writing to. 
+4. Progressive and relevant documents loading. Write concise and specific documents relevant to the task; Do not create large documentation, use navigation to separate notes. 
+5. Separate requirements from explanation. Instructions establish mandatory rules; guides explain procedures, examples, and reference material.
+6. Actionable documentation.	Every instruction document should explain when it applies, what it requires, and where to go next.
+7. Container-like endpoints. Endpoint Documents and tools should be stand-alone not requiring outside information to understand.
+8. Composition over duplication.	Prefer extending an existing capability when it can be done cleanly. Avoid duplicate tools, instructions, and contracts.
+9. Deliberate compatibility.	Before changing a shared contract, identify its consumers and account for migration or compatibility.
+10. Avoid speculative infrastructure. Do not introduce frameworks, registries, schemas, abstractions, or instruction layers without a concrete recurring need.
+11. Smallest coherent structure	Split. documents or create directories only when the separation provides a real benefit to independent loading or maintenance.
+12. A-sync production. Complete sufficiently specified tasks without unnecessary user interaction. If an attempt fails, diagnose the failure and try an appropriate alternative when safe. Creating or modifying capabilities must remain within the task's authority. Core changes require the core-change procedure and explicit authorization.
 
 ## Core-specific decision rules
 I would make these particularly prominent because they prevent architectural drift.
@@ -24,7 +24,7 @@ I would make these particularly prominent because they prevent architectural dri
 | Should every task require the core gate? |	No. Ordinary capability work should remain lightweight. |
 Core instructions only needed while changing and analyzing core features, not when doing unrelated tasks 
 Preserve recoverability. Before structural or potentially destructive changes, identify a known-good recovery point and verify that it is usable.
-Only during specific user instructions is core changes allowed or explicit permission to follow Maintenence/improvement.md
+Only during specific user instructions is core changes allowed or explicit permission to follow Maintenence/improvement.md, basic maintenence doesn't touch core
 
 ## Proposed security boundaries
 Layer 1 — GitHub rulesets Enforcement
@@ -40,7 +40,7 @@ Current ChatGPT connector's permissions are distinct from the permissions of a a
 01 — Workspace Core
 Foundational - The identity, rules, architecture, configuration and compatibility contracts of Sand-Box.
 - README.md
-- core/read-core-readme/core-readme.md and its Core decision tree
+- core/this-is-instruction-to-read-core-readme-before-proceeding/core-readme.md and its Core decision tree
 - Design principles and core standards
 - Shared configuration and identity contracts
 
@@ -98,7 +98,7 @@ Sand-Box/
 │    ...
 │
 ├── core/
-│   ├──core/read-core-readme-first/
+│   ├── this-is-instruction-to-read-core-readme-before-proceeding/
 │   │   ├── core-readme.md                # Introduction and navigation
 │   │   ├── change-gate.md                # Core decision rules and change procedure
 │   │   ├── core-decision-tree/
@@ -107,7 +107,8 @@ Sand-Box/
 │   └── authority/
 │       ├── permission-model.md
 │       ├── maintenance-authority.md
-│       └── recovery-authority.md
+│       ├── recovery-authority.md
+│       └── workspace.md
 │
 ├── Maintenance/                         # 4.2 Maintenance
 │   ├── Minimal-Maintenance/              # Small maintenence to organize for cleanliness, low access 
@@ -137,18 +138,15 @@ Sand-Box/
 │   ├── Document-creation                 # Useful when making documentation, shares similarities to core-principles
 │   └── Capability-discovery.md
 │
-├── execution/                           # 3. Execution Environment AI agents
-│   ├── policies/
-│   ├── environments/
-│   ├── runtimes/
-│   └── interfaces/
-│
 ├── observability/                       # 4.1 Observability
 │   ├── schemas/
 │   ├── collection/
 │   ├── analytics/                        # Queries, metrics, and architectural analysis, for maintenance/improvements
 │   └── Suggestions/                      # Generated findings and recommendations
 │
-├── tests/                                
-├── data/                                 #Input
-└── reports/                              #Task-specific output
+└── Workspace/
+    ├── tests/                                
+    ├── temp/
+    ├── data/                             #Input
+    └── reports/                          #Task-specific output
+
