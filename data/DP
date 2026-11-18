@@ -9,3 +9,15 @@ Principle	Meaning
 7. Avoid speculative infrastructure	Do not introduce frameworks, registries, schemas, abstractions, or instruction layers without a concrete recurring need.
 8. Actionable documentation	Every instruction document should explain when it applies, what it requires, and where to go next.
 9. Smallest coherent structure	Split documents or create directories only when the separation provides a real benefit to independent loading or maintenance.
+
+4. Core-specific decision rules
+I would make these particularly prominent because they prevent architectural drift.
+Question	Preferred decision
+Does this belong in core?	Only if it establishes a cross-repository rule, structure, or contract.
+Should a document be split?	Only when the resulting parts have distinct purposes and can be loaded independently.
+Should a new abstraction be created?	Only when an actual recurring need justifies it.
+Should an existing interface be changed?	Only after identifying consumers and handling compatibility.
+Should a core change expand into adjacent improvements?	No, unless those improvements are necessary for a coherent change.
+Should all instructions be loaded for safety?	No. Load the required instructions and relevant dependencies.
+Should every task require the core gate?	No. Ordinary capability work should remain lightweight.
+Core instructions only needed while changing and analyzing core features, not when doing unrelated tasks
