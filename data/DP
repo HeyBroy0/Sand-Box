@@ -88,66 +88,56 @@ Preservation - The ability to recover from unsuccessful changes and preserve wor
 - Preservation policies
 This should be independent of the maintenance system. Maintenance can request recovery, but it should not be able to silently destroy recovery points.
 
+Branch	    Purpose	Handling
+main	    Consolidated, stable workspace	Updated through Improvement-specific maintenance only
+work/*	    Ongoing AI development	Agents can create, modify and commit
+archive/*	Historical fallback snapshots	Never routinely modified or deleted
+
 
 Sand-Box/
-│
 ├── README.md
-│
 ├── .github/
 │    ├── workflows/
 │    ├── CODEOWNERS
 │    ...
-│
 ├── core/
 │   ├── this-is-instruction-to-read-core-readme-before-proceeding/
-│   │   ├── core-readme.md                # Introduction and navigation
-│   │   ├── change-gate.md                # Core decision rules and change procedure
-│   │   ├── core-decision-tree/
-│   │   └── principles.md                 # The authoritative design principles
-│   │
+│   │   ├── core-readme.md
+│   │   ├── core-files/
+│   │   └── core-documentation/
+│   │       ├── change-gate.md
+│   │       ├── principles.md
+│   │       ...
 │   └── authority/
 │       ├── permission-model.md
 │       ├── maintenance-authority.md
 │       ├── recovery-authority.md
 │       └── workspace.md
-│
-├── Maintenance/                         # 4.2 Maintenance
-│   ├── minimal-Maintenance/              # Small maintenence to organize for cleanliness, low access 
+├── maintenance/
+│   ├── minimal-maintenance/
 │   │   ├── minimal.md
 │   │   ...
-│   │
-│   └── Improvement/                      # Maintenece for consolodating the repository, high access
+│   └── improvement/
 │       ├── improvement.md
-│       ├── verification/                 
+│       ├── verification/
 │       ...
-│
-├── recovery/                            # 5. Recovery System
-│   ├── policies/                         # Snapshot and rollback requirements
-│   ├── procedures/                       # Recovery and restoration processes
-│   └── manifests/                        # References to known-good states and archives
-│
-├── capabilities/                        # 2. Capability System
-│   ├── decision-Tree/                    # Task filter and tool use guides
-│   │   ├── decision Start.md
-│   │   ...
-│   │
-│   ├── scripts/                          # Reusable script implementations
-│   ├── tools/                            # Reusable tools
-│   │   ├──  catalog.json                 # Discoverable capabilities and entrypoints
-│   │   ...
-│   │
-│   ├── document-creation                 # Useful when making documentation, shares similarities to core-principles
-│   └── capability-discovery.md
-│
-├── observability/                       # 4.1 Observability
-│   ├── schemas/
-│   ├── collection/
-│   ├── analytics/                        # Queries, metrics, and architectural analysis, for maintenance/improvements
-│   └── suggestions/                      # Generated findings and recommendations
-│
-└── workspace/
-    ├── tests/                                
-    ├── temp/
-    ├── data/                             #Input
-    └── reports/                          #Task-specific output
-
+├── recovery/
+│   ├── policies/
+│   ├── procedures/
+│   └── manifests/
+├── capabilities/
+│   ├──capability-discovery.md
+│   ├──  catalog.json
+│   ├── tests/
+│   ├── scripts/
+│   ├── tools/
+│   └── documentation-Tree/
+│       ├── document-look.md
+│       ├── document-creation.md
+│       ...
+├── observability/
+│   ├── analytics/
+│   └── suggestions/
+├── temp/
+├── data/
+└── reports/
