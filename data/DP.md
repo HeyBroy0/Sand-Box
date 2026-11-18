@@ -1,8 +1,5 @@
 Authority: A-sync, I want to give a request and it should be achieved without further input or 
-
-Agents: Will most likely not be used:
-I only have ChatGPT using "ChatGPT Codex Connector" app but also not exactly codex itself, meaning I have to specifically request maintenance in order for one to even occur.
--Focus on the specific ChatGPT Codex Connector environment instead of making decisions around other possible AIs?
+Design for the ChatGPT Codex Connector environment, but keep the shared interfaces implementation-independent.
 
 telemitry/audit: Not for security, useful for maintenance/improvements since an AI could use vast amounts of data, analyze them and recommend optimization or architecture changes. 
 Telemetry automation: AIs should not track their footsteps itself - this would cause too much overhead. Instead an automatic system should detect when AI systems use tools, navigate and make changes.
@@ -11,8 +8,7 @@ Sore it in a useful format, not just text that must be interpreted but data usab
 I am thinking we could use specific containerization with github rules instead of just relying on instructions, this since I do not have but that is mostly the limit of my knowledge I do not know enough to make this on my own.
 I am worried that when we started this, now that there is a lot of changes away from a completely clean repository, we might be doing what's easiest instead of what is best for the longterm
 
-1. Design principles
-Principle	Meaning
+## Design principles
 1. Small always-read layer	Keep README.md and AGENTS.md focused on entrypoints, routing, and essential repository-wide guidance.
 2. Progressive and relevant instruction loading	Load only the instructions relevant to the current task. Do not preload all of core/. - small but complete instructions
 3. Separate requirements from explanation	Instructions establish mandatory rules; guides explain procedures, examples, and reference material.
@@ -25,21 +21,21 @@ Principle	Meaning
 Keep Instructions concise and specific, navigation over bulk documentation - Actionable documentation
 A-sync production, if a task attempt fails route to new tools or make one* Not allowed for changes to core since it is sensitive
 
-4. Core-specific decision rules
+## Core-specific decision rules
 I would make these particularly prominent because they prevent architectural drift.
-Question	Preferred decision
-Does this belong in core?	Only if it establishes a cross-repository rule, structure, or contract.
-Should a document be split?	Only when the resulting parts have distinct purposes and can be loaded independently.
-Should a new abstraction be created?	Only when an actual recurring need justifies it.
-Should an existing interface be changed?	Only after identifying consumers and handling compatibility.
-Should a core change expand into adjacent improvements?	No, unless those improvements are necessary for a coherent change.
-Should all instructions be loaded for safety?	No. Load the required instructions and relevant dependencies.
-Should every task require the core gate?	No. Ordinary capability work should remain lightweight.
-Core instructions only needed while changing and analyzing core features, not when doing unrelated tasks
+| Question |	Preferred decision |
+| Does this belong in core? |	Only if it establishes a cross-repository rule, structure, or contract. |
+| Should a document be split? |	Only when the resulting parts have distinct purposes and can be loaded independently. |
+| Should a new abstraction be created? |	Only when an actual recurring need justifies it. |
+| Should an existing interface be changed? |	Only after identifying consumers and handling compatibility. |
+| Should a core change expand into adjacent improvements? |	No, unless those improvements are necessary for a coherent change. |
+| Should all instructions be loaded for safety? |	No. Load the required instructions and relevant dependencies. |
+| Should every task require the core gate? |	No. Ordinary capability work should remain lightweight. |
+Core instructions only needed while changing and analyzing core features, not when doing unrelated tasks 
 Preserve recoverability. Before structural or potentially destructive changes, identify a known-good recovery point and verify that it is usable.
 Only during maintenance and specific user instructions is core changes allowed, standard maintenence creating a projected branch instead of full replacement of commits.
 
-Proposed security boundaries
+## Proposed security boundaries
 Layer 1 — GitHub rulesets Enforcement
 Protect main, restrict deletion and force-pushing, and require successful checks for promotion.
 Layer 2 — Isolated execution Enforcement
@@ -49,17 +45,15 @@ Separate read, development, maintenance and promotion credentials.
 Layer 4 — Repository instructions Guidance
 Define intended behavior, architectural constraints and task routing.
 Current ChatGPT connector's permissions are distinct from the permissions of a agent runtime. We should not assume containerization can restrict an already-authorized connector.
-Is this useful given specific conditions? - ChatGPT Codex Connector
+How can this be used for ChatGPT Codex Connector?
 
 01 — Workspace Core
 Foundational - The identity, rules, architecture, configuration and compatibility contracts of Sand-Box.
 - README.md
 - AGENTS.md
-- core/read-core-readme/
-- Core decision tree
+- core/read-core-readme/core-readme.md and its Core decision tree
 - Design principles and core adjustment standard
 - Shared configuration and identity contracts
-The decision tree should be treated as a core routing component. Changes to it require the core-change process and explicit dependency analysis.
 
 02 — Capability System
 Expandable - The actual functionality available to AI systems.
@@ -68,9 +62,8 @@ Expandable - The actual functionality available to AI systems.
 - tools/catalog.json
 - .github/workflows/
 - Future integrations and capability interfaces
-I would add an inventory and classification process for existing scripts before reorganizing them. Don't move files simply to achieve a theoretically perfect structure.
 
-03 — Execution Environment, possible?
+03 — Execution Environment
 Isolation - How AI systems interact with and execute capabilities.
 - Agent interfaces
 - Container definitions
@@ -79,6 +72,7 @@ Isolation - How AI systems interact with and execute capabilities.
 - Execution policies
 - Sandboxed development environments
 This should be independently configurable so that different agents can use the same capability system without having identical permissions.
+W.I.P note: Execution environments. but I want the repository to act as the environment?
 
 04 — Observability / Maintenance
 Intelligence - The ability to understand how the workspace is used and improve it over time.
@@ -145,8 +139,10 @@ Sand-Box/
 │   │
 │   ├── scripts/                          # Reusable script implementations
 │   ├── tools/                            # Reusable tools
+│   │   ├──  catalog.json                  # Discoverable capabilities and entrypoints
+│   │   ...
+│   │
 │   ├── Document-creation                 # Useful when making documentation, different from core principles W.I.P.: move some of those to here?
-│   ├── catalog.json                      # Discoverable capabilities and entrypoints
 │   └── Capability-discovery.md           # what does this do inside sand-box?
 │
 ├── execution/                           # 3. Execution Environment AI agents
@@ -158,7 +154,7 @@ Sand-Box/
 ├── observability/                       # 4.1 Observability W.I.P: Move out of core?
 │   ├── schemas/
 │   ├── collecton/
-│   ├── analytics/                        # Queries, metrics, and architectural analysis
+│   ├── analytics/                        # Queries, metrics, and architectural analysis, for maintenance/improvements
 │   └── Suggestions/                      # Generated findings and recommendations
 │
 ├── tests/                                #What is this for? what is it used for in sand-box currently?
