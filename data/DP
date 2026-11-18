@@ -1,9 +1,3 @@
-A-sync, I want to give a request and it should be achieved without further input
-Design for the ChatGPT Codex Connector environment only. An agent friendly version is a different project.
-
-Telemetry automation: AIs should not track their footsteps itself. Instead an automatic system should detect when AI systems use tools, navigate and make changes.
-Store it in a useful format, not just text that must be interpreted but data usable immediately if possible. 
-
 ## Sand-box Design principles
 0. An evolving tool-box and workspace that grows with use, for AI A-sync use to complete tasks or create its own missing tools.
 1. Small always-read layer.	Keep README.md focused on entrypoints, routing, and essential repository-wide guidance.
@@ -30,7 +24,7 @@ I would make these particularly prominent because they prevent architectural dri
 | Should every task require the core gate? |	No. Ordinary capability work should remain lightweight. |
 Core instructions only needed while changing and analyzing core features, not when doing unrelated tasks 
 Preserve recoverability. Before structural or potentially destructive changes, identify a known-good recovery point and verify that it is usable.
-Only during maintenance and specific user instructions is core changes allowed, standard maintenence creating a projected branch instead of full replacement of commits.
+Only during specific user instructions is core changes allowed or explicit permission to follow Maintenence/improvement.md
 
 ## Proposed security boundaries
 Layer 1 — GitHub rulesets Enforcement
@@ -46,9 +40,8 @@ Current ChatGPT connector's permissions are distinct from the permissions of a a
 01 — Workspace Core
 Foundational - The identity, rules, architecture, configuration and compatibility contracts of Sand-Box.
 - README.md
-- AGENTS.md Agents not used;
 - core/read-core-readme/core-readme.md and its Core decision tree
-- Design principles and core adjustment standard
+- Design principles and core standards
 - Shared configuration and identity contracts
 
 02 — Capability System
@@ -62,7 +55,7 @@ Expandable - The actual functionality available to AI systems.
 03 — Workspace Access & Operations
 Interaction — How connected AI systems access and operate within Sand-Box.
 This system defines the interface and operating procedures through which AI systems use the repository as a workspace.
-Current scope is the ChatGPT GitHub Connector environment. Do not assume that Sand-Box controls the AI runtime or provides independent process isolation.
+Current scope is the ChatGPT GitHub Connector environment only. Do not assume that Sand-Box controls the AI runtime or provides independent process isolation.
 - Repository access and connector capabilities
 - File discovery and instruction navigation
 - Branch, commit, and change workflows
@@ -81,6 +74,7 @@ Intelligence - The ability to understand how the workspace is used and improve i
 - Suggestions
 - Maintenance procedures
 - Cleanup and verification
+Telemetry automation: AIs should not track their footsteps itself. Instead an automatic system should detect when AI systems use tools, navigate and make changes. Stored in a useful format, not just text that must be interpreted if possible. 
 I would distinguish raw telemetry, analytical outputs and persistent suggestions rather than placing everything indiscriminately in reports/.
 
 05 — Recovery System
@@ -107,7 +101,7 @@ Sand-Box/
 │   ├──core/read-core-readme-first/
 │   │   ├── core-readme.md                # Introduction and navigation
 │   │   ├── change-gate.md                # Core decision rules and change procedure
-│   │   ├── Core-Decision-tree/
+│   │   ├── core-decision-tree/
 │   │   └── principles.md                 # The authoritative design principles
 │   │
 │   └── authority/
@@ -117,15 +111,13 @@ Sand-Box/
 │
 ├── Maintenance/                         # 4.2 Maintenance
 │   ├── Minimal-Maintenance/              # Small maintenence to organize for cleanliness, low access 
-│   │   ├── Minimal.md
+│   │   ├── minimal.md
 │   │   ...
 │   │
 │   └── Improvement/                      # Maintenece for consolodating the repository, high access
-│   ├── Improvement.md
-│   ├── 
-│   │   ...
-│   │
-│   └── verification/                 
+│       ├── improvement.md
+│       ├── verification/                 
+│       ...
 │
 ├── recovery/                            # 5. Recovery System
 │   ├── policies/                         # Snapshot and rollback requirements
@@ -159,4 +151,4 @@ Sand-Box/
 │
 ├── tests/                                
 ├── data/                                 #Input
-└── reports/                              #output
+└── reports/                              #Task-specific output
