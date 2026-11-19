@@ -33,7 +33,7 @@ Choose the lowest sufficient maintenance scope. Restore coherence where it mater
 - [Alignment Maintenance draft](../maintenance/alignment-maintenance/alignment.md) — currently marked proposed and not adopted as authority.
 - [Improvement Maintenance](../maintenance/improvement/improvement.md)
 
-**Authority and preservation:** [Maintenance Authority](../core/authority/maintenance-authority.md), [Core Document Preservation](../core/this-is-instruction-to-read-core-readme-before-proceeding/procedures/core-document-preservation.md).
+**Authority and preservation:** [Maintenance Authority](../core/authority/maintenance-authority.md), [Core Document Preservation](../core/this-is-instruction-to-read-core-readme-before-proceeding/procedures/core-document-preservation.md), and the [core-preserved maintenance copies](../core/this-is-instruction-to-read-core-readme-before-proceeding/procedures/documents/preservation-index.md).
 
 ---
 
@@ -57,6 +57,8 @@ Discover before duplicating. Extend a suitable existing capability when its purp
 
 **Primary route:** [Capability Discovery](../capabilities/capability-discovery.md), then the owning capability under **capabilities/**.
 
+**Core-preserved copy:** [Capability Discovery record](../core/this-is-instruction-to-read-core-readme-before-proceeding/procedures/documents/preserved/capabilities/capability-discovery.md).
+
 **Additional route:** [Document Creation and Editing](#procedure-05--document-creation-and-editing) when capability documentation is part of the task.
 
 ---
@@ -68,6 +70,8 @@ Discover before duplicating. Extend a suitable existing capability when its purp
 Identify the document's purpose, audience, owner, authority, and lifecycle before writing. Keep shared requirements canonical, make the document usable at its point of use, and route readers to operational sources rather than historical or generated copies.
 
 **Primary routes:** [Document Review](../capabilities/documentation-Tree/document-look.md), [Document Creation](../capabilities/documentation-Tree/document-creation.md), and [Document Lifecycle Standard](../core/this-is-instruction-to-read-core-readme-before-proceeding/standards/document-lifecycle.md).
+
+**Core-preserved copies:** [Document Review](../core/this-is-instruction-to-read-core-readme-before-proceeding/procedures/documents/preserved/capabilities/documentation-Tree/document-look.md) and [Document Creation](../core/this-is-instruction-to-read-core-readme-before-proceeding/procedures/documents/preserved/capabilities/documentation-Tree/document-creation.md).
 
 **Preservation route:** [Core Document Preservation](../core/this-is-instruction-to-read-core-readme-before-proceeding/procedures/core-document-preservation.md) and the [Preservation Index](../core/this-is-instruction-to-read-core-readme-before-proceeding/procedures/documents/preservation-index.md).
 
