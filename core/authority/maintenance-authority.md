@@ -1,5 +1,8 @@
 # Maintenance Authority
 
+**Status:** Proposed draft for review; not yet adopted as authority. This document does not itself grant permissions or create technical controls.
+
+
 **Purpose:** Define Maintenance's responsibility for accumulated workspace coherence without making it an approval gate for ordinary work.
 
 ## Responsibility

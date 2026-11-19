@@ -1,5 +1,8 @@
 # Core README — protected workspace guidance
 
+**Status:** Proposed draft for review; not yet adopted as authority. This document does not itself grant permissions or create technical controls.
+
+
 **Purpose:** Define the entrypoint for core-owned identity, policy, architecture, authority, and protected procedures.
 
 This document is not the repository's always-read entrypoint. Start with the [root README](../../README.md) for ordinary routing. Read this file when the task touches core, authority, shared contracts, protected documents, or a change that can affect repository-wide behavior.

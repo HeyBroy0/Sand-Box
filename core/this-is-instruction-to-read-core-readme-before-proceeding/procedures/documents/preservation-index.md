@@ -1,12 +1,14 @@
 # Core Preservation Index
 
+**Status:** Initial preservation index for the documents introduced with this DP-C restructuring.
+
 **Purpose:** Locate deliberate core-preserved copies of externally owned documents and the historical procedure records used by the generated full reference.
 
 ## Preserved operational documents
 
 | Subject | Current operational source | Core-preserved copy | Source status at capture |
 |---|---|---|---|
-| Minimal Maintenance | `maintenance/minimal-maintenance/minimal.md` | [minimal.md](preserved/maintenance/minimal.md) | Operational guide created in the same change set |
+| Minimal Maintenance | `maintenance/minimal-maintenance/minimal.md` | [minimal.md](preserved/maintenance/minimal.md) | Initial draft guide; source and copy introduced in commit f8c2e5d4c3a1972d451f9d7942d25c0611ca1128 |
 | Alignment Maintenance | `maintenance/alignment-maintenance/alignment.md` | [alignment.md](preserved/maintenance/alignment.md) | Proposed draft; not adopted authority |
 | Improvement Maintenance | `maintenance/improvement/improvement.md` | [improvement.md](preserved/maintenance/improvement.md) | Operational guide created in the same change set |
 | Capability discovery | `capabilities/capability-discovery.md` | [capability-discovery.md](preserved/capabilities/capability-discovery.md) | Operational guide created in the same change set |

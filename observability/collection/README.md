@@ -1,5 +1,10 @@
 # Observability Collection
 
+**Status:** Initial operational draft for review; not yet adopted as repository-wide authority.
+
+
+**Status:** Directory guidance only; no collection mechanism is currently established here.
+
 **Purpose:** Hold the design and documentation for authorized raw activity collection, if and when a supported collection mechanism is established.
 
 ## Current status

@@ -1,5 +1,8 @@
 # Capability Discovery
 
+**Status:** Initial operational draft for review; not yet adopted as repository-wide authority.
+
+
 **Purpose:** Find reusable capabilities and determine whether they are actually present, supported, and suitable for a task.
 
 ## Discovery order

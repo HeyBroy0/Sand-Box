@@ -1,5 +1,8 @@
 # Recovery Authority
 
+**Status:** Proposed draft for review; not yet adopted as authority. This document does not itself grant permissions or create technical controls.
+
+
 **Purpose:** Keep preservation and restoration decisions independent from routine maintenance and cleanup.
 
 ## Responsibility

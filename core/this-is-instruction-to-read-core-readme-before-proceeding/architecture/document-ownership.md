@@ -1,5 +1,8 @@
 # Document Ownership and Source Registry
 
+**Status:** Proposed draft for review; not yet adopted as authority. This document does not itself grant permissions or create technical controls.
+
+
 **Purpose:** Identify where current operational documents live and how core-preserved copies relate to them.
 
 ## Ownership model

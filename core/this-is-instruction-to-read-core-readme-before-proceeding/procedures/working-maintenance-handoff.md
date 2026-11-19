@@ -1,5 +1,8 @@
 # Working-to-Maintenance Handoff
 
+**Status:** Proposed core draft for review; not yet adopted as authority. This document does not itself grant permissions or create technical controls.
+
+
 **Purpose:** Preserve useful local autonomy while ensuring that non-blocking organizational friction reaches Maintenance.
 
 ## Working responsibility

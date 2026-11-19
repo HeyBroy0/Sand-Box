@@ -1,5 +1,8 @@
 # Improvement Maintenance
 
+**Status:** Initial operational draft for review; not yet adopted as repository-wide authority.
+
+
 **Purpose:** Evaluate and integrate broader improvements when a concrete need or demonstrated use justifies changes beyond documentation alignment.
 
 ## Use Improvement Maintenance when

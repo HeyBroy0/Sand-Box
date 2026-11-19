@@ -33,8 +33,6 @@ A Working AI may make reasonable, locally scoped implementation decisions: place
 Pause the affected operation and follow the applicable authority process when the task would change protected core, shared authority, repository entrypoints, or cross-repository contracts without the required authorization. Also stop or narrow the work when it would require an unapproved destructive action, violate a security boundary, or exceed the user's requested scope.
 
 Do not interpret these stop conditions as a requirement to seek approval for ordinary local implementation choices that remain within the task and shared contracts.
-
----
 ---
 
 <!--
@@ -179,8 +177,6 @@ Maintenance does not:
 - Require every contribution to use an identical structure.
 - Need to reorganize a component whose local organization remains clear and effective.
 - Have to turn every deferred Working observation into a project.
-
----
 ---
 
 <!--
@@ -218,8 +214,6 @@ Status: historical procedure reference; use DP-C and procedure-navigate.md for c
 When a document is operationally owned outside core but also needs a protected core record, keep its main operational copy at its real owner and preserve a clearly identified historical copy in the appropriate core documents area.
 
 The core historical copy must identify the main document's repository-relative source path and may link outward to it. Do not add a reverse link from the main operational document to the core historical copy. Route ordinary readers to the main source; use the core copy for protected history or core-specific work. Update historical copies deliberately rather than silently rewriting them whenever the main source changes.
-
----
 ---
 
 <!--
@@ -257,8 +251,6 @@ Maintenance may later align capability naming, placement, catalogs, documentatio
 - Treat a filename or search result as proof that a capability is registered or supported.
 - Claim unavailable connector, runtime, network, or filesystem capabilities.
 - Expand local capability work into broad cleanup without a separate maintenance scope.
-
----
 ---
 
 <!--
@@ -341,8 +333,6 @@ The procedure01.md through procedure09.md files in documents/ are preserved inpu
 - Treat the historical procedure copies as deliberate publication inputs. The generation workflow assembles them; it does not decide which operational source is authoritative or silently synchronize newer content into the historical copies.
 - Validate missing or duplicate numbers, ordering, section anchors, and main-source paths. Fail visibly on missing or inconsistent inputs rather than producing an incomplete composite.
 - Never edit full-procedures.md manually. Update the correct individual input through its publication process, then regenerate the composite.
-
----
 ---
 
 <!--
@@ -369,8 +359,6 @@ Status: historical procedure reference; use DP-C and procedure-navigate.md for c
 6. **Verify before reporting.** Check the resulting file, commit, branch state, workflow result, or other relevant outcome. Report failures and limitations accurately.
 
 Working operations should remain focused on the task. Maintenance operations may inspect a wider affected area when needed to restore coherence. Branch names and promotion routes must follow the current repository entrypoint and actual branch controls.
-
----
 ---
 
 <!--
@@ -402,8 +390,6 @@ Status: historical procedure reference; use DP-C and procedure-navigate.md for c
 - Keep recovery authority and records independent from routine maintenance.
 - Maintenance may request recovery but must not silently erase or invalidate available recovery options.
 - Follow actual retention and restoration policy; do not invent one or claim a snapshot exists without verification.
-
----
 ---
 
 <!--
@@ -442,8 +428,6 @@ Do not add telemetry speculatively or impose reporting overhead that creates no 
 When collection, analytics, or maintenance work reveals a repeated mechanical action, preserve the opportunity under observability/suggestions/ rather than requiring Maintenance to create a tool.
 
 A suggestion should describe the current sequence, repeat frequency, deterministic inputs and outputs, users, likely savings in context/tokens and manual/tool steps, verification and error reduction, dependencies, permission needs, failure behavior, and ongoing cost. Distinguish measured evidence from estimates. A suggestion records an opportunity; it does not authorize implementation.
-
----
 ---
 
 <!--
@@ -484,5 +468,3 @@ Route ordinary task work to the main operational copy in the owning component. D
 The core procedure navigation document should route to both the relevant full-reference section and the current main operational source, clearly labeling their different roles. Core historical copies may link outward to their main source path; main operational copies must not link back to their core historical copies merely to establish provenance.
 
 When a route changes, keep the root README, this procedure order, procedure-navigate.md, and affected component-local routes synchronized. The sequence and titles remain 01–09 as listed at the beginning of this document.
-
----

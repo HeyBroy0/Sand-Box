@@ -1,5 +1,8 @@
 # Protected Change Procedure
 
+**Status:** Proposed draft for review; not yet adopted as authority. This document does not itself grant permissions or create technical controls.
+
+
 **Purpose:** Apply changes to core, authority, entrypoints, architecture, and shared contracts without bypassing the repository's authorization requirements.
 
 ## Applies to

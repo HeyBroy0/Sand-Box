@@ -1,5 +1,8 @@
 # Document Creation and Editing
 
+**Status:** Initial operational draft for review; not yet adopted as repository-wide authority.
+
+
 **Purpose:** Create or revise documents that are accurate, locally usable, and clearly owned.
 
 ## Before writing

@@ -1,5 +1,7 @@
 # DP C — Task Routes and Operating Messages
 
+**Status:** Compact DP-C working draft for review. Route links should be checked against their current operational sources.
+
 **Purpose:** Give each task a concise direction and a route to the right operational source. DP defines durable principles; DP C reminds the task owner what to do and where to continue. Detailed guidance belongs with its operational owner.
 
 **Use:** Start with the root README, select the matching procedure below, then follow only the relevant source links.

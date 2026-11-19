@@ -1,9 +1,9 @@
 <!--
 Core-preserved copy.
 Operational source: capabilities/capability-discovery.md
-Source revision: same change-set commit that introduces the operational source and preserved record.
+Source revision: f8c2e5d4c3a1972d451f9d7942d25c0611ca1128.
 Captured: 2026-11-19
-Status: operational guide; not a core authority document.
+Status: preserved initial operational draft; not adopted as authority.
 -->
 # Capability Discovery
 

@@ -1,6 +1,6 @@
 # Repository Map
 
-**Status:** Core architecture reference. Update through the protected-change process when repository ownership or major boundaries change.
+**Status:** Proposed core architecture reference, pending review and adoption. Update through the protected-change process when repository ownership or major boundaries change.
 
 ## Top-level responsibilities
 

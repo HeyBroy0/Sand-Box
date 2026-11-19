@@ -44,6 +44,9 @@ def build_document() -> str:
                 f"{path.name} must contain exactly one top-level "
                 f"'Procedure {expected}' heading; found {headings!r}"
             )
+        # Remove a trailing horizontal rule used as a separator in the source draft;
+        # the composite generator supplies one consistent separator between records.
+        content = re.sub(r"(?:\\r?\\n---)+\\s*$", "", content).rstrip()
         sections.append(content)
 
     return HEADER + "\n---\n\n".join(sections) + "\n"

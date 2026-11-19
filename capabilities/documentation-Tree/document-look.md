@@ -1,5 +1,8 @@
 # Document Review and Assessment
 
+**Status:** Initial operational draft for review; not yet adopted as repository-wide authority.
+
+
 **Purpose:** Assess an existing document before editing, consolidating, preserving, or routing it.
 
 ## Review dimensions

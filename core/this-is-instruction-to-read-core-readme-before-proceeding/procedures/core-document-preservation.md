@@ -1,5 +1,8 @@
 # Core Document Preservation Procedure
 
+**Status:** Proposed draft for review; not yet adopted as authority. This document does not itself grant permissions or create technical controls.
+
+
 **Purpose:** Preserve selected externally owned operational documents in core without creating a second current source of instructions.
 
 ## When preservation is appropriate

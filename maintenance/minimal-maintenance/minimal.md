@@ -1,5 +1,8 @@
 # Minimal Maintenance
 
+**Status:** Initial operational draft for review; not yet adopted as repository-wide authority.
+
+
 **Purpose:** Resolve a bounded local defect or cleanup need while preserving the existing organization.
 
 ## Use Minimal Maintenance when

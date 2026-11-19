@@ -1,5 +1,8 @@
 # Workspace Authority and Operations
 
+**Status:** Proposed core draft for review; not yet adopted as authority. This document does not itself grant permissions or create technical controls.
+
+
 **Purpose:** Define the boundaries for operating on the repository through connected services and execution environments.
 
 ## Operational checks
