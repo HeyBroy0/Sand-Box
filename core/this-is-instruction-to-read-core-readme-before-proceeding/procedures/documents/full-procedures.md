@@ -1,6 +1,6 @@
 # Full Procedures — Generated Reference
 
-**Generated artifact:** This file is assembled from procedure01.md through procedure09.md in numeric order. Edit the individual inputs and regenerate this file; do not edit this composite manually.
+**Generated artifact:** This file is assembled by [generate_full_procedures.py](../../../../capabilities/scripts/generate_full_procedures.py) from procedure01.md through procedure09.md in numeric order. Edit the individual inputs and run the generator; do not edit this composite manually.
 
 **Role:** Historical integrated reference for review. Current task routing and operational sources are listed in [procedure-navigate.md](procedure-navigate.md).
 
@@ -35,7 +35,6 @@ Pause the affected operation and follow the applicable authority process when th
 Do not interpret these stop conditions as a requirement to seek approval for ordinary local implementation choices that remain within the task and shared contracts.
 
 ---
-
 ---
 
 <!--
@@ -182,13 +181,12 @@ Maintenance does not:
 - Have to turn every deferred Working observation into a project.
 
 ---
-
 ---
 
 <!--
 Core-preserved procedure record 03.
 Source draft: data/DP-C-v3 Edit.md
-Current operational route: core/this-is-instruction-to-read-core-readme-before-proceeding/procedures/protected-change.md and relevant core standards and authority documents.
+Current operational route: core/.../procedures/protected-change.md; core standards and authority documents.
 Captured: 2026-11-19
 Status: historical procedure reference; use DP-C and procedure-navigate.md for current task routing.
 -->
@@ -222,7 +220,6 @@ When a document is operationally owned outside core but also needs a protected c
 The core historical copy must identify the main document's repository-relative source path and may link outward to it. Do not add a reverse link from the main operational document to the core historical copy. Route ordinary readers to the main source; use the core copy for protected history or core-specific work. Update historical copies deliberately rather than silently rewriting them whenever the main source changes.
 
 ---
-
 ---
 
 <!--
@@ -262,7 +259,6 @@ Maintenance may later align capability naming, placement, catalogs, documentatio
 - Expand local capability work into broad cleanup without a separate maintenance scope.
 
 ---
-
 ---
 
 <!--
@@ -347,7 +343,6 @@ The procedure01.md through procedure09.md files in documents/ are preserved inpu
 - Never edit full-procedures.md manually. Update the correct individual input through its publication process, then regenerate the composite.
 
 ---
-
 ---
 
 <!--
@@ -376,7 +371,6 @@ Status: historical procedure reference; use DP-C and procedure-navigate.md for c
 Working operations should remain focused on the task. Maintenance operations may inspect a wider affected area when needed to restore coherence. Branch names and promotion routes must follow the current repository entrypoint and actual branch controls.
 
 ---
-
 ---
 
 <!--
@@ -410,7 +404,6 @@ Status: historical procedure reference; use DP-C and procedure-navigate.md for c
 - Follow actual retention and restoration policy; do not invent one or claim a snapshot exists without verification.
 
 ---
-
 ---
 
 <!--
@@ -451,7 +444,6 @@ When collection, analytics, or maintenance work reveals a repeated mechanical ac
 A suggestion should describe the current sequence, repeat frequency, deterministic inputs and outputs, users, likely savings in context/tokens and manual/tool steps, verification and error reduction, dependencies, permission needs, failure behavior, and ongoing cost. Distinguish measured evidence from estimates. A suggestion records an opportunity; it does not authorize implementation.
 
 ---
-
 ---
 
 <!--

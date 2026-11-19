@@ -99,7 +99,7 @@ Before destructive or difficult-to-reverse work, identify what must be preserved
 
 Keep raw collection, analytics, and suggestions distinct. Use only authorized, technically available evidence. Record recurring deterministic work as a reviewable suggestion; do not turn an unrelated task into unsolicited tool development.
 
-**Primary routes:** observability/collection/, observability/analytics/, and observability/suggestions/.
+**Primary routes:** [Collection guide](../observability/collection/README.md), observability/analytics/, and observability/suggestions/.
 
 ---
 

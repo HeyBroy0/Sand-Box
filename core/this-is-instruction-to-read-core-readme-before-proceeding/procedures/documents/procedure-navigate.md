@@ -13,13 +13,14 @@ Use the root README to select a task. The numbered records and generated full re
 | 05 | Document Creation and Editing | [Document review](../../../../capabilities/documentation-Tree/document-look.md), [Document creation](../../../../capabilities/documentation-Tree/document-creation.md), [Lifecycle standard](../../standards/document-lifecycle.md) | [procedure05.md](procedure05.md) | [Procedure 05](full-procedures.md#procedure-05--document-creation-and-editing) |
 | 06 | Workspace Access and Operations | [Permission Model](../../../authority/permission-model.md), [Workspace Authority](../../../authority/workspace.md) | [procedure06.md](procedure06.md) | [Procedure 06](full-procedures.md#procedure-06--workspace-access-and-operations) |
 | 07 | Recovery and Preservation | [Recovery Authority](../../../authority/recovery-authority.md), [recovery policies](../../../../recovery/policies/), [recovery procedures](../../../../recovery/procedures/), [recovery manifests](../../../../recovery/manifests/) | [procedure07.md](procedure07.md) | [Procedure 07](full-procedures.md#procedure-07--recovery-and-preservation) |
-| 08 | Observability and Improvement Evidence | [Collection](../../../../observability/collection/), [Analytics](../../../../observability/analytics/), [Suggestions](../../../../observability/suggestions/) | [procedure08.md](procedure08.md) | [Procedure 08](full-procedures.md#procedure-08--observability-and-improvement-evidence) |
+| 08 | Observability and Improvement Evidence | [Collection guide](../../../../observability/collection/README.md), [Analytics](../../../../observability/analytics/), [Suggestions](../../../../observability/suggestions/) | [procedure08.md](procedure08.md) | [Procedure 08](full-procedures.md#procedure-08--observability-and-improvement-evidence) |
 | 09 | Navigation and Capability Discovery | [root README](../../../../README.md), [Repository Map](../../architecture/repository-map.md), [Document Ownership](../../architecture/document-ownership.md), [Capability discovery](../../../../capabilities/capability-discovery.md) | [procedure09.md](procedure09.md) | [Procedure 09](full-procedures.md#procedure-09--navigation-and-capability-discovery) |
 
 ## Source and preservation rules
 
 - Operational-source links are the normal task destinations.
 - The numbered procedure files are core-preserved historical records of detailed DP-C procedure text from the working draft.
-- The full reference is generated from procedure01.md through procedure09.md in numeric order. Do not edit it manually.
+- The full reference is generated from procedure01.md through procedure09.md by [generate_full_procedures.py](../../../../capabilities/scripts/generate_full_procedures.py). Do not edit it manually.
+- Run the generator with `--check` to verify that the composite matches its inputs.
 - This navigation file identifies routes; it does not grant permissions or replace core authority documents.
 - Core-preserved copies of externally owned maintenance and capability documents are listed in [preservation-index.md](preservation-index.md).

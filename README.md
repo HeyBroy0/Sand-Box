@@ -34,7 +34,7 @@ This is the always-read layer for Sand-Box. It establishes the workspace purpose
    Before destructive, structural, or difficult-to-reverse changes, read [Recovery Authority](core/authority/recovery-authority.md) and follow the applicable [recovery policies](recovery/policies/), [recovery procedures](recovery/procedures/), and [recovery manifests](recovery/manifests/).
 
 8. **Observability and improvement evidence**  
-   For usage evidence, analytics, recurring friction, and improvement suggestions, use [collection](observability/collection/), [analytics](observability/analytics/), and [suggestions](observability/suggestions/). When a deterministic repeated action may be worth automating, record a suggestion rather than expanding the task into tool development.
+   For usage evidence, analytics, recurring friction, and improvement suggestions, use the [Collection guide](observability/collection/README.md), [analytics](observability/analytics/), and [suggestions](observability/suggestions/). When a deterministic repeated action may be worth automating, record a suggestion rather than expanding the task into tool development.
 
 9. **Navigation and capability discovery**  
    Start here, follow the owning component's local routes, and use the canonical capability-discovery mechanism where available. Broad routing and hub changes belong to Alignment Maintenance. Core source ownership and preserved-copy routes are described in the [Repository Map](core/this-is-instruction-to-read-core-readme-before-proceeding/architecture/repository-map.md) and [Document Ownership](core/this-is-instruction-to-read-core-readme-before-proceeding/architecture/document-ownership.md).
