@@ -46,7 +46,7 @@ def build_document() -> str:
             )
         # Remove a trailing horizontal rule used as a separator in the source draft;
         # the composite generator supplies one consistent separator between records.
-        content = re.sub(r"(?:\\r?\\n---)+\\s*$", "", content).rstrip()
+        content = re.sub(r"(?:\r?\n---)+\s*$", "", content).rstrip()
         sections.append(content)
 
     return HEADER + "\n---\n\n".join(sections) + "\n"

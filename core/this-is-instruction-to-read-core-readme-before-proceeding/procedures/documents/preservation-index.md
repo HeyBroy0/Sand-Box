@@ -10,10 +10,10 @@
 |---|---|---|---|
 | Minimal Maintenance | `maintenance/minimal-maintenance/minimal.md` | [minimal.md](preserved/maintenance/minimal.md) | Initial draft guide; source and copy introduced in commit f8c2e5d4c3a1972d451f9d7942d25c0611ca1128 |
 | Alignment Maintenance | `maintenance/alignment-maintenance/alignment.md` | [alignment.md](preserved/maintenance/alignment.md) | Proposed draft; not adopted authority |
-| Improvement Maintenance | `maintenance/improvement/improvement.md` | [improvement.md](preserved/maintenance/improvement.md) | Operational guide created in the same change set |
-| Capability discovery | `capabilities/capability-discovery.md` | [capability-discovery.md](preserved/capabilities/capability-discovery.md) | Operational guide created in the same change set |
-| Document review | `capabilities/documentation-Tree/document-look.md` | [document-look.md](preserved/capabilities/documentation-Tree/document-look.md) | Operational guide created in the same change set |
-| Document creation | `capabilities/documentation-Tree/document-creation.md` | [document-creation.md](preserved/capabilities/documentation-Tree/document-creation.md) | Operational guide created in the same change set |
+| Improvement Maintenance | `maintenance/improvement/improvement.md` | [improvement.md](preserved/maintenance/improvement.md) | Initial draft guide; source and copy introduced in commit f8c2e5d4c3a1972d451f9d7942d25c0611ca1128 |
+| Capability discovery | `capabilities/capability-discovery.md` | [capability-discovery.md](preserved/capabilities/capability-discovery.md) | Initial draft guide; source and copy introduced in commit f8c2e5d4c3a1972d451f9d7942d25c0611ca1128 |
+| Document review | `capabilities/documentation-Tree/document-look.md` | [document-look.md](preserved/capabilities/documentation-Tree/document-look.md) | Initial draft guide; source and copy introduced in commit f8c2e5d4c3a1972d451f9d7942d25c0611ca1128 |
+| Document creation | `capabilities/documentation-Tree/document-creation.md` | [document-creation.md](preserved/capabilities/documentation-Tree/document-creation.md) | Initial draft guide; source and copy introduced in commit f8c2e5d4c3a1972d451f9d7942d25c0611ca1128 |
 
 Each preserved copy identifies its operational source. Copies of documents created in this change set share the same introducing commit; later changes to an operational source do not automatically update its preserved copy.
 
