@@ -16,28 +16,28 @@ This is the always-read layer for Sand-Box. It establishes the workspace purpose
    For ordinary feature creation, local implementation, task-scoped documents, tests, and focused changes, start with the nearest owning component and its local usage guidance. Keep context task-scoped and make the contribution usable at its point of use.
 
 2. **Maintenance Environment — organize and align**  
-   For cleanup, consolidation, document placement, deduplication, terminology, navigation, or repository-wide coherence, choose the lowest sufficient maintenance scope: [Minimal Maintenance](maintenance/minimal-maintenance/), [Alignment Maintenance](maintenance/alignment-maintenance/), or [Improvement Maintenance](maintenance/improvement/). Maintenance is the main organizing force, not an approval gate for ordinary feature work.
+   For cleanup, consolidation, document placement, deduplication, terminology, navigation, or repository-wide coherence, choose the lowest sufficient maintenance scope: [Minimal Maintenance](maintenance/minimal-maintenance/minimal.md), [Alignment Maintenance draft](maintenance/alignment-maintenance/alignment.md), or [Improvement Maintenance](maintenance/improvement/improvement.md). The Alignment guide is currently marked as proposed and not adopted authority. Maintenance is the main organizing force, not an approval gate for ordinary feature work. See [Maintenance Authority](core/authority/maintenance-authority.md).
 
 3. **Core and sensitive changes**  
-   When a task changes repository identity, protected policy, authority, entrypoints, shared routes, or cross-repository contracts, verify explicit authorization and follow the applicable protected-change procedure. Do not infer authority from repository write access.
+   When a task changes repository identity, protected policy, authority, entrypoints, shared routes, or cross-repository contracts, read the [Core README](core/this-is-instruction-to-read-core-readme-before-proceeding/core-readme.md), [Change Gate](core/this-is-instruction-to-read-core-readme-before-proceeding/standards/change-gate.md), and [Protected Change Procedure](core/this-is-instruction-to-read-core-readme-before-proceeding/procedures/protected-change.md). Verify explicit authorization; do not infer authority from repository write access.
 
 4. **Capability and tool work**  
-   For capability lookup, tool creation, scripts, workflows, integrations, or tests, start with [capability discovery](capabilities/capability-discovery.md) and the relevant component under [capabilities](capabilities/).
+   For capability lookup, tool creation, scripts, workflows, integrations, or tests, start with [Capability Discovery](capabilities/capability-discovery.md) and the relevant component under [capabilities](capabilities/).
 
 5. **Document creation and lifecycle**  
-   For instructions, guides, reference documents, or large document consolidations, use the shared guidance under [documentation](capabilities/documentation-Tree/) and the document's actual owning component. Distinguish operational sources from historical copies, generated composites, and navigation documents.
+   For instructions, guides, reference documents, or large document consolidations, use [Document Review](capabilities/documentation-Tree/document-look.md), [Document Creation](capabilities/documentation-Tree/document-creation.md), and the document's actual owning component. Distinguish operational sources from historical copies, generated composites, and navigation documents.
 
 6. **Workspace access and operations**  
-   For repository access, branches, commits, workflows, connectors, or execution environments, confirm the actual repository/ref, tools, and permissions. Use supported GitHub actions when sufficient; use an execution environment only when the task needs capabilities it actually provides.
+   For repository access, branches, commits, workflows, connectors, or execution environments, read the [Permission Model](core/authority/permission-model.md) and [Workspace Authority](core/authority/workspace.md). Confirm the actual repository/ref, tools, and permissions. Use supported GitHub actions when sufficient; use an execution environment only when the task needs capabilities it actually provides.
 
 7. **Recovery and preservation**  
-   Before destructive, structural, or difficult-to-reverse changes, follow the applicable [recovery policies](recovery/policies/), [recovery procedures](recovery/procedures/), and [recovery manifests](recovery/manifests/).
+   Before destructive, structural, or difficult-to-reverse changes, read [Recovery Authority](core/authority/recovery-authority.md) and follow the applicable [recovery policies](recovery/policies/), [recovery procedures](recovery/procedures/), and [recovery manifests](recovery/manifests/).
 
 8. **Observability and improvement evidence**  
    For usage evidence, analytics, recurring friction, and improvement suggestions, use [collection](observability/collection/), [analytics](observability/analytics/), and [suggestions](observability/suggestions/). When a deterministic repeated action may be worth automating, record a suggestion rather than expanding the task into tool development.
 
 9. **Navigation and capability discovery**  
-   Start here, follow the owning component's local routes, and use the canonical capability-discovery mechanism where available. Broad routing and hub changes belong to Alignment Maintenance.
+   Start here, follow the owning component's local routes, and use the canonical capability-discovery mechanism where available. Broad routing and hub changes belong to Alignment Maintenance. Core source ownership and preserved-copy routes are described in the [Repository Map](core/this-is-instruction-to-read-core-readme-before-proceeding/architecture/repository-map.md) and [Document Ownership](core/this-is-instruction-to-read-core-readme-before-proceeding/architecture/document-ownership.md).
 
 ## Progressive loading
 
@@ -60,4 +60,4 @@ Written policy does not itself restrict an already-authorized GitHub connector. 
 
 ## Full reference material
 
-Design and compilation drafts are maintained separately from this always-read entrypoint. They are not routine task routes. Use the operational instructions reached through the routes above.
+Design drafts and integrated historical procedure references are not routine task routes. Use the operational instructions reached through the routes above. The core procedure index links operational sources and preserved reference records.
