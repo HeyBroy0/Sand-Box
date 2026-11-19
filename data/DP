@@ -103,8 +103,9 @@ Sand-Box/
 ├── core/
 │   ├── this-is-instruction-to-read-core-readme-before-proceeding/
 │   │   ├── core-readme.md
-│   │   ├── core-files/
-│   │   └── core-documentation/
+│   │   ├── architecture/
+│   │   ├── procedures/
+│   │   └── standards/
 │   │       ├── change-gate.md
 │   │       ├── principles.md
 │   │       ...
