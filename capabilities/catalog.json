@@ -1,1 +1,145 @@
-{}
+{
+  "version": 2,
+  "tools": [
+    {
+      "id": "dataset-analysis",
+      "name": "Dataset analysis",
+      "summary": "Profile CSV, TSV, JSON, JSONL, NDJSON, XLSX, or XLS data with missingness, statistics, correlations, plots, and optional exploratory OLS.",
+      "tags": [
+        "data",
+        "analysis",
+        "csv",
+        "tsv",
+        "json",
+        "jsonl",
+        "ndjson",
+        "excel",
+        "spreadsheet",
+        "statistics"
+      ],
+      "aliases": [
+        "eda",
+        "exploratory data analysis",
+        "spreadsheet analysis",
+        "tabular profiling"
+      ],
+      "entrypoints": [
+        {
+          "kind": "script",
+          "path": "capabilities/scripts/analyze_dataset.py",
+          "usage": "python capabilities/scripts/analyze_dataset.py --input data/file.csv --output-dir analysis-output [--target-column column]"
+        },
+        {
+          "kind": "workflow",
+          "path": ".github/workflows/data-analysis.yml",
+          "usage": "Actions → Dataset analysis → Run workflow; enter an existing repository file path under data/."
+        }
+      ]
+    },
+    {
+      "id": "file-handoff",
+      "name": "File export and handoff",
+      "summary": "Copy files from data/ unchanged, verify SHA-256, and validate DOCX packages before handoff.",
+      "tags": [
+        "files",
+        "library",
+        "transfer",
+        "artifact",
+        "docx",
+        "pdf",
+        "office",
+        "sha256",
+        "integrity",
+        "export"
+      ],
+      "aliases": [
+        "library file handoff",
+        "document export",
+        "docx export",
+        "file copy"
+      ],
+      "entrypoints": [
+        {
+          "kind": "script",
+          "path": "capabilities/scripts/export_docx.py",
+          "usage": "python capabilities/scripts/export_docx.py --input data/file.docx --output-dir docx-export"
+        },
+        {
+          "kind": "script",
+          "path": "capabilities/scripts/export_file.py",
+          "usage": "python capabilities/scripts/export_file.py --input data/file.ext --output-dir file-export"
+        },
+        {
+          "kind": "workflow",
+          "path": ".github/workflows/library-file-handoff.yml",
+          "usage": "Actions → Library file handoff → Run workflow; select one file under data/ and download the one-day artifact."
+        }
+      ]
+    },
+    {
+      "id": "tool-discovery",
+      "name": "Tool discovery",
+      "summary": "Search grouped tool capabilities by name, purpose, tags, aliases, or entrypoint path.",
+      "tags": [
+        "lookup",
+        "search",
+        "catalog",
+        "discovery",
+        "python",
+        "index"
+      ],
+      "aliases": [
+        "find tool",
+        "tool search",
+        "tool index"
+      ],
+      "entrypoints": [
+        {
+          "kind": "script",
+          "path": "capabilities/scripts/find_tool.py",
+          "usage": "python capabilities/scripts/find_tool.py \"csv excel\" [--kind script|workflow] [--tag tag] [--format json]"
+        },
+        {
+          "kind": "workflow",
+          "path": ".github/workflows/tool-lookup.yml",
+          "usage": "Actions → Tool lookup → Run workflow; filter by query, kind, tags, and output format."
+        }
+      ]
+    },
+    {
+      "id": "zip-archive-access",
+      "name": "ZIP archive discovery and extraction",
+      "summary": "Inventory archive members, find candidate files by name or extension, and selectively extract one verified file.",
+      "tags": [
+        "zip",
+        "archive",
+        "files",
+        "search",
+        "inventory",
+        "extract",
+        "unzip",
+        "artifact",
+        "sha256"
+      ],
+      "aliases": [
+        "inspect zip",
+        "zip search",
+        "find file in zip",
+        "extract zip member",
+        "archive browsing"
+      ],
+      "entrypoints": [
+        {
+          "kind": "script",
+          "path": "capabilities/scripts/zip_archive.py",
+          "usage": "python capabilities/scripts/zip_archive.py list|find|extract --archive data/archive.zip [member selectors]"
+        },
+        {
+          "kind": "workflow",
+          "path": ".github/workflows/zip-archive-access.yml",
+          "usage": "Actions → ZIP archive access → Run workflow; choose list, find, or extract and download the one-day artifact."
+        }
+      ]
+    }
+  ]
+}
