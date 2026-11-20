@@ -3,9 +3,11 @@ name: Tests
 on:
   pull_request:
     branches:
+      - main
       - T-brnch-1
   push:
     branches:
+      - main
       - T-brnch-1
   workflow_dispatch:
 
