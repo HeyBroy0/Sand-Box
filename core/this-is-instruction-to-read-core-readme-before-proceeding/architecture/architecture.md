@@ -4,7 +4,7 @@
 
 **Purpose:** Route readers to the smallest architecture context needed to understand the structure beneath a task. This index replaces the former all-in-one architecture reading path; it does not introduce a new always-read requirement.
 
-Architecture describes responsibility domains, information flow, ownership, lifecycles, and shared boundaries. The root README remains the ordinary task entrypoint. DP-C remains the task procedure register. The architecture references explain underlying design only when that design matters to the work.
+Architecture describes responsibility domains, information flow, ownership, lifecycles, and shared boundaries. The root README remains the ordinary task entrypoint. DP-C remains the task procedure register. Architecture references explain underlying design only when that design matters to the work.
 
 ## Choose by task
 
@@ -14,7 +14,8 @@ Architecture describes responsibility domains, information flow, ownership, life
 | Where should a document live? Which copy is operational, preserved, or generated? | [Document Ownership and Lifecycle](document-ownership-and-lifecycle.md) |
 | How much alignment is needed? What is the boundary between Maintenance, Core, and Recovery? | [Maintenance and Change Boundaries](maintenance-and-change-boundaries.md) |
 | How should a reusable tool, script, workflow, or shared interface fit together? | [Capability Architecture](capability-architecture.md) |
-| How do recovery, evidence, suggestions, and promotion relate? | [Recovery, Observability, and Evolution](recovery-observability-and-evolution.md) |
+| How should preservation, rollback, and restoration be handled? | [Recovery Architecture](recovery-architecture.md) |
+| How do collection, analytics, and suggestions connect? | [Observability Architecture](observability-architecture.md) |
 
 ## Maintenance reading paths
 
@@ -26,9 +27,9 @@ Do not load the full architecture suite, `principles.md`, or unrelated authority
 
 ### Whole-repository maintenance
 
-Use this index with the [Repository Map](repository-map.md) and [Document Ownership Registry](document-ownership.md) to build an inventory of owners, entrypoints, process flows, and shared dependencies. Review the relevant architecture references by domain; do not repeatedly load a single large architecture document or deep-read every source simply because the scope is repository-wide.
+Use this index with the [Repository Map](repository-map.md) and [Document Ownership Registry](document-ownership.md) to inventory owners, entrypoints, process flows, and shared dependencies. Review relevant architecture references by domain; do not repeatedly load one large architecture document or deep-read every source simply because the scope is repository-wide.
 
-Whole-repository scope broadens the set of relationships to inspect. It does not remove progressive loading or require every historical record and specialist implementation to be read.
+Whole-repository scope broadens the relationships to inspect. It does not remove progressive loading or require every historical record and specialist implementation to be read.
 
 ## Reading boundaries
 
@@ -44,7 +45,8 @@ Whole-repository scope broadens the set of relationships to inspect. It does not
 - [Document Ownership and Lifecycle](document-ownership-and-lifecycle.md)
 - [Maintenance and Change Boundaries](maintenance-and-change-boundaries.md)
 - [Capability Architecture](capability-architecture.md)
-- [Recovery, Observability, and Evolution](recovery-observability-and-evolution.md)
+- [Recovery Architecture](recovery-architecture.md)
+- [Observability Architecture](observability-architecture.md)
 
 ## Design decision checks
 
