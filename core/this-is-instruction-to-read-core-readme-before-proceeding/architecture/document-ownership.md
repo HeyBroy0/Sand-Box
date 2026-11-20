@@ -23,7 +23,7 @@
 | Capability discovery | `capabilities/capability-discovery.md` | `core/this-is-instruction-to-read-core-readme-before-proceeding/procedures/documents/preserved/capabilities/capability-discovery.md` |
 | Document look and review | `capabilities/documentation-Tree/document-look.md` | `core/this-is-instruction-to-read-core-readme-before-proceeding/procedures/documents/preserved/capabilities/documentation-Tree/document-look.md` |
 | Document creation | `capabilities/documentation-Tree/document-creation.md` | `core/this-is-instruction-to-read-core-readme-before-proceeding/procedures/documents/preserved/capabilities/documentation-Tree/document-creation.md` |
-| Core principles | `core/this-is-instruction-to-read-core-readme-before-proceeding/standards/principles.md` | Core-native; no duplicate preservation copy |
+| Architecture task index and modules | `core/this-is-instruction-to-read-core-readme-before-proceeding/architecture/architecture.md` and its linked task references | Core-native; linked through the architecture task index |\n| Core principles | `core/this-is-instruction-to-read-core-readme-before-proceeding/standards/principles.md` | Core-native; no duplicate preservation copy |
 | Change gate | `core/this-is-instruction-to-read-core-readme-before-proceeding/standards/change-gate.md` | Core-native; no duplicate preservation copy |
 | Permission model | `core/authority/permission-model.md` | Core-native; no duplicate preservation copy |
 | Maintenance authority | `core/authority/maintenance-authority.md` | Core-native; no duplicate preservation copy |
