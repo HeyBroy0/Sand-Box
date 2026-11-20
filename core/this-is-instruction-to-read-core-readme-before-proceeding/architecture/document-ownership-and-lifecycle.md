@@ -52,3 +52,4 @@ Keep meaningful differences. Consolidate only genuine duplication, and update af
 
 - [Responsibilities and Routing](responsibilities-and-routing.md) — how entrypoints reach owners and processes.
 - [Maintenance and Change Boundaries](maintenance-and-change-boundaries.md) — how to scope cross-document changes.
+- [Recovery Architecture](recovery-architecture.md) — preservation and restoration boundaries.
