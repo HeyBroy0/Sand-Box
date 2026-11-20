@@ -23,7 +23,7 @@ HEADER = """# Full Procedures — Generated Reference
 
 **Generated artifact:** This file is assembled by [generate_full_procedures.py](../../../../capabilities/scripts/generate_full_procedures.py) from procedure01.md through procedure09.md in numeric order. Edit the individual inputs and run the generator; do not edit this composite manually.
 
-**Role:** Historical integrated reference for review. Current task routing and operational sources are listed in [procedure-record-index.md](procedure-record-index.md).
+**Role:** Historical integrated reference only. Current task wording, routes, and implementation status belong in [DP-C](../DP-C.md). Historical inputs are listed in [procedure-record-index.md](procedure-record-index.md).
 
 ---
 

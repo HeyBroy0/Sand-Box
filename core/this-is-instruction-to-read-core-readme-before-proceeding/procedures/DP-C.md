@@ -32,7 +32,7 @@ Update status when an implementation destination or its readiness materially cha
 
 **Working bounds:** Inspect the target and direct dependencies rather than auditing the repository. Extend an existing component when the fit is coherent; separate it only when purpose, interface, owner, or lifecycle differs. Verify the affected behavior and report important assumptions or limitations. Leave unrelated organization to Maintenance.
 
-**Alignment:** Check direct interfaces and consumers. When the change crosses component boundaries or touches shared contracts, expand review to the affected owners and dependencies. If it reaches core or another protected surface, use Procedure 03 before editing.
+**Alignment:** Check direct interfaces and consumers. When the change crosses component boundaries or touches shared contracts, expand review to the affected owners and dependencies. If it reaches core or another protected surface, follow the [Protected Change Procedure](protected-change.md) and [Change Gate](../standards/change-gate.md) before editing.
 
 **Destination:** Start at the [root README](../../../README.md), then use the nearest component's local guidance. The component owner maintains the operational implementation and its detailed instructions.
 
@@ -85,7 +85,7 @@ Update status when an implementation destination or its readiness materially cha
 
 **Working bounds:** Verify that the implementation actually exists and is usable. Make the purpose, inputs, outputs, defaults, dependencies, limitations, failure behavior, and permissions clear at the point of use when relevant. Keep shared logic reusable and integration surfaces thin. Use only the permissions needed for the capability.
 
-**Alignment:** Before changing a shared capability or interface, identify its consumers and compatibility requirements. A catalog entry, filename, or search result is a locator, not proof of operational support.
+**Alignment:** Before changing a shared capability or interface, identify its consumers and compatibility requirements. If the change crosses a protected boundary, follow the [Protected Change Procedure](protected-change.md) and [Change Gate](../standards/change-gate.md). A catalog entry, filename, or search result is a locator, not proof of operational support.
 
 **Destination:** [Capability Discovery](../../../capabilities/capability-discovery.md), then the owning capability under `capabilities/`. Update implementation, tests, documentation, and catalog metadata only where the task and actual catalog contract require it.
 
@@ -103,7 +103,7 @@ Update status when an implementation destination or its readiness materially cha
 
 **Working bounds:** State necessary context, requirements, assumptions, and limitations. Link to shared authority rather than reproducing it. Preserve enough local explanation for independent use. Verify factual claims and links.
 
-**Alignment:** Before moving or consolidating documents, check ownership, authority, status, lifecycle, inbound links, and recovery implications. Preserve externally owned documents in core only through the preservation procedure. Edit generation inputs, not generated composites.
+**Alignment:** Before moving or consolidating documents, check ownership, authority, status, lifecycle, inbound links, and recovery implications. Preserve externally owned documents in core only through the [Core Document Preservation Procedure](core-document-preservation.md). Edit generation inputs, not generated composites. Changes to core-owned documents or shared entrypoints require the [Protected Change Procedure](protected-change.md).
 
 **Destinations:** [Document Review](../../../capabilities/documentation-Tree/document-look.md), [Document Creation](../../../capabilities/documentation-Tree/document-creation.md), [Document Lifecycle](../standards/document-lifecycle.md), and [Core Document Preservation](core-document-preservation.md).
 
@@ -119,7 +119,7 @@ Update status when an implementation destination or its readiness materially cha
 
 **Working bounds:** Use only the capabilities actually provided by the connected service or runtime. GitHub access, local filesystem access, hosted execution, workflow execution, and external-service access are distinct. Do not infer one from another, or treat successful write access as proof of task authorization.
 
-**Alignment:** Shared and protected operations require confirmation of scope, authorization, affected branch or consumers, and the relevant protection controls. Do not force-update or overwrite user-authored material without explicit authorization.
+**Alignment:** Shared and protected operations require confirmation of scope, authorization, affected branch or consumers, and the relevant protection controls. For protected repository changes, follow the [Protected Change Procedure](protected-change.md). Do not force-update or overwrite user-authored material without explicit authorization.
 
 **Destinations:** [Permission Model](../../authority/permission-model.md) and [Workspace Operations](../../authority/workspace.md).
 
@@ -167,7 +167,7 @@ Update status when an implementation destination or its readiness materially cha
 
 **Working bounds:** For ordinary work, use existing routes and add only a direct local reference needed to use the contribution. Treat filenames, search results, and catalog records as locators; verify the actual destination and capability status.
 
-**Alignment:** Broad route, hub, repository-map, ownership, or capability-discovery changes belong to Alignment Maintenance. Check all affected entrypoints, local routes, source owners, and consumers before changing shared navigation. If the change affects core or protected routes, use Procedure 03.
+**Alignment:** Broad route, hub, repository-map, ownership, or capability-discovery changes belong to Alignment Maintenance. Check all affected entrypoints, local routes, source owners, and consumers before changing shared navigation. If the change affects core or protected routes, follow the [Protected Change Procedure](protected-change.md) and [Change Gate](../standards/change-gate.md).
 
 **Destinations:** [Root README](../../../README.md), [Architecture](../architecture/architecture.md), [Repository Map](../architecture/repository-map.md), [Document Ownership](../architecture/document-ownership.md), and [Capability Discovery](../../../capabilities/capability-discovery.md).
 

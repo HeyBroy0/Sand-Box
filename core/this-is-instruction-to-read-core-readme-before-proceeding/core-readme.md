@@ -25,7 +25,8 @@ Core owns durable workspace identity, adopted principles, architecture, configur
 | Apply a protected change | [Protected-change procedure](procedures/protected-change.md) |
 | Preserve an externally owned document in core | [Core document preservation](procedures/core-document-preservation.md) |
 | Understand document roles and lifecycle | [Document lifecycle](standards/document-lifecycle.md) |
-| Find preserved procedure records | [Preservation index](procedures/documents/preservation-index.md) |
+| Find historical procedure records | [Procedure Record Index](procedures/documents/procedure-record-index.md) |
+| Find preserved external documents | [Preservation Index](procedures/documents/preservation-index.md) |
 
 ## Boundaries
 

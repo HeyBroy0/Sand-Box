@@ -3,7 +3,7 @@ Core-preserved procedure record 04.
 Source draft: data/DP-C-v3 Edit.md
 Current operational route: capabilities/capability-discovery.md and the relevant capability implementation.
 Captured: 2026-11-19
-Status: historical procedure reference; use DP-C and procedure-navigate.md for current task routing.
+Status: historical procedure reference; current task wording and routes are maintained in ../DP-C.md. This file is retained for provenance and review.
 -->
 
 # Procedure 04 — Capability and tool work

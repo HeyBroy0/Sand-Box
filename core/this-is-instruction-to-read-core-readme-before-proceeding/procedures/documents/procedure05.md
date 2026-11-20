@@ -3,7 +3,7 @@ Core-preserved procedure record 05.
 Source draft: data/DP-C-v3 Edit.md
 Current operational route: capabilities/documentation-Tree/document-look.md and document-creation.md.
 Captured: 2026-11-19
-Status: historical procedure reference; use DP-C and procedure-navigate.md for current task routing.
+Status: historical procedure reference; current task wording and routes are maintained in ../DP-C.md. This file is retained for provenance and review.
 -->
 
 # Procedure 05 — Document creation and editing
