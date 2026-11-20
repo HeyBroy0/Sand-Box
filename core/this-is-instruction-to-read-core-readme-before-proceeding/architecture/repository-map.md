@@ -12,7 +12,7 @@
 | `capabilities/` | Reusable tools, scripts, workflows, tests, discovery, and capability documentation | Catalog, discovery guide, implementations, document-writing guides |
 | `observability/` | Authorized evidence, analysis, and reviewable suggestions | Collection, analytics, suggestions |
 | `temp/` | Temporary working material | Short-lived files with an explicit cleanup/recovery consideration |
-| `data/` | Input files used by repository capabilities and file handoff | Source files for processing; historical material under `data/archive/` is excluded from routine input discovery unless specifically requested |
+| `data/` | Active intake for source documents and other inputs to repository work | User-provided files to be processed, edited, analyzed, or otherwise worked on through repository tasks and capabilities |
 | `reports/` | Durable task or system reports when required | Reports and review outputs |
 | `.github/` | GitHub-native repository configuration | Workflows, CODEOWNERS, repository automation |
 
@@ -23,7 +23,7 @@
 3. Maintenance owns repository-wide organization and alignment, while each component retains its useful local organization.
 4. Capability implementations and their operational documentation belong under `capabilities/` or the relevant component owner.
 5. Recovery records and authority remain separate from routine maintenance.
-6. `data/` is the input area for repository capabilities and file handoff, not a default destination for operational instructions. Treat `data/archive/` as historical material, not as a routine input search location. Existing design-draft files in `data/` are source material, not governing task instructions.
+6. `data/` is the active intake area for user-provided documents and other source inputs to be worked on from the repository. Add input material here, then use the relevant task route or capability to work on it. Files left in `data/` from initial repository construction are proposal/design artifacts, not current operational instructions or canonical sources. Do not use them as governing guidance unless a task explicitly identifies them as source material. Put maintained instructions and durable outputs with their owning component, not in `data/`.
 7. A preserved copy under core does not change the operational owner.
 
 This map is intentionally high-level. Use [document ownership](document-ownership.md) for source-level routing and the root README for task selection.
