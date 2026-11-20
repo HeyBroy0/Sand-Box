@@ -1,4 +1,4 @@
-# Full Procedures — Generated Historical Reference
+# Full Procedures — Generated Reference
 
 **Generated artifact:** This file is assembled by [generate_full_procedures.py](../../../../capabilities/scripts/generate_full_procedures.py) from procedure01.md through procedure09.md in numeric order. Edit the individual inputs and run the generator; do not edit this composite manually.
 
@@ -11,7 +11,7 @@ Core-preserved procedure record 01.
 Source draft: data/DP-C-v3 Edit.md
 Current operational route: Nearest owning component and local instructions; root README task route 1.
 Captured: 2026-11-19
-Status: historical procedure reference; use DP-C and procedure-navigate.md for current task routing.
+Status: historical procedure reference; current task wording and routes are maintained in ../DP-C.md. This file is retained for provenance and review.
 -->
 
 # Procedure 01 — Working Environment: feature creation and ordinary task work
@@ -40,7 +40,7 @@ Core-preserved procedure record 02.
 Source draft: data/DP-C-v3 Edit.md
 Current operational route: maintenance/minimal-maintenance/minimal.md; maintenance/alignment-maintenance/alignment.md; maintenance/improvement/improvement.md.
 Captured: 2026-11-19
-Status: historical procedure reference; use DP-C and procedure-navigate.md for current task routing.
+Status: historical procedure reference; current task wording and routes are maintained in ../DP-C.md. This file is retained for provenance and review.
 -->
 
 # Procedure 02 — Maintenance Environment: organization and alignment
@@ -184,7 +184,7 @@ Core-preserved procedure record 03.
 Source draft: data/DP-C-v3 Edit.md
 Current operational route: core/.../procedures/protected-change.md; core standards and authority documents.
 Captured: 2026-11-19
-Status: historical procedure reference; use DP-C and procedure-navigate.md for current task routing.
+Status: historical procedure reference; current task wording and routes are maintained in ../DP-C.md. This file is retained for provenance and review.
 -->
 
 # Procedure 03 — Core, authority, and sensitive changes
@@ -221,7 +221,7 @@ Core-preserved procedure record 04.
 Source draft: data/DP-C-v3 Edit.md
 Current operational route: capabilities/capability-discovery.md and the relevant capability implementation.
 Captured: 2026-11-19
-Status: historical procedure reference; use DP-C and procedure-navigate.md for current task routing.
+Status: historical procedure reference; current task wording and routes are maintained in ../DP-C.md. This file is retained for provenance and review.
 -->
 
 # Procedure 04 — Capability and tool work
@@ -258,7 +258,7 @@ Core-preserved procedure record 05.
 Source draft: data/DP-C-v3 Edit.md
 Current operational route: capabilities/documentation-Tree/document-look.md and document-creation.md.
 Captured: 2026-11-19
-Status: historical procedure reference; use DP-C and procedure-navigate.md for current task routing.
+Status: historical procedure reference; current task wording and routes are maintained in ../DP-C.md. This file is retained for provenance and review.
 -->
 
 # Procedure 05 — Document creation and editing
@@ -340,7 +340,7 @@ Core-preserved procedure record 06.
 Source draft: data/DP-C-v3 Edit.md
 Current operational route: core/authority/permission-model.md and core/authority/workspace.md.
 Captured: 2026-11-19
-Status: historical procedure reference; use DP-C and procedure-navigate.md for current task routing.
+Status: historical procedure reference; current task wording and routes are maintained in ../DP-C.md. This file is retained for provenance and review.
 -->
 
 # Procedure 06 — Workspace access and operations
@@ -366,7 +366,7 @@ Core-preserved procedure record 07.
 Source draft: data/DP-C-v3 Edit.md
 Current operational route: recovery/policies/; recovery/procedures/; recovery/manifests/.
 Captured: 2026-11-19
-Status: historical procedure reference; use DP-C and procedure-navigate.md for current task routing.
+Status: historical procedure reference; current task wording and routes are maintained in ../DP-C.md. This file is retained for provenance and review.
 -->
 
 # Procedure 07 — Recovery and preservation
@@ -397,7 +397,7 @@ Core-preserved procedure record 08.
 Source draft: data/DP-C-v3 Edit.md
 Current operational route: observability/collection/; observability/analytics/; observability/suggestions/.
 Captured: 2026-11-19
-Status: historical procedure reference; use DP-C and procedure-navigate.md for current task routing.
+Status: historical procedure reference; current task wording and routes are maintained in ../DP-C.md. This file is retained for provenance and review.
 -->
 
 # Procedure 08 — Observability and improvement evidence
@@ -435,7 +435,7 @@ Core-preserved procedure record 09.
 Source draft: data/DP-C-v3 Edit.md
 Current operational route: README.md; core architecture routes; capabilities/capability-discovery.md.
 Captured: 2026-11-19
-Status: historical procedure reference; use DP-C and procedure-navigate.md for current task routing.
+Status: historical procedure reference; current task wording and routes are maintained in ../DP-C.md. This file is retained for provenance and review.
 -->
 
 # Procedure 09 — Navigation and capability discovery
