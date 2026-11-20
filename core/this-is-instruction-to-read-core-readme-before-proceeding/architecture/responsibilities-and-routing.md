@@ -64,4 +64,5 @@ A task may cross multiple responsibilities. Add specialist context only when the
 - [Document Ownership and Lifecycle](document-ownership-and-lifecycle.md) — source ownership, placement, preservation, generated outputs, and document lifecycle.
 - [Maintenance and Change Boundaries](maintenance-and-change-boundaries.md) — alignment scope, shared consumers, protected changes, and maintenance levels.
 - [Capability Architecture](capability-architecture.md) — reusable tools, interfaces, entrypoints, and discovery.
-- [Recovery, Observability, and Evolution](recovery-observability-and-evolution.md) — preservation, evidence flow, and promotion.
+- [Recovery Architecture](recovery-architecture.md) — preservation and restoration responsibilities.
+- [Observability Architecture](observability-architecture.md) — collection, analytics, suggestions, and feedback.
