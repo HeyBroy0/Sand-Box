@@ -1,25 +1,25 @@
 # Core Preservation Index
 
-**Status:** Initial preservation index for the documents introduced with this DP-C restructuring.
+**Status:** Initial preservation register. The copies listed here are historical captures, not synchronized mirrors of the current operational sources.
 
-**Purpose:** Locate deliberate core-preserved copies of externally owned documents and the historical procedure records used by the generated full reference.
+**Purpose:** Locate core-preserved copies of externally owned documents and historical procedure records.
 
 ## Preserved operational documents
 
-| Subject | Current operational source | Core-preserved copy | Source status at capture |
+| Subject | Current operational source | Core-preserved capture | Capture status |
 |---|---|---|---|
-| Minimal Maintenance | `maintenance/minimal-maintenance/minimal.md` | [minimal.md](preserved/maintenance/minimal.md) | Initial draft guide; source and copy introduced in commit f8c2e5d4c3a1972d451f9d7942d25c0611ca1128 |
-| Alignment Maintenance | `maintenance/alignment-maintenance/alignment.md` | [alignment.md](preserved/maintenance/alignment.md) | Proposed draft; not adopted authority |
-| Improvement Maintenance | `maintenance/improvement/improvement.md` | [improvement.md](preserved/maintenance/improvement.md) | Initial draft guide; source and copy introduced in commit f8c2e5d4c3a1972d451f9d7942d25c0611ca1128 |
-| Capability discovery | `capabilities/capability-discovery.md` | [capability-discovery.md](preserved/capabilities/capability-discovery.md) | Initial draft guide; source and copy introduced in commit f8c2e5d4c3a1972d451f9d7942d25c0611ca1128 |
-| Document review | `capabilities/documentation-Tree/document-look.md` | [document-look.md](preserved/capabilities/documentation-Tree/document-look.md) | Initial draft guide; source and copy introduced in commit f8c2e5d4c3a1972d451f9d7942d25c0611ca1128 |
-| Document creation | `capabilities/documentation-Tree/document-creation.md` | [document-creation.md](preserved/capabilities/documentation-Tree/document-creation.md) | Initial draft guide; source and copy introduced in commit f8c2e5d4c3a1972d451f9d7942d25c0611ca1128 |
+| Minimal Maintenance | `maintenance/minimal-maintenance/minimal.md` | [minimal.md](preserved/maintenance/minimal.md) | Initial draft captured at commit `f8c2e5d`; current source was subsequently consolidated |
+| Alignment Maintenance | `maintenance/alignment-maintenance/alignment.md` | [alignment.md](preserved/maintenance/alignment.md) | Proposed draft captured before the current source was consolidated |
+| Improvement Maintenance | `maintenance/improvement/improvement.md` | [improvement.md](preserved/maintenance/improvement.md) | Initial draft captured at commit `f8c2e5d`; current source was subsequently consolidated |
+| Capability discovery | `capabilities/capability-discovery.md` | [capability-discovery.md](preserved/capabilities/capability-discovery.md) | Initial draft captured at commit `f8c2e5d`; current source was subsequently consolidated |
+| Document review | `capabilities/documentation-Tree/document-look.md` | [document-look.md](preserved/capabilities/documentation-Tree/document-look.md) | Initial draft captured at commit `f8c2e5d`; current source was subsequently consolidated |
+| Document creation | `capabilities/documentation-Tree/document-creation.md` | [document-creation.md](preserved/capabilities/documentation-Tree/document-creation.md) | Initial draft captured at commit `f8c2e5d`; current source was subsequently consolidated |
 
-Each preserved copy identifies its operational source. Copies of documents created in this change set share the same introducing commit; later changes to an operational source do not automatically update its preserved copy.
+Do not silently synchronize a preserved copy when its operational source changes. Compare versions and create a deliberate new capture when the preservation purpose requires it. Ordinary task work must use the operational source.
 
-## Preserved procedure records
+## Historical procedure records
 
-The following files retain the detailed procedure text extracted from the DP-C working draft. They are historical references, not the preferred destinations for ordinary task work.
+These records preserve detailed text from earlier DP-C drafts. They are not the current procedure instructions.
 
 - [procedure01.md](procedure01.md)
 - [procedure02.md](procedure02.md)
@@ -31,9 +31,8 @@ The following files retain the detailed procedure text extracted from the DP-C w
 - [procedure08.md](procedure08.md)
 - [procedure09.md](procedure09.md)
 
-## Generated and navigational artifacts
+[full-procedures.md](full-procedures.md) is the generated historical compilation. The [Procedure Record Index](procedure-record-index.md) locates these records. Current task wording and navigation belong exclusively in [DP-C](../DP-C.md).
 
-- [full-procedures.md](full-procedures.md) — generated concatenation of the nine numbered records.
-- [procedure-navigate.md](procedure-navigate.md) — route to the operational source, preserved record, and full-reference section for each task.
+## Core-native documents
 
-Core-native documents under `core/authority/` and `standards/` are not duplicated here. They remain at their canonical core paths.
+Core-native authority documents under `core/authority/` and `core/this-is-instruction-to-read-core-readme-before-proceeding/standards/` remain at their canonical paths. They are not duplicated under the preserved-copy directory.

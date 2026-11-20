@@ -2,148 +2,179 @@
 
 **Status:** Proposed operational draft for review.
 
-## Purpose
+**Purpose:** Translate [Principles](../standards/principles.md) and [Architecture](../architecture/architecture.md) into task messages, implementation routes, and progress tracking. DP-C is the single current source for procedure wording and task navigation. It should guide the work, not repeat the principles or reproduce the architecture.
 
-DP-C is the procedure-tracking and implementation-routing layer between adopted principles, the architecture design, and operational work. It translates what the workspace values and how it is designed into concise task messages, implementation destinations, and progress status.
+**Use:** Select the procedure matching the requested outcome. Each numbered part is independently usable and contains its own trigger, task direction, essential boundaries, destination, and completion expectation. Read only that part and the operational sources it names.
 
-DP-C is the single current source for procedure wording and task-level navigation. It is not another principles document, architecture specification, or detailed tutorial.
+## Implementation status
 
-## Design-to-implementation chain
+| No. | Procedure | Current implementation state |
+|---|---|---|
+| 01 | Working Environment | Local-work model established; detailed guidance remains with each component |
+| 02 | Maintenance Environment | Three operational guides exist; Alignment remains proposed |
+| 03 | Core and Sensitive Changes | Initial gate, procedure, and authority drafts exist; adoption review remains |
+| 04 | Capability and Tool Work | Discovery guide exists; catalog is empty and capability registration remains incomplete |
+| 05 | Document Creation and Editing | Review, creation, lifecycle, and preservation guidance exists as initial drafts |
+| 06 | Workspace Access and Operations | Permission and workspace guidance exists as proposed drafts; technical controls require independent verification |
+| 07 | Recovery and Preservation | Authority draft exists; operational policies, procedures, and manifests remain incomplete |
+| 08 | Observability and Improvement Evidence | Collection guide exists; analytics and suggestion formats remain incomplete |
+| 09 | Navigation and Capability Discovery | Main routes exist; this register is the current procedure source |
 
-1. **Principles** — the durable desires, values, and constraints: [standards/principles.md](../standards/principles.md).
-2. **Architecture** — the intended system structure and relationships: [architecture.md](../architecture/architecture.md).
-3. **DP-C** — the procedures, task messages, implementation routes, and progress status that connect the design to work.
-4. **Operational sources** — the current guides, capabilities, authority documents, and recovery or observability procedures at their owning locations.
-5. **Verification and feedback** — check the affected behavior and route non-blocking coherence issues to Maintenance.
+Update status when an implementation destination or its readiness materially changes. Do not mark a proposed document adopted merely because it exists.
 
-Do not make DP-C repeat the principles or reproduce the architecture. It should tell a task owner what posture to take and where to continue.
-
-## Alignment scale
-
-Keep ordinary work scoped, but increase alignment effort as a change approaches shared or protected surfaces.
-
-| Scope | Expected alignment |
-|---|---|
-| **Local component work** | Use the nearest owner, follow useful local conventions, check direct dependencies, and keep additions and verification proportional. |
-| **Shared or cross-component work** | Check component ownership, affected consumers, interfaces, naming, dependencies, and relevant architecture before changing shared behavior or routes. |
-| **Core or protected work** | Read the relevant principles and architecture, identify authority and consumers, check compatibility and recovery, confirm explicit authorization, and verify all affected routes and controls. Stop when authorization or impact is unclear. |
-
-This is a graduated alignment model, not a universal checklist. Do not apply protected-change overhead to ordinary local work. Do not treat a protected change as an ordinary local edit.
-
-## Procedure register
-
-The sequence and titles match the root README. Each procedure tracks the task message, operational destination, and current implementation state.
-
-| No. | Procedure | Main implementation area | Current state |
-|---|---|---|---|
-| 01 | Working Environment | Nearest owning component and its local guidance | Local-work model established; specialist guidance remains component-owned |
-| 02 | Maintenance Environment | Minimal, Alignment, and Improvement guides | Three operational drafts exist; Alignment remains explicitly proposed |
-| 03 | Core and Sensitive Changes | Core standards, authority, and protected-change procedure | Initial guidance exists; authority and adoption review remain |
-| 04 | Capability and Tool Work | Capability discovery, catalog, implementations, tests, and scripts | Discovery guide exists; catalog remains empty and capability entries are incomplete |
-| 05 | Document Creation and Editing | Document review, creation, lifecycle, and preservation | Initial guidance and preservation structure exist; review and adoption remain |
-| 06 | Workspace Access and Operations | Permission model and workspace authority | Initial drafts exist; actual technical enforcement must be verified separately |
-| 07 | Recovery and Preservation | Recovery policies, procedures, and manifests | Authority draft exists; operational policies, procedures, and manifests remain incomplete |
-| 08 | Observability and Improvement Evidence | Collection, analytics, and suggestions | Collection guide exists; analytics and suggestion formats remain incomplete |
-| 09 | Navigation and Capability Discovery | Root entrypoint, architecture routes, and this register | Main routes exist; keep this register synchronized with implemented destinations |
+---
 
 ## Procedure 01 — Working Environment
 
-**Task message**
+**Use when:** Creating or changing a feature, tool, test, workflow, task-specific document, or other bounded contribution within one owning component.
 
-Place the contribution with its nearest sensible owner. Follow useful local conventions, keep the design and supporting material proportionate, and make the result usable. Leave unrelated organization to Maintenance.
+**Task message:** Put the contribution with its nearest sensible owner. Follow useful local conventions, make reasonable local design choices, and add only what makes the result usable.
 
-**Primary route:** The nearest owning component and its local instructions. Start at the [root README](../../../README.md).
+**Working bounds:** Inspect the target and direct dependencies rather than auditing the repository. Extend an existing component when the fit is coherent; separate it only when purpose, interface, owner, or lifecycle differs. Verify the affected behavior and report important assumptions or limitations. Leave unrelated organization to Maintenance.
 
-**Alignment:** Check direct dependencies and interfaces. Increase review only when the change affects shared consumers or protected surfaces.
+**Alignment:** Check direct interfaces and consumers. When the change crosses component boundaries or touches shared contracts, expand review to the affected owners and dependencies. If it reaches core or another protected surface, use Procedure 03 before editing.
+
+**Destination:** Start at the [root README](../../../README.md), then use the nearest component's local guidance. The component owner maintains the operational implementation and its detailed instructions.
+
+**Complete when:** The requested contribution is usable, proportionately verified, placed with its owner, and its result and known limitations are clear.
+
+---
 
 ## Procedure 02 — Maintenance Environment
 
-**Task message**
+**Use when:** The requested outcome is improved coherence across existing documents, components, terminology, placement, ownership, or navigation—not merely the completion of one local contribution.
 
-Choose the lowest sufficient maintenance scope. Improve coherence where it reduces real friction; preserve useful local differences and avoid normalizing for appearance alone.
+**Task message:** Choose the lowest sufficient maintenance scope. Correct genuine friction, preserve useful differences, and avoid normalization for appearance alone.
 
-**Operational routes**
+**Select the scope:**
+- **Minimal:** one bounded local defect or inconsistency; preserve the existing organization.
+- **Alignment:** related documents, components, ownership, terminology, or routes have drifted and need coherent treatment.
+- **Improvement:** the problem requires a broader capability, integration, shared interface, or architectural change supported by demonstrated need.
 
-- [Minimal Maintenance](../../../maintenance/minimal-maintenance/minimal.md)
-- [Alignment Maintenance](../../../maintenance/alignment-maintenance/alignment.md)
-- [Improvement Maintenance](../../../maintenance/improvement/improvement.md)
+**Working bounds:** Establish source ownership and status before moving or consolidating material. Keep one canonical home for shared requirements, retain local explanations that make a component independently usable, and verify affected routes. Maintenance organizes accumulated work; it is not an approval gate for ordinary Working tasks.
 
-**Core references:** [Maintenance Authority](../../authority/maintenance-authority.md), [Core Document Preservation](core-document-preservation.md), and the [Preservation Index](documents/preservation-index.md).
+**Alignment:** Before changing core standards, architecture, authority, root routes, or shared contracts, stop ordinary maintenance and use Procedure 03. Preserve source material and check recovery implications before destructive changes.
 
-**Alignment:** Check ownership, authority, source status, and affected routes before consolidating or moving material. Escalate to protected-change review when a core standard, entrypoint, authority definition, or shared contract is affected.
+**Destinations:** [Minimal Maintenance](../../../maintenance/minimal-maintenance/minimal.md), [Alignment Maintenance](../../../maintenance/alignment-maintenance/alignment.md), [Improvement Maintenance](../../../maintenance/improvement/improvement.md), and [Maintenance Authority](../../authority/maintenance-authority.md). Use [Core Document Preservation](core-document-preservation.md) when an externally owned source needs a protected core record.
+
+**Complete when:** The affected area is easier to understand, maintain, and navigate without losing meaningful distinctions or adding unnecessary process.
+
+---
 
 ## Procedure 03 — Core and Sensitive Changes
 
-**Task message**
+**Use when:** A change may alter repository identity, principles, architecture, authority, permissions, root entrypoints, shared routes, cross-component contracts, or the meaning or status of a protected record.
 
-The closer a change gets to core, authority, architecture, entrypoints, or shared contracts, the stronger the alignment review must be. Compare it with the principles and architecture, identify authority and affected consumers, verify recovery and compatibility, and confirm explicit authorization before editing.
+**Task message:** Increase alignment checks with proximity to protected surfaces. Understand the design and authority before editing; do not infer permission from general write access.
 
-**Primary route:** [Core README](../core-readme.md), [Change Gate](../standards/change-gate.md), and [Protected Change Procedure](protected-change.md).
+**Before editing:** Identify affected files, owners, consumers, and downstream behavior. Read the relevant [Principles](../standards/principles.md), [Architecture](../architecture/architecture.md), [Change Gate](../standards/change-gate.md), and authority sources. Check compatibility, migration, preservation, and recovery implications. Confirm explicit authorization through the actual applicable process.
 
-**Authority routes:** [Permission Model](../../authority/permission-model.md), [Maintenance Authority](../../authority/maintenance-authority.md), [Recovery Authority](../../authority/recovery-authority.md), and [Workspace Authority](../../authority/workspace.md).
+**Boundaries:** Keep proposals separate from adopted requirements. Verify the actual GitHub or execution controls rather than assuming written instructions enforce permissions. Stop when authorization, source authority, impact, or required recovery is unclear.
 
-**Stop condition:** Do not make the protected change when authorization, authority, or material impact remains unclear. Keep an unresolved proposal separate from adopted instructions.
+**Destinations:** [Core README](../core-readme.md), [Protected Change Procedure](protected-change.md), [Change Gate](../standards/change-gate.md), [Permission Model](../../authority/permission-model.md), and the relevant core authority owner.
+
+**Complete when:** The authorized change is bounded, affected consumers and routes are checked, required recovery is accounted for, verification is recorded, and unresolved decisions remain explicit.
+
+---
 
 ## Procedure 04 — Capability and Tool Work
 
-**Task message**
+**Use when:** Finding, creating, extending, testing, or integrating a reusable tool, script, workflow, integration, or other capability.
 
-Prefer a suitable existing capability over a duplicate. Keep each capability's purpose, interface, permissions, dependencies, tests, and documentation clear at its point of use.
+**Task message:** Discover before duplicating. Prefer a suitable existing capability; create a separate one only when its purpose, interface, owner, or lifecycle is meaningfully different.
 
-**Primary route:** [Capability Discovery](../../../capabilities/capability-discovery.md), then the owning capability under `capabilities/`.
+**Working bounds:** Verify that the implementation actually exists and is usable. Make the purpose, inputs, outputs, defaults, dependencies, limitations, failure behavior, and permissions clear at the point of use when relevant. Keep shared logic reusable and integration surfaces thin. Use only the permissions needed for the capability.
 
-**Alignment:** Check consumers and compatibility before changing a shared capability interface. Do not treat a catalog entry or filename as proof that an implementation is available.
+**Alignment:** Before changing a shared capability or interface, identify its consumers and compatibility requirements. A catalog entry, filename, or search result is a locator, not proof of operational support.
+
+**Destination:** [Capability Discovery](../../../capabilities/capability-discovery.md), then the owning capability under `capabilities/`. Update implementation, tests, documentation, and catalog metadata only where the task and actual catalog contract require it.
+
+**Complete when:** The capability's owner and contract are clear, relevant behavior and failures are checked, and support or registration status is reported accurately.
+
+---
 
 ## Procedure 05 — Document Creation and Editing
 
-**Task message**
+**Use when:** Creating, editing, reviewing, relocating, consolidating, preserving, or routing repository documents.
 
-Put documents with the responsibility that maintains them. Make purpose, audience, status, and source ownership clear. Link to shared authority; distinguish operational sources from preserved copies, drafts, generated files, and navigation.
+**Task message:** Place each document with the responsibility that maintains it. Make its purpose, audience, status, and lifecycle clear. Keep shared authority canonical and local instructions usable at their point of need.
 
-**Primary routes:** [Document Review](../../../capabilities/documentation-Tree/document-look.md), [Document Creation](../../../capabilities/documentation-Tree/document-creation.md), and [Document Lifecycle Standard](../standards/document-lifecycle.md).
+**Before writing:** Identify the operational owner and check for an existing source. Distinguish an operational source, core-native source, core-preserved historical copy, generated composite, navigation document, and proposal. Use a format that fits the reader; do not impose unnecessary templates or hubs.
 
-**Preservation:** Use [Core Document Preservation](core-document-preservation.md) and the [Preservation Index](documents/preservation-index.md) when a core record is warranted.
+**Working bounds:** State necessary context, requirements, assumptions, and limitations. Link to shared authority rather than reproducing it. Preserve enough local explanation for independent use. Verify factual claims and links.
 
-**Alignment:** Before moving or consolidating documents, check ownership, lifecycle, inbound links, source authority, and recovery implications.
+**Alignment:** Before moving or consolidating documents, check ownership, authority, status, lifecycle, inbound links, and recovery implications. Preserve externally owned documents in core only through the preservation procedure. Edit generation inputs, not generated composites.
+
+**Destinations:** [Document Review](../../../capabilities/documentation-Tree/document-look.md), [Document Creation](../../../capabilities/documentation-Tree/document-creation.md), [Document Lifecycle](../standards/document-lifecycle.md), and [Core Document Preservation](core-document-preservation.md).
+
+**Complete when:** The document has a clear owner and status, is usable for its intended task, does not create competing authority, and affected routes resolve.
+
+---
 
 ## Procedure 06 — Workspace Access and Operations
 
-**Task message**
+**Use when:** Reading or changing repository files, branches, commits, pull requests, workflows, connector settings, or execution environments.
 
-Use the actual repository, branch, tools, and permissions available. Confirm the target before writing and verify the resulting state. Do not infer technical enforcement from written policy.
+**Task message:** Confirm the repository, branch or reference, target paths, available tool surface, and actual permissions before acting. Verify the resulting state before reporting.
 
-**Primary routes:** [Permission Model](../../authority/permission-model.md) and [Workspace Authority](../../authority/workspace.md).
+**Working bounds:** Use only the capabilities actually provided by the connected service or runtime. GitHub access, local filesystem access, hosted execution, workflow execution, and external-service access are distinct. Do not infer one from another, or treat successful write access as proof of task authorization.
 
-**Alignment:** Shared or protected operations require confirmation of authorization, target, and affected branch or consumers.
+**Alignment:** Shared and protected operations require confirmation of scope, authorization, affected branch or consumers, and the relevant protection controls. Do not force-update or overwrite user-authored material without explicit authorization.
+
+**Destinations:** [Permission Model](../../authority/permission-model.md) and [Workspace Operations](../../authority/workspace.md).
+
+**Complete when:** The intended operation is confirmed, the resulting state has been checked, and limitations or failures are accurately reported.
+
+---
 
 ## Procedure 07 — Recovery and Preservation
 
-**Task message**
+**Use when:** A change is destructive, difficult to reverse, structurally significant, or involves archival material, preservation, rollback, or restoration.
 
-Preserve before destructive work. Verify that the proposed recovery source actually exists and is usable; do not assume a backup, snapshot, or rollback path.
+**Task message:** Preserve before destructive work. Verify that the recovery source exists and is usable; never assume a backup, snapshot, manifest, or rollback path.
 
-**Primary route:** [Recovery Authority](../../authority/recovery-authority.md), then the relevant files under `recovery/policies/`, `recovery/procedures/`, and `recovery/manifests/`.
+**Before acting:** Identify affected material and history, applicable retention requirements, the proposed change scope, and the known-good recovery point. Check who has authority to approve exceptional recovery or policy changes. Avoid irreversible cleanup when the recovery path or authority is unclear.
 
-**Alignment:** Structural, destructive, or core changes require an explicit preservation and recovery assessment before execution.
+**Boundaries:** Recovery remains independent from routine Maintenance. Age or apparent inactivity alone is not a reason to delete material. Maintenance may request recovery but must not silently invalidate recovery records.
+
+**Destinations:** [Recovery Authority](../../authority/recovery-authority.md), `recovery/policies/`, `recovery/procedures/`, and `recovery/manifests/`.
+
+**Complete when:** Required source material and recovery state are identified and verified, the authorized operation is bounded, and preservation or restoration results are recorded accurately.
+
+---
 
 ## Procedure 08 — Observability and Improvement Evidence
 
-**Task message**
+**Use when:** Designing or reviewing activity collection, analytics, recurring-friction evidence, or improvement suggestions.
 
-Keep collection, analysis, and suggestions separate. Use only authorized, supported evidence. Record worthwhile automation opportunities; do not expand an unrelated task into tool development.
+**Task message:** Keep raw collection, analysis, and suggestions distinct. Use only authorized and technically supported evidence. Record worthwhile automation opportunities without expanding unrelated work into tool development.
 
-**Primary routes:** [Collection guide](../../../observability/collection/README.md), `observability/analytics/`, and `observability/suggestions/`.
+**Working bounds:** Define the purpose and necessary data before collecting. Minimize data, establish access and retention boundaries, and protect sensitive information. Verify that the collection mechanism exists before describing it as active.
 
-**Alignment:** Verify purpose, data scope, access, retention, and actual collection capability before introducing instrumentation.
+**Information flow:** Collection stores raw records; Analytics derives patterns; Suggestions records reviewable opportunities. Evidence may inform decisions but does not itself authorize repository changes or capability development.
+
+**Destinations:** [Collection guide](../../../observability/collection/README.md), `observability/analytics/`, and `observability/suggestions/`.
+
+**Complete when:** The evidence's origin and limitations are clear, access and data boundaries are respected, and suggestions distinguish observation from estimate and implementation decision.
+
+---
 
 ## Procedure 09 — Navigation and Capability Discovery
 
-**Task message**
+**Use when:** Finding the correct instructions or capability, improving routes, or changing shared navigation and discovery.
 
-Use this register and the root entrypoint to find the operational owner. Keep routes short and direct; broad navigation changes belong to Alignment Maintenance.
+**Task message:** Start at the root entrypoint and follow the route to the operational owner. Keep navigation direct and task-oriented; avoid creating another layer unless it materially improves reachability.
 
-**Primary routes:** [Root README](../../../README.md), [Architecture](../architecture/architecture.md), [Repository Map](../architecture/repository-map.md), [Document Ownership](../architecture/document-ownership.md), and [Capability Discovery](../../../capabilities/capability-discovery.md).
+**Working bounds:** For ordinary work, use existing routes and add only a direct local reference needed to use the contribution. Treat filenames, search results, and catalog records as locators; verify the actual destination and capability status.
 
-## Procedure record archive
+**Alignment:** Broad route, hub, repository-map, ownership, or capability-discovery changes belong to Alignment Maintenance. Check all affected entrypoints, local routes, source owners, and consumers before changing shared navigation. If the change affects core or protected routes, use Procedure 03.
 
-Detailed procedure text retained from earlier DP-C drafts is historical reference material, not a second current instruction set. Use [Procedure Navigation](documents/procedure-navigate.md) to locate the numbered records and generated full reference. Update this register when task wording, implementation destinations, or progress status changes.
+**Destinations:** [Root README](../../../README.md), [Architecture](../architecture/architecture.md), [Repository Map](../architecture/repository-map.md), [Document Ownership](../architecture/document-ownership.md), and [Capability Discovery](../../../capabilities/capability-discovery.md).
+
+**Complete when:** The intended reader can reach the current operational source through a clear route without being sent to a preserved copy or generated artifact by mistake.
+
+---
+
+## Historical records
+
+Detailed text from earlier procedure drafts is retained for provenance and review. It is not a second current instruction set. Use the [Procedure Record Index](documents/procedure-record-index.md) to locate those records.

@@ -1,29 +1,24 @@
 # Maintenance Authority
 
-**Status:** Proposed draft for review; not yet adopted as authority. This document does not itself grant permissions or create technical controls.
+**Status:** Proposed core authority draft; pending review and adoption.
 
+Maintenance is the workspace's continuing coherence function. It organizes accumulated contributions by clarifying canonical ownership, reducing genuine duplication, improving placement and navigation, and addressing recurring friction.
 
-**Purpose:** Define Maintenance's responsibility for accumulated workspace coherence without making it an approval gate for ordinary work.
+## Scope
 
-## Responsibility
+Maintenance selects the lowest sufficient level:
 
-Maintenance is the primary organizing force for the repository over time. It owns the continuing work of clarifying canonical document ownership, consolidating genuine duplication, improving placement and terminology where useful, repairing navigation, and reducing recurring organizational friction.
+- **Minimal:** correct one bounded local issue without changing the broader structure.
+- **Alignment:** restore coherence across related documents, components, ownership, or routes.
+- **Improvement:** integrate a broader capability or design change supported by demonstrated need.
 
-Maintenance selects the lowest sufficient scope:
-- **Minimal Maintenance:** bounded local cleanup that preserves current organization.
-- **Alignment Maintenance:** coherence across related documents, components, and routes.
-- **Improvement Maintenance:** broader capability, integration, or architectural evolution justified by demonstrated need.
+## Boundaries
 
-## Authority boundaries
+- Maintenance does not pre-approve ordinary Working tasks.
+- Maintenance may organize within the task's authority; it does not inherit authority over core standards, architecture, entrypoints, or shared contracts.
+- Recovery authority and records remain independent.
+- A change approaching a protected surface follows the [Change Gate](../this-is-instruction-to-read-core-readme-before-proceeding/standards/change-gate.md) and [Protected Change Procedure](../this-is-instruction-to-read-core-readme-before-proceeding/procedures/protected-change.md).
 
-- Maintenance may organize ordinary workspace material within the authority granted for the task.
-- Maintenance does not pre-approve ordinary Working contributions.
-- Maintenance does not gain authority over core, protected standards, entrypoints, permission models, or recovery assets merely because it owns repository-wide organization.
-- Protected changes follow the [Change Gate](../this-is-instruction-to-read-core-readme-before-proceeding/standards/change-gate.md) and [Protected Change Procedure](../this-is-instruction-to-read-core-readme-before-proceeding/procedures/protected-change.md).
-- Recovery ownership remains independent. Maintenance may request preservation or restoration but must not silently invalidate recovery options.
+Prefer demonstrated friction over uniformity. Preserve differences that reflect real distinctions in purpose, audience, authority, behavior, or lifecycle.
 
-## Operating expectations
-
-Prefer evidence of actual friction over theoretical uniformity. Preserve distinctions in authority, purpose, audience, and lifecycle when consolidating documents. Keep local autonomy intact where it does not break shared contracts.
-
-This document defines responsibility boundaries. It does not create technical permissions or grant connector access.
+Detailed scope guidance lives in the three operational maintenance guides.

@@ -1,29 +1,17 @@
 # Protected Change Gate
 
-**Status:** Proposed core standard, pending explicit adoption.
+**Status:** Proposed core standard; pending explicit adoption.
 
-A change is protected when it materially alters one or more of the following:
+A change requires protected review when it materially affects:
 
 - Repository identity, durable purpose, or foundational principles.
-- Core authority, permission, recovery, or workspace boundaries.
-- Repository entrypoints, shared routes, architecture, or canonical discovery contracts.
+- Core architecture, authority, permission, recovery, or workspace boundaries.
+- Root entrypoints, shared routes, or canonical discovery contracts.
 - Shared interfaces or requirements with cross-component or cross-repository consumers.
 - The meaning, adoption status, or preservation rules of core standards and protected records.
 
-## Gate requirements
+Ordinary local implementation, focused component documentation, and local maintenance are not protected solely because they occur in this repository.
 
-Before changing a protected surface:
+A protected change requires review against the relevant principles, architecture, authority, affected consumers, compatibility, and recovery implications, plus explicit authorization through the actual applicable process. The [Protected Change Procedure](../procedures/protected-change.md) defines how to carry out that review.
 
-1. Identify the specific protected material and affected consumers.
-2. Read the governing core standard and authority source.
-3. Confirm explicit authorization through the actual applicable process.
-4. Separate proposals from adopted policy.
-5. Preserve prior state when required and define a suitable recovery path.
-6. Verify affected routes, consumers, controls, and generated outputs.
-7. Report the authorization basis, verification, and unresolved decisions.
-
-## Non-gates
-
-Ordinary local implementation choices, focused documentation updates, and component-level improvements are not protected solely because they occur in the repository. Do not turn this gate into a universal approval process.
-
-Availability of a write operation does not establish authorization. This document describes policy; actual blocking must come from the relevant GitHub or execution controls.
+Write access is not proof of authorization. This standard describes the policy boundary; technical enforcement must be verified in the relevant GitHub or execution controls.
