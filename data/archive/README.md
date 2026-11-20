@@ -16,3 +16,9 @@ This directory preserves superseded source documents and exploratory drafts that
 | DP-C-parts-v2/ | data/DP-C-parts-v2/ | Previously separated procedure files |
 
 Archived contents are preserved snapshots, not current operational instructions or active sources of authority. Use DP-v3.md and DP-C-v3.md in the parent data directory as the current working drafts. Archive filenames have descriptive labels and Markdown extensions; the archived file contents are preserved unchanged.
+
+## DP v3 staging drafts
+
+- `DP-v3-staging-draft.md` — principles draft consolidated into `core/this-is-instruction-to-read-core-readme-before-proceeding/standards/principles.md`; architecture structure moved to `architecture/architecture.md`.
+- `DP-C-v3-full-draft.md` — full DP-C draft retained as a historical source.
+- `DP-C-v3-Edit-draft.md` — edited DP-C draft retained as historical input to the compact implementation register.

@@ -1,6 +1,6 @@
 # DP — Sand-Box Design Principles
 
-**Purpose:** Define the durable identity, boundaries, and design principles of Sand-Box. DP states what the workspace should be and why; DP C translates these principles into task-specific operating guidance.
+**Purpose:** Define the durable identity, boundaries, and design principles of Sand-Box. DP states what the workspace should value and preserve; Architecture describes its design structure; DP-C translates both into implementation procedures and task routing.
 
 **Status:** Proposed core standards draft, pending explicit review and adoption. This document describes intended principles; it does not claim that every described directory, workflow, or control is implemented.
 
@@ -155,36 +155,11 @@ The stable line should represent a coherent, verified workspace rather than ordi
 - Promote broad or shared changes only through explicit authorization, applicable verification, and repository protection controls.
 - Treat archive branches and recovery snapshots as preservation resources, not routine working branches.
 
-## Architectural responsibility domains
+## Relationship to Architecture and DP-C
 
-These domains describe responsibilities, not a mandatory one-to-one directory structure. Create or split directories only when ownership and lifecycle justify them.
+Principles define the durable desires and constraints of Sand-Box. [Architecture](../architecture/architecture.md) describes the design structure that gives those principles form. [DP-C](../procedures/DP-C.md) translates both into implementation procedures, task messages, navigation, and progress tracking. Operational sources then provide the detailed behavior at their owning locations.
 
-| Domain | Responsibility | Boundary |
-| --- | --- | --- |
-| Workspace Core | Identity, durable principles, architecture, configuration, authority, shared contracts | Protected from ordinary feature work and routine maintenance |
-| Working Environment | New features, local tools, task-scoped documents, implementation, proportionate checks | Optimizes local progress; does not own repository-wide organization |
-| Maintenance Environment | Canonical ownership, alignment, consolidation, placement, navigation, long-term coherence | Main organizing force; does not inherit core or recovery authority |
-| Capability System | Reusable tools, scripts, workflows, integrations, tests, discovery metadata | Implements capability; does not redefine core policy |
-| Workspace Access & Operations | ChatGPT/Codex interaction with the repository through the GitHub connector | Limited to actual connector capabilities; not an independent agent runtime |
-| Recovery System | Preservation, snapshots, history, rollback, restoration | Independent from routine cleanup and maintenance |
-| Observability | Authorized evidence, analytics, and reviewable suggestions | Proportionate; does not itself authorize changes |
-
-## Core decision tests
-
-| Question | Decision criterion |
-| --- | --- |
-| Is this a new feature or ordinary task change? | Route to the nearest owning component and its locally relevant guidance. |
-| Is the requested outcome organizational coherence? | Route to Maintenance and select the lowest sufficient maintenance scope. |
-| Should Working perform repository-wide cleanup because it noticed an issue? | No. Address blockers; record or route non-blocking friction to Maintenance. |
-| Is Maintenance an approval gate for ordinary creation? | No. It organizes accumulated work and does not pre-approve every local contribution. |
-| Does either environment have looser security or authority boundaries? | No. Shared core, security, compatibility, preservation, and authorization boundaries apply in both. |
-| Does this belong in core? | Only when it establishes durable repository-wide identity, policy, architecture, authority, or a shared contract. |
-| Must every task load all guidance? | No. Load the current entrypoint and the relevant mode/task sources. |
-| Should a new tool, abstraction, or schema be created? | Prefer composition; create it for a distinct, demonstrated need. Record observed deterministic automation opportunities for later evaluation rather than expanding an unrelated task. |
-| Should a shared interface change? | Identify consumers and account for compatibility, migration, and verification. |
-| Should old material be deleted? | Not solely because it is old, inactive, or absent from a quick search. |
-| Can instructions enforce security? | No. Actual enforcement belongs to the relevant permission or execution layer. |
-| How should work reach the stable branch? | Through the explicitly authorized promotion process and applicable controls. |
+Load only the route and guidance relevant to the actual task; this document is not a universal task checklist.
 
 ## Relationship to DP C
 

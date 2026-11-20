@@ -15,11 +15,13 @@ Core owns durable workspace identity, adopted principles, architecture, configur
 
 | Need | Read |
 |---|---|
+| Understand the intended system design and relationships | [Architecture](architecture/architecture.md) |
 | Understand repository areas and their boundaries | [Repository map](architecture/repository-map.md) |
 | Identify canonical document owners and preserved copies | [Document ownership](architecture/document-ownership.md) |
 | Determine whether a change is protected | [Change gate](standards/change-gate.md) |
 | Understand core principles | [Principles](standards/principles.md) |
 | Determine actual permission and authorization boundaries | [Permission model](../authority/permission-model.md) |
+| Find current task procedures and implementation status | [DP-C procedure register](procedures/DP-C.md) |
 | Apply a protected change | [Protected-change procedure](procedures/protected-change.md) |
 | Preserve an externally owned document in core | [Core document preservation](procedures/core-document-preservation.md) |
 | Understand document roles and lifecycle | [Document lifecycle](standards/document-lifecycle.md) |

@@ -4,6 +4,8 @@ This is the always-read layer for Sand-Box. It establishes the workspace purpose
 
 ## How to route work
 
+For the procedure-specific task message, implementation destination, and progress state, continue to the [DP-C procedure register](core/this-is-instruction-to-read-core-readme-before-proceeding/procedures/DP-C.md). DP-C is the single current source for detailed task wording and procedure tracking.
+
 1. Identify the requested outcome and the files, systems, or repository boundaries it affects.
 2. Follow the matching route below. The route order matches DP C's numbered procedure order.
 3. Load only the instructions needed for the task and the boundaries it actually touches.
