@@ -55,8 +55,16 @@ Use the smallest scope that resolves the actual friction. Maintenance is not an 
 | Does the change affect recovery records or restoration? | Involve the Recovery owner; Maintenance must not redefine or invalidate recovery authority. |
 | Is a new hub, directory, registry, or abstraction proposed? | Require a concrete navigation, ownership, or lifecycle benefit that exceeds its recurring cost. |
 
+## Evolution and promotion
+
+Local contributions can be useful before global normalization. Maintenance may integrate proven patterns, repair cross-component fit, or recommend improvements when recurring use or friction demonstrates a need.
+
+Shared or protected changes require explicit authorization and proportionate verification. Stable promotion should represent a coherent, verified workspace under the repository's actual branch and protection controls. Do not claim branch protection, required checks, or isolation exists without inspecting the enforcing system.
+
 ## Related architecture references
 
 - [Responsibilities and Routing](responsibilities-and-routing.md) — task boundaries and handoffs.
 - [Document Ownership and Lifecycle](document-ownership-and-lifecycle.md) — canonical source, status, and preservation checks.
-- [Recovery, Observability, and Evolution](recovery-observability-and-evolution.md) — recovery and promotion boundaries.
+- [Capability Architecture](capability-architecture.md) — shared capability and interface boundaries.
+- [Recovery Architecture](recovery-architecture.md) — preservation and restoration boundaries.
+- [Observability Architecture](observability-architecture.md) — evidence and improvement feedback.
