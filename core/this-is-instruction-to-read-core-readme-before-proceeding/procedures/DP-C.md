@@ -51,11 +51,11 @@ Update status when an implementation destination or its readiness materially cha
 - **Alignment:** related documents, components, ownership, terminology, or routes have drifted and need coherent treatment.
 - **Improvement:** the problem requires a broader capability, integration, shared interface, or architectural change supported by demonstrated need.
 
-**Working bounds:** Establish source ownership and status before moving or consolidating material. Keep one canonical home for shared requirements, retain local explanations that make a component independently usable, and verify affected routes. Maintenance organizes accumulated work; it is not an approval gate for ordinary Working tasks.
+**Working bounds:** Establish source ownership and status before moving or consolidating material. Trace the affected route from entrypoint to operational owner, implementation, direct consumers, and verification. Keep one canonical home for shared requirements, retain local explanations that make a component independently usable, and preserve distinct process boundaries. Choose scoped or whole-repository alignment in the [Alignment Maintenance guide](../../../maintenance/alignment-maintenance/alignment.md); a broad scope does not mean reading every file. Maintenance organizes accumulated work; it is not an approval gate for ordinary Working tasks.
 
-**Alignment:** Before changing core standards, architecture, authority, root routes, or shared contracts, stop ordinary maintenance and use Procedure 03. Preserve source material and check recovery implications before destructive changes.
+**Alignment:** Prioritize connectivity, process separation, and reduced repeated context. Use the [Architecture Task Index](../architecture/architecture.md) to load only the architecture reference relevant to the affected relationship. Do not load `principles.md` or the full architecture suite by default. Before changing core standards, architecture, authority, root routes, or shared contracts, stop ordinary maintenance and use Procedure 03. Preserve source material and check recovery implications before destructive changes.
 
-**Destinations:** [Minimal Maintenance](../../../maintenance/minimal-maintenance/minimal.md), [Alignment Maintenance](../../../maintenance/alignment-maintenance/alignment.md), [Improvement Maintenance](../../../maintenance/improvement/improvement.md), and [Maintenance Authority](../../authority/maintenance-authority.md). Use [Core Document Preservation](core-document-preservation.md) when an externally owned source needs a protected core record.
+**Destinations:** [Minimal Maintenance](../../../maintenance/minimal-maintenance/minimal.md), [Alignment Maintenance](../../../maintenance/alignment-maintenance/alignment.md), [Improvement Maintenance](../../../maintenance/improvement/improvement.md), [Maintenance Authority](../../authority/maintenance-authority.md), and the [Architecture Task Index](../architecture/architecture.md). Use [Core Document Preservation](core-document-preservation.md) when an externally owned source needs a protected core record.
 
 **Complete when:** The affected area is easier to understand, maintain, and navigate without losing meaningful distinctions or adding unnecessary process.
 
@@ -67,7 +67,7 @@ Update status when an implementation destination or its readiness materially cha
 
 **Task message:** Increase alignment checks with proximity to protected surfaces. Understand the design and authority before editing; do not infer permission from general write access.
 
-**Before editing:** Identify affected files, owners, consumers, and downstream behavior. Read the relevant [Principles](../standards/principles.md), [Architecture](../architecture/architecture.md), [Change Gate](../standards/change-gate.md), and authority sources. Check compatibility, migration, preservation, and recovery implications. Confirm explicit authorization through the actual applicable process.
+**Before editing:** Identify affected files, owners, consumers, and downstream behavior. Read the [Architecture Task Index](../architecture/architecture.md) and only the architecture reference(s) for the affected boundary. Read the relevant [Principles](../standards/principles.md) only when a principle is affected, a conflict needs resolution, or the protected-change process requires it. Read the [Change Gate](../standards/change-gate.md) and applicable authority sources. Check compatibility, migration, preservation, and recovery implications. Confirm explicit authorization through the actual applicable process.
 
 **Boundaries:** Keep proposals separate from adopted requirements. Verify the actual GitHub or execution controls rather than assuming written instructions enforce permissions. Stop when authorization, source authority, impact, or required recovery is unclear.
 
@@ -169,7 +169,7 @@ Update status when an implementation destination or its readiness materially cha
 
 **Alignment:** Broad route, hub, repository-map, ownership, or capability-discovery changes belong to Alignment Maintenance. Check all affected entrypoints, local routes, source owners, and consumers before changing shared navigation. If the change affects core or protected routes, follow the [Protected Change Procedure](protected-change.md) and [Change Gate](../standards/change-gate.md).
 
-**Destinations:** [Root README](../../../README.md), [Architecture](../architecture/architecture.md), [Repository Map](../architecture/repository-map.md), [Document Ownership](../architecture/document-ownership.md), and [Capability Discovery](../../../capabilities/capability-discovery.md).
+**Destinations:** [Root README](../../../README.md), [Architecture Task Index](../architecture/architecture.md), [Repository Map](../architecture/repository-map.md), [Document Ownership](../architecture/document-ownership.md), and [Capability Discovery](../../../capabilities/capability-discovery.md).
 
 **Complete when:** The intended reader can reach the current operational source through a clear route without being sent to a preserved copy or generated artifact by mistake.
 

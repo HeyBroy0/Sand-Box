@@ -15,7 +15,7 @@ Core owns durable workspace identity, adopted principles, architecture, configur
 
 | Need | Read |
 |---|---|
-| Understand the intended system design and relationships | [Architecture](architecture/architecture.md) |
+| Choose the relevant architecture context by task | [Architecture task index](architecture/architecture.md) |
 | Understand repository areas and their boundaries | [Repository map](architecture/repository-map.md) |
 | Identify canonical document owners and preserved copies | [Document ownership](architecture/document-ownership.md) |
 | Determine whether a change is protected | [Change gate](standards/change-gate.md) |
